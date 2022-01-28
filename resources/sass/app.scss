@@ -1,0 +1,129 @@
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Cabin&family=IBM+Plex+Sans:wght@300&family=Montserrat:wght@300;500&family=Nunito:wght@300&family=Quicksand:wght@300;600&family=Source+Sans+Pro:wght@300;600&display=swap" rel="stylesheet');
+
+// font-family: 'Cabin', sans-serif;
+// font-family: 'IBM Plex Sans', sans-serif;
+// font-family: 'Montserrat', sans-serif;
+// font-family: 'Nunito', sans-serif;
+// font-family: 'Quicksand', sans-serif;
+// font-family: 'Source Sans Pro', sans-serif;
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+.navbar-laravel {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+body{
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #f9fafb;
+}
+
+.body_text{
+    font-weight: 400;
+    font-family: inherit !important;
+    font-size: 1rem!important;
+    letter-spacing: .03125em!important;
+    line-height: 1.5rem;
+    color: #3e3e3e !important;
+}
+
+.welcome_banner{
+    margin-top: -5rem;
+    height: 35rem;
+    width: 100vw;
+    background-image: url('images/background/banner2.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .banner_caption{
+        min-height: 10rem;
+        margin-top: 6rem;
+        background: transparent;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        // justify-content: center;
+
+        h1{
+            font-size: 4rem;
+            font-weight: 400 !important;
+            line-height: 1.6;
+            text-align: center;
+        }
+        h3{
+            font-size: 2.2rem;
+            font-weight: 300 !important;
+            line-height: 1.8;
+            text-align: center;
+        }
+        .loc{
+            margin-top: 5px;
+            padding: 10px;
+            width: 40%;
+            text-align:center;
+        }
+
+        @media screen and (max-width:1030px){
+            h1{
+                font-size: 2.5rem;
+            }
+            h3{
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+}
+@media screen and (max-width: 942px){
+    .welcome_banner{
+        height: 30rem;
+
+        .banner_caption{
+            padding-top: 5rem;
+            margin: 5rem 2rem 2rem 2rem !important;
+        }
+        .loc{
+            margin-top: -1rem;
+        }
+    }
+}
+.section_header{
+    color: #323232 !important;
+    font-weight: 400 !important;
+    font-size: 1.6rem !important;
+}
+.card_headers{
+    color: #4c4c4c;
+    font-weight: 400 !important;
+    font-size: 1.4rem !important;
+}
+.btm_row{
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center;
+    padding: 10px 20px;
+    flex: 1 0;
+}
+@media screen and (max-width: 782px){
+    .btm_row{
+        flex-direction: column;
+
+    }
+    .pgnt{
+        margin-bottom: 17px;
+        padding: 5px 8px;
+    }
+}

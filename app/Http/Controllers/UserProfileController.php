@@ -1,0 +1,113 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\User;
+use App\Review;
+use App\Service;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Intervention\Image\Facades\Image;
+
+
+class UserProfileController extends Controller
+{
+    public function getAuthUserService()
+    {
+        $user = auth('api')->user()->id;
+        $service = Service::where('user_id', $user)->first();
+
+        return response()->json($service, 200);
+    }
+
+    public function updateUserProfile(Request $request){
+        $user = auth('api')->user();
+
+        $validator = $this->validate($request, [
+            'user.first_name' => 'required|min:3|max:30',
+            'user.last_name' => 'required|min:3|max:30',
+            'user.phone' => 'required|max:14',
+        ]);
+
+        $user->update([
+            $user->first_name = $request->user['first_name'],
+            $user->last_name = $request->user['last_name'],
+            $user->phone = $request->user['phone'],
+        ]);
+
+        return response()->json($user, 201);
+    }
+
+    public function confirmCurrentPswd(Request $request){
+        $user = auth('api')->user();
+        $current = $user->password;
+        $check = Hash::check($request->password, $current);
+
+        return response()->json($check, 200);
+    }
+
+    public function updateAuthUserPswd(Request $request){
+        $this->validate($request, [
+            'password' => 'required|min:5|max:20|confirmed',
+            'password_confirmation' => 'required'
+        ]);
+
+        $user = auth('api')->user();
+        $new = $request->password;
+
+        $user->update([
+            $user->password = Hash::make($new)
+        ]);
+
+        return response()->json(['message' => 'Password changed successfully'], 201);
+    }
+
+    public function updateUserProfilePic(Request $request)
+    {
+        $this->validate($request, [
+            'image' => 'mimes:jpeg,jpg,bmp,png,gif'
+        ]);
+
+        $user = auth('api')->user();
+        // check if picture exists for profile, then unlink
+        $old_pic = $user->picture;
+        if($old_pic){
+            $filePath = public_path('/images/profiles/users/'.$old_pic);
+            if(file_exists($filePath)){
+                unlink($filePath);
+            }
+        }
+
+        // save file in folder...later in s3 when ready to deploy
+        $file = $request->image;
+        if($file){
+            $pool = '0123456789abcdefghijklmnopqrstuvwxyz';
+            $ext = $file->getClientOriginalExtension();
+            $filename = substr(str_shuffle($pool), 0, 6).".".$ext;
+
+            //save new file in folder
+            $file_loc = public_path('/images/profiles/users/'.$filename);
+            if(in_array($ext, ['jpeg', 'jpg', 'png', 'gif', 'pdf'])){
+                $upload = Image::make($file)->resize(420, 420, function($constraint){
+                    $constraint->aspectRatio();
+                });
+                $upload->sharpen(2)->save($file_loc);
+            }
+        }
+
+        // save path in db
+        $user->update([
+            $user->picture = $filename
+        ]);
+
+        return response()->json($user, 201);
+    }
+
+    public function getMyServiceReviews(){
+        $user = auth('api')->user()->id;
+        $my_service = Service::where('user_id', $user)->first();
+        $revs = Review::where('service_id', $my_service->id)->latest()->paginate(20);
+        return response()->json($revs, 201);
+    }
+}
