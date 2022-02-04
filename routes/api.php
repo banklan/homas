@@ -30,6 +30,7 @@ Route::group(['middleware' => 'api'], function($router){
     Route::get('locations', 'LocationController@getAll');
     Route::get('get_min_featured_services', 'ServiceController@getMinFeatured');
     Route::get('get_min_popular_services', 'ServiceController@getMinPopular');
+    Route::get('get_new_services', 'ServiceController@getNewestServices');
     Route::get('popular_locations', 'LocationController@getPopular');
     Route::get('get_service/{id}', 'ServiceController@getService');
     Route::post('increment_view_count/{id}', 'ServiceController@incrementViewCount');
@@ -48,6 +49,8 @@ Route::group(['middleware' => 'api'], function($router){
     Route::get('clients/export/', 'TestClientController@export');
     Route::post('send_enquiry', 'EnquiryController@sendEnquiry');
     Route::post('send-notification', 'MiscController@sendNotification');
+    Route::get('get_featured_testimonials', 'TestimonialController@getFeatured');
+    Route::get('get_pgntd_testimonials', 'TestimonialController@getPgndtTestimonials');
 });
 
 // auth user routes(protected)
@@ -70,6 +73,10 @@ Route::group(['middleware' => 'jwt.auth',  'prefix' => 'auth'], function($router
     Route::get('get_my_service_reviews', 'UserProfileController@getMyServiceReviews');
     Route::post('update_portfolio/{id}', 'PortfolioController@updatePf');
     Route::post('del_pf_file/{id}', 'PortfolioController@delFile');
+    Route::get('get_auth_testimonial', 'UserProfileController@getAuthTestimonial');
+    Route::post('update_testimonial', 'UserProfileController@updateTestimonial');
+    Route::get('check_auth_testimonial', 'UserProfileController@checkAuthTestimonial');
+    Route::post('create_testimonial', 'UserProfileController@createTestimonial');
 });
 
 Route::group([['middleware' => 'jwt.auth', 'PortfolioCount'],  'prefix' => 'auth'], function($router){
@@ -162,6 +169,15 @@ Route::group(['prefix' => 'auth-admin', 'middleware' => ['assign.guard:admin-api
     Route::post('enquiry_was_read/{id}', 'AdminController@enquiryWasRead');
     Route::get('get_popular_services', 'AdminController@getPopularServices');
     Route::get('get_latest_services', 'AdminController@getLatestServices');
+    Route::get('all_testimonials', 'AdminController@getPgntdTestimonials');
+    Route::post('admin_del_testimonial/{id}', 'AdminController@delTestimonial');
+    Route::post('admin_search_for_tests', 'AdminController@searchForTestimonials');
+    Route::get('get_testimonial/{id}', 'AdminController@getTestimonial');
+    Route::post('change_testimonial_confirm_status/{id}', 'AdminController@toggleTestimonialConfirm');
+    Route::post('change_testimonial_feature_status/{id}', 'AdminController@toggleTestimonialFeature');
+    Route::post('update_testimonial/{id}', 'AdminController@updateTestimonial');
+    Route::get('get_testimonial_count', 'AdminController@getTestimonialCount');
+
     // Route::get('get_admin_notifications', 'AdminController@getNotifs');
     // Route::post('clear_new_users_notification', 'AdminController@resetNewUsersNotif');
     // Route::post('clear_new_services_notification', 'AdminController@resetNewServicesNotif');

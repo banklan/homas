@@ -89,6 +89,10 @@
                                     <th>Not Approved Reviews</th>
                                     <td>{{ apprvdReviews }}</td>
                                 </tr>
+                                <tr>
+                                    <th>No of Testimonials</th>
+                                    <th>{{ testimonials }}</th>
+                                </tr>
                             </tbody>
                         </table>
                     </v-card-text>
@@ -193,6 +197,7 @@ export default {
             UsersChartError: null,
             popularServs: [],
             latestServs: [],
+            testimonials: null
         }
     },
     computed:{
@@ -285,6 +290,11 @@ export default {
             axios.get(this.api + '/auth-admin/get_latest_services', this.adminHeaders).then((res) => {
                 this.latestServs = res.data
             })
+        },
+        getTestimonials(){
+            axios.get(this.api + '/auth-admin/get_testimonial_count', this.adminHeaders).then((res) => {
+                this.testimonials = res.data
+            })
         }
     },
     mounted() {
@@ -295,6 +305,7 @@ export default {
         this.getReviewsStats()
         this.getPopularServices()
         this.getLatestServices()
+        this.getTestimonials()
         this.getServicesChartData()
         this.getUsersChartData()
     },

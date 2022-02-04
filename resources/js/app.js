@@ -18,7 +18,6 @@ import '@mdi/font/css/materialdesignicons.css'
 import 'animate.css'
 import Moment from 'vue-moment'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
-// import 'swiper/css/swiper.css'
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import VueSocialSharing from 'vue-social-sharing'
@@ -109,6 +108,7 @@ Vue.component('welcome-cards', require('./components/children/WelcomeCards.vue')
 Vue.component('featured-sps', require('./components/children/FeaturedServices.vue').default);
 Vue.component('popular-sps', require('./components/children/PopularServices.vue').default);
 Vue.component('popular-locs', require('./components/children/PopularLocations.vue').default);
+Vue.component('latest-sps', require('./components/children/FreshServices.vue').default);
 Vue.component('how-to', require('./components/Children/HowTo.vue').default);
 Vue.component('portfolio-carousel', require('./components/children/PortfolioCarousel.vue').default);
 Vue.component('auth-navbar', require('./components/includes/AuthNavbar.vue').default);
@@ -127,8 +127,7 @@ Vue.component('admin-review-item', require('./components/children/AdminReviewIte
 Vue.component('admin-location-popular', require('./components/children/AdminLocationPopular.vue').default);
 Vue.component('my-service-review', require('./components/children/MyServiceReview.vue').default);
 Vue.component('how-it-works', require('./components/children/HowItWorks.vue').default);
-Vue.component('testimonials', require('./components/children/Testimonials.vue').default);
-// Vue.component('line-chart', require('./components/charts/LineChart.vue').default);
+Vue.component('sp-testimonials', require('./components/children/SpTestimonials.vue').default);
 
 
 

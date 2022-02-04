@@ -1,11 +1,11 @@
 <template>
     <v-container>
-        <v-row justify="center" class="mb-5">
+        <v-row justify="center" class="mt-3">
             <v-col cols="12" md="6">
                 <div class="section_header text-center">Featured Services</div>
             </v-col>
         </v-row>
-        <v-row wrap justify="space-around" class="my-5">
+        <v-row wrap justify="space-around" class="my-3">
             <template v-if="services.length > 0">
                 <v-col cols="12" md="4" v-for="service in services" :key="service.id">
                     <v-card light elevation="4" min-height="400" class="mt-5 mb-3" :to="{name: 'ServiceShow', params:{id: service.id, slug: service.slug}}">

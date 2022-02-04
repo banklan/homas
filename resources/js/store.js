@@ -89,6 +89,10 @@ export const store = new Vuex.Store({
         enquiryNotif: enquiryNotif,
         userNotif: userNotif,
         servNotif: servNotif,
+        testimonialUpdateSuccess: false,
+        testimonialCreated: false,
+        adminDelTestimonial: false,
+        adminUpdatedTestimonial: false,
     },
     getters: {
         api(state)
@@ -238,6 +242,22 @@ export const store = new Vuex.Store({
         servNotif(state)
         {
             return state.servNotif
+        },
+        testimonialUpdateSuccess(state)
+        {
+            return state.testimonialUpdateSuccess
+        },
+        testimonialCreated(state)
+        {
+            return state.testimonialCreated
+        },
+        adminDelTestimonial(state)
+        {
+            return state.adminDelTestimonial
+        },
+        adminUpdatedTestimonial(state)
+        {
+            return state.adminUpdatedTestimonial
         }
     },
     actions: {
@@ -327,6 +347,7 @@ export const store = new Vuex.Store({
             state.adminDeletedPortfolio = false
             state.adminDeleteReview = false
             state.newUserCreated = false
+            state.adminUpdatedTestimonial = false
         },
         serviceDeleted(state)
         {
@@ -436,7 +457,8 @@ export const store = new Vuex.Store({
         resetAuthFlashMsg(state, payload)
         {
             state.authProfileUpdated = false
-
+            state.testimonialUpdateSuccess = false
+            state.testimonialCreated = false
         },
         adminDeleteEnquiry(state, payload)
         {
@@ -537,6 +559,22 @@ export const store = new Vuex.Store({
         {
             window.localStorage.removeItem('userNotif')
             state.userNotif = 0
+        },
+        TestimonialUpdated(state)
+        {
+            state.testimonialUpdateSuccess = true
+        },
+        TestimonialCreated(state)
+        {
+            state.testimonialCreated = true
+        },
+        adminDeleteTestimonial(state)
+        {
+            state.adminDelTestimonial = true
+        },
+        adminUpdatedTestimonial(state)
+        {
+            state.adminUpdatedTestimonial = true
         }
     },
 })

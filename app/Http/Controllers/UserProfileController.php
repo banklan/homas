@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Review;
 use App\Service;
+use App\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -109,5 +110,47 @@ class UserProfileController extends Controller
         $my_service = Service::where('user_id', $user)->first();
         $revs = Review::where('service_id', $my_service->id)->latest()->paginate(20);
         return response()->json($revs, 201);
+    }
+
+    public function getAuthTestimonial(){
+        $user = auth('api')->user()->id;
+        $testim = Testimonial::where('user_id', $user)->first();
+        if($testim){
+            return response()->json($testim, 200);
+        }
+    }
+
+    public function updateTestimonial(Request $request){
+        $this->validate($request, [
+            'testimonial.title' => 'required|min:4|max:50',
+            'testimonial.detail' => 'required|min:10|max:400',
+        ]);
+        $user = auth('api')->user()->id;
+        $test = Testimonial::where('user_id', $user)->first();
+        $test->update([
+            $test->title = $request->testimonial['title'],
+            $test->detail = $request->testimonial['detail'],
+        ]);
+        return response()->json($test, 201);
+    }
+
+    public function checkAuthTestimonial(){
+        $user = auth('api')->user()->id;
+        $test = Testimonial::where('user_id', $user)->count();
+        return response()->json($test, 201);
+    }
+
+    public function createTestimonial(Request $request){
+        $this->validate($request, [
+            'testimonial.title' => 'required|min:4|max:50',
+            'testimonial.detail' => 'required|min:10|max:400',
+        ]);
+        $user = auth('api')->user()->id;
+        $test = new Testimonial;
+        $test->user_id = $user;
+        $test->title = $request->testimonial['title'];
+        $test->detail = $request->testimonial['detail'];
+        $test->save();
+        return response()->json($test, 201);
     }
 }

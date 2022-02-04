@@ -1,12 +1,10 @@
 <template>
-    <div class="primary how_to">
+    <div class="how_to">
         <div class="section_header white--text mt-2 mb-3 text-center">How it works</div>
         <div class="how_details">
-            <v-list class="primary white--text">
+            <v-list class="white--text ml-5">
                 <v-list-item dark v-for="item in hows" :key="item.i" class="white--text">
-                    <v-list-item-content class="px-5">
-                        <v-list-item-subtitle class="text-h5 font-weight-thin">{{ item.i }}.  {{ item.b }}</v-list-item-subtitle>
-                    </v-list-item-content>
+                    <div class="list_text">{{ item.i }}.  {{ item.b }}</div>
                 </v-list-item>
             </v-list>
         </div>
@@ -32,15 +30,24 @@ export default {
 
 <style lang="scss" scoped>
  .how_to{
+     background-image:linear-gradient(to bottom right, rgba(227, 81, 12, 0.96), rgba(255, 82, 0, 1), rgba(214, 68, 0, 0.92));
      min-height: 30rem;
      width: 100vw;
      color: #fff;
      padding: 20px;
-     margin: 25px 0;
+     margin-top: 25px;
      color: #fff !important;
+     .v-list{
+         background: inherit !important;
+     }
 
-     .text-h5{
-         font-weight: 300 !important;
+     .list_text{
+         font-size: 1.30rem !important;
+         font-weight: 400 !important;
+         color: #fff !important;
+         line-height: 1.8;
+         letter-spacing: .0125em!important;
+         margin-bottom: 25px;
      }
  }
 </style>

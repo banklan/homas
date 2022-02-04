@@ -58,7 +58,7 @@ window.Echo = new Echo({
 });
 
 // comment out in production
-Pusher.log = function (msg)
-{
-    console.log(msg)
-}
+// Pusher.log = function (msg)
+// {
+//     console.log(msg)
+// }

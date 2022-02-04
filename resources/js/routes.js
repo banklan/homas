@@ -57,6 +57,14 @@ import AboutUs from './components/AboutUs';
 import FreqAskedQuestions from './components/FreqAskedQuestions';
 import Advertise from './components/Advertise';
 import TermsAndConditions from './components/TermsAndConditions';
+import PrivacyPolicy from './components/PrivacyPolicy';
+import Testimonials from './components/Testimonials';
+import MyTestimonial from './components/user/MyTestimonial';
+import EditTestimonial from './components/user/EditTestimonial';
+import NewTestimonial from './components/user/NewTestimonial';
+import AdminTestimonialList from './components/admin/AdminTestimonialList';
+import AdminTestimonialUpdate from './components/admin/AdminTestimonialUpdate';
+import AdminTestimonialShow from './components/admin/AdminTestimonialShow';
 
 // import AdminServiceDetail from './components/admin/AdminServiceDetail';
 
@@ -326,6 +334,24 @@ export default [
         }
     },
     {
+        path: '/admin/testimonials', name: 'AdminTestimonialList', component: AdminTestimonialList,
+        meta: {
+            requireAdminsAuth: true
+        }
+    },
+    {
+        path: '/admin/testimonials/:id/update', name: 'AdminTestimonialUpdate', component: AdminTestimonialUpdate,
+        meta: {
+            requireAdminsAuth: true
+        }
+    },
+    {
+        path: '/admin/testimonials/:id', name: 'AdminTestimonialShow', component: AdminTestimonialShow,
+        meta: {
+            requireAdminsAuth: true
+        }
+    },
+    {
         path: '/contact-us', name: 'ContactUs', component: ContactUs,
     },
     {
@@ -339,5 +365,29 @@ export default [
     },
     {
         path: '/terms-conditions', name: 'TermsAndConditions', component: TermsAndConditions,
+    },
+    {
+        path: '/privacy-policy', name: 'PrivacyPolicy', component: PrivacyPolicy,
+    },
+    {
+        path: '/testimonials', name: 'Testimonials', component: Testimonials,
+    },
+    {
+        path: '/my-testimonial', name: 'MyTestimonial', component: MyTestimonial,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/edit-testimonial/:id', name: 'EditTestimonial', component: EditTestimonial,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/new-testimonial', name: 'NewTestimonial', component: NewTestimonial,
+        meta: {
+            requiresAuth: true
+        }
     },
 ]

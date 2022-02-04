@@ -67,7 +67,7 @@
                                 <v-icon>mdi-account-outline</v-icon>
                             </v-list-item-avatar>
                             <v-list-item-content class="text-truncate">
-                                Carol Skelly
+                                {{ authAdmin.fullname }}
                             </v-list-item-content>
                             <v-btn icon small>
                                 <v-icon>mdi-chevron-left</v-icon>
@@ -130,6 +130,7 @@ export default {
                 {title: "Locations", path: "/admin/locations", icon: "navigation"},
                 {title: "Password Resets", path: "/admin/password-reset-logs", icon: "lock"},
                 {title: "Enquiries", path: "/admin/enquiries", icon: "message"},
+                {title: "Testimonials", path: "/admin/testimonials", icon: "mdi-comment"},
                 {title: "Profile", path: "/admin/profile", icon: "lock"},
                 {title: "Charts", path: "/admin/charts", icon: "lock"},
                 // {title: "Clients", path: "/admin/clients", icon: "mdi-group"},

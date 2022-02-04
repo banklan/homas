@@ -203,4 +203,10 @@ class ServiceController extends Controller
 
         return response()->json($services, 200);
     }
+
+    public function getNewestServices(){
+        $servs = Service::latest()->take(6)->get();
+        return response()->json($servs, 200);
+    }
+
 }

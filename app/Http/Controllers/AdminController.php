@@ -12,6 +12,7 @@ use App\Location;
 use App\Portfolio;
 use Carbon\Carbon;
 use App\TestClient;
+use App\Testimonial;
 use App\PortfolioFile;
 use App\PasswordResetLog;
 use App\AdminNotification;
@@ -973,33 +974,82 @@ class AdminController extends Controller
         return response()->json($servs, 200);
     }
 
-    // public function getNotifs()
-    // {
-    //     $notifs = AdminNotification::where('is_read', false)->get();
-    //     return response()->json($notifs, 200);
-    // }
+    public function getPgntdTestimonials(){
+        $tests = Testimonial::latest()->paginate(20);
 
-    // public function resetNewUsersNotif(){
-    //     $notifs = AdminNotification::where('model', 'User')->get();
-    //     foreach ($notifs as $item) {
-    //         $item->delete();
-    //     }
-    //     return response()->json(['message' => 'New Users Notifications deleted!'], 200);
-    // }
+        return response()->json($tests, 200);
+    }
 
-    // public function resetNewServicesNotif(){
-    //     $notifs = AdminNotification::where('model', 'Service')->get();
-    //     foreach ($notifs as $item) {
-    //         $item->delete();
-    //     }
-    //     return response()->json(['message' => 'New Service Notifications deleted!'], 200);
-    // }
+    public function delTestimonial($id){
+        $test = Testimonial::findOrFail($id);
 
-    // public function resetNewEnquiryNotif(){
-    //     $notifs = AdminNotification::where('model', 'Enquiry')->get();
-    //     foreach ($notifs as $item) {
-    //         $item->delete();
-    //     }
-    //     return response()->json(['message' => 'New Enquiry Notifications deleted!'], 200);
-    // }
+        $test->delete();
+        return response()->json(['message' => 'Deleted'], 200);
+    }
+
+    public function searchForTestimonials(Request $request){
+        $q = $request->q;
+        $tests = Testimonial::where('title', 'LIKE', "%".$q."%")
+                        ->orWhere('detail', 'LIKE', "%".$q."%")
+                        ->orWhereHas('user', function($x) use($q){
+                            $x->where('email', 'like', "%".$q."%")
+                            ->orWhere('first_name', 'like', "%".$q."%")
+                            ->orWhere('last_name', 'like', "%".$q."%");
+                        })
+                        ->get();
+
+        return response()->json($tests, 200);
+    }
+
+    public function getTestimonial($id){
+        $test = Testimonial::findOrFail($id);
+        return response()->json($test, 200);
+    }
+
+    public function toggleTestimonialConfirm($id, Request $req){
+        $test = Testimonial::findOrFail($id);
+        if($test->is_confirmed){
+            $test->update([
+                $test->is_confirmed = false
+            ]);
+        }else{
+            $test->update([
+                $test->is_confirmed = true
+            ]);
+        }
+        return response()->json($test->is_confirmed, 200);
+    }
+
+    public function toggleTestimonialFeature($id, Request $req){
+        $test = Testimonial::findOrFail($id);
+        if($test->is_featured){
+            $test->update([
+                $test->is_featured = false
+            ]);
+        }else{
+            $test->update([
+                $test->is_featured = true
+            ]);
+        }
+        return response()->json($test->is_featured, 200);
+    }
+
+    public function updateTestimonial($id, Request $req){
+        $test = Testimonial::findOrFail($id);
+        $this->validate($req, [
+            'testimonial.title' => 'required|min:4|max:50',
+            'testimonial.detail' => 'required|min:10|max:400',
+        ]);
+        $test->update([
+            $test->title = $req->testimonial['title'],
+            $test->detail = $req->testimonial['detail'],
+         ]);
+
+         return response()->json($test, 200);
+    }
+
+    public function getTestimonialCount(){
+        $count = Testimonial::all()->count();
+        return response()->json($count, 200);
+    }
 }

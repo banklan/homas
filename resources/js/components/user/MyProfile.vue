@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-progress-circular indeterminate color="primary" :width="4" :size="40" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
-        <v-row v-else class="mt-4" justify="center" :class="$vuetify.breakpoint.smAndDown ? 'ml-n10':''">
+        <v-row v-else class="mt-4" justify="center">
             <v-col cols="12" md="5">
                 <v-card light raised outlined elevation="4" min-height="400" class="scroll" width="100%">
                     <template v-if="!changePic">
@@ -30,7 +30,7 @@
                                 <thead></thead>
                                 <tbody>
                                     <tr>
-                                        <th>Name: </th>
+                                        <th width="30%">Name: </th>
                                         <td>{{ authUser.fullname }}</td>
                                     </tr>
                                     <tr>
@@ -38,11 +38,11 @@
                                         <td>{{ authUser.email }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Phone: </th>
+                                        <th>Phone Number: </th>
                                         <td>{{ authUser.phone }}</td>
                                     </tr>
                                     <tr>
-                                        <th>Created: </th>
+                                        <th>Joined: </th>
                                         <td>{{ authUser.created_at | moment('Do MMM, YYYY') }}</td>
                                     </tr>
                                 </tbody>

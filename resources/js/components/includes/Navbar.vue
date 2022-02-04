@@ -1,8 +1,5 @@
 <template>
     <nav>
-        <!-- <template v-if="adminIsLoggedIn && $route.path.substring(0, 6) == '/admin'">
-            <admin-auth-navbar />
-        </template> -->
         <template>
             <v-app-bar flat dark color="transparent white--text" class="mb-n6">
                 <span class="hidden-md-and-up">

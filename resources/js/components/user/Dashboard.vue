@@ -50,11 +50,15 @@
                                 <div class="mt-2">
                                     <v-btn text dark color="primary" to="/my-profile">My Profile</v-btn>
                                 </div>
+                                <hr class="mt-3">
+                                <div class="mt-2">
+                                    <v-btn text dark color="primary" to="/my-testimonial">My Testimonial</v-btn>
+                                </div>
                             </v-card-text>
                         </v-card>
                     </v-col>
                     <v-col cols="12" md="5">
-                        <v-card light raised elevation="12" min-height="300" class="">
+                        <v-card light raised elevation="12" min-height="150" class="">
                             <v-card-title class="primary white--text justify-center subtitle-1">{{ authUser.first_name }} Service</v-card-title>
                             <v-card-text class="body-1">
                                 <template v-if="authService">
@@ -65,7 +69,7 @@
                                         </tr>
                                         <tr>
                                             <th>No of Views</th>
-                                            <td>{{ authService.view_count }}</td>
+                                            <td>{{ authService.views.toLocaleString() }}</td>
                                         </tr>
                                         <tr>
                                             <th width="50%">No of Reviews</th>
@@ -136,7 +140,8 @@ export default {
         return {
             isLoading: false,
             service: null,
-            getServiceFail: false
+            getServiceFail: false,
+            // fetchingTestimonial: false
         }
     },
     computed:{
@@ -162,38 +167,11 @@ export default {
         }
     },
     methods: {
-        getService(){
-            this.isLoading = true
-            axios.get(this.api + '/my_service', {
-                headers: {
-                    "Authorization": `Bearer ${this.authUser.token}`
-                }
-            })
-            .then((res) => {
-                this.isLoading = false
-                this.service = res.data
-                // console.log(res.data)
-            }).catch((err) => {
-                if(err.response.status === 401){
-                    this.$store.commit('logOut')
-                    this.$router.push('/')
-                }else{
-                    this.isLoading = false
-                    this.getServiceFail = true
-                }
-            })
-        }
     },
     mounted() {
         this.$store.dispatch('fetchService')
-        axios.get(this.api + '/auth/auth_service', this.authHeaders).then((res) =>{
-            this.service = res.data
-            console.log("service is =>" + res.data)
-        })
+
     },
-    created(){
-        // console.log(this.authService)
-    }
 }
 </script>
 
@@ -201,11 +179,6 @@ export default {
     a{
         text-decoration: none !important;
     }
-
-    /* .v-card{
-        overflow:auto !important;
-    } */
-
     .v-card{
         overflow: hidden !important;
         word-wrap: break-word !important;

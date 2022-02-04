@@ -19,7 +19,7 @@
                         <li><router-link to="/advertise">Promote Your Services</router-link></li>
                         <li><router-link to="/terms-conditions">Terms & Conditions</router-link></li>
                         <li><router-link to="/privacy-policy">Privacy Policy</router-link></li>
-                        <li><router-link to="/register">Join Our Professionals </router-link></li>
+                        <li><router-link to="/testimonials">Testimonials </router-link></li>
                     </ul>
                 </div>
             </div>

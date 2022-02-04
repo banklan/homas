@@ -5,8 +5,9 @@
         <featured-sps></featured-sps>
         <popular-sps></popular-sps>
         <popular-locs></popular-locs>
+        <latest-sps></latest-sps>
         <how-it-works></how-it-works>
-        <testimonials></testimonials>
+        <sp-testimonials></sp-testimonials>
     </div>
 </template>
 
