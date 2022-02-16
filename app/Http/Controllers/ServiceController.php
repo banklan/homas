@@ -161,15 +161,18 @@ class ServiceController extends Controller
             'q' => 'required'
         ]);
 
-        $services = Service::where('title', 'LIKE', "%".$q."%")
+        $services = Service::with('user')->with('category')
+                            ->where('title', 'LIKE', "%".$q."%")
                             ->orWhere('description', 'LIKE', "%".$q."%")
                             ->orWhere('highlight', 'LIKE', "%".$q."%")
                             ->orWhere('email', 'LIKE', "%".$q."%")
                             ->orWhere('phone', 'LIKE', "%".$q."%")
                             ->orWhere('website', 'LIKE', "%".$q."%")
-                            ->with('user')
-                            ->with('category')
-                            ->get();
+                            ->orWhereHas('user', function($x) use($q){
+                                $x->where('email', 'like', "%".$q."%")
+                                ->orWhere('first_name', 'like', "%".$q."%")
+                                ->orWhere('last_name', 'like', "%".$q."%");
+                            })->get();
 
         return response()->json($services, 200);
     }
@@ -209,4 +212,29 @@ class ServiceController extends Controller
         return response()->json($servs, 200);
     }
 
+    public function getPgndtServices(){
+        $servs = Service::latest()->paginate(15);
+        return response()->json($servs, 200);
+    }
+    
+    public function filterServicesByCat($id){
+        $servs = Service::where('category_id', $id)->get();
+        return response()->json($servs, 200);
+    }
+    
+    public function filterServicesByLoc($id){
+        $servs = Service::where('location_id', $id)->get();
+        return response()->json($servs, 200);
+    }
+    
+    public function filterServices($cat, $loc){
+        if($loc && $cat){
+            $servs = Service::where('location_id', $loc)->where('category_id', $cat)->get();
+        }elseif ($loc == null && $cat) {
+            $servs = Service::where('category_id', $cat)->get();
+        }elseif($cat == null && $loc){
+            $servs = Service::where('location_id', $cat)->get();
+        }
+        return response()->json($servs, 200);
+    }
 }

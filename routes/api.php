@@ -51,6 +51,10 @@ Route::group(['middleware' => 'api'], function($router){
     Route::post('send-notification', 'MiscController@sendNotification');
     Route::get('get_featured_testimonials', 'TestimonialController@getFeatured');
     Route::get('get_pgntd_testimonials', 'TestimonialController@getPgndtTestimonials');
+    Route::get('get_pntg_services', 'ServiceController@getPgndtServices');
+    Route::get('filter_services_by_cat/{id}', 'ServiceController@filterServicesByCat');
+    Route::get('filter_services_by_loc/{id}', 'ServiceController@filterServicesByLoc');
+    Route::get('filter_services/{cat}/{loc}', 'ServiceController@filterServices');
 });
 
 // auth user routes(protected)

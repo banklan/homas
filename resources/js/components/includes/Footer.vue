@@ -8,6 +8,7 @@
                         <li><router-link to="/">Home</router-link></li>
                         <li><router-link to="/about-us">About Us</router-link></li>
                         <li><router-link to="/contact-us">Contact Us</router-link></li>
+                        <li><router-link to="/services">All Services</router-link></li>
                         <li><router-link to="/login">Login </router-link></li>
                         <li><router-link to="/register">Join Our Professionals </router-link></li>
                     </ul>
@@ -15,11 +16,12 @@
                 <div class="pillar">
                     <ul>
                         <li class="font-weight-bold header">Quick Links</li>
+                        <li><router-link to="/create-service">Create Service</router-link></li>
                         <li><router-link to="/frequently-asked-questions">FAQ</router-link></li>
                         <li><router-link to="/advertise">Promote Your Services</router-link></li>
+                        <li><router-link to="/testimonials">Testimonials </router-link></li>
                         <li><router-link to="/terms-conditions">Terms & Conditions</router-link></li>
                         <li><router-link to="/privacy-policy">Privacy Policy</router-link></li>
-                        <li><router-link to="/testimonials">Testimonials </router-link></li>
                     </ul>
                 </div>
             </div>

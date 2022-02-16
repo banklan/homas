@@ -7,7 +7,7 @@
                 </span>
                 <v-toolbar-title class="ml-5 my-2 white--text">
                     <router-link to="/" style="cursor:pointer" exact>
-                        <span class="font-weight-bold headline primary--text">Homas</span>
+                        <span class="font-weight-bold headline primary--text app_name">Homas</span>
                     </router-link>
                 </v-toolbar-title>
                 <v-spacer></v-spacer>
@@ -17,16 +17,16 @@
                     </v-toolbar-items>
                 </span>
                 <v-toolbar-items class="hidden-sm-and-down align-center">
-                    <template v-if="!userIsLoggedIn">
+                    <template v-if="!userIsLoggedIn && !adminIsLoggedIn">
                         <v-btn text v-for="menu in menus" :key="menu.title">
                             <router-link class="transparent" :class="$route.path == '/' ? 'white--text' : 'primary--text'" :to="menu.path">{{ menu.title }}</router-link>
                         </v-btn>
                     </template>
-                    <template v-else>
+                    <template v-if="userIsLoggedIn">
                         <v-btn text v-for="menu in authMenu" :key="menu.title">
                             <router-link class="transparent" :class="$route.path == '/' ? 'white--text' : 'primary--text'" :to="menu.path">{{ menu.title }}</router-link>
                         </v-btn>
-                        <v-btn :class="$route.path == '/' ? 'white--text' : 'primary--text'" text @click="logout">Logout</v-btn>
+                        <v-btn :class="$route.path == '/' ? 'white--text' : 'primary--text'" text @click="logout" class="logout transparent">Logout</v-btn>
                     </template>
                 </v-toolbar-items>
             </v-app-bar>
@@ -46,7 +46,7 @@
                         </v-list-item>
                     </template>
                     <template v-else>
-                        <v-list-item class="" v-for="menu in authMenu" :key="menu.title" link :to="menu.path">
+                        <v-list-item class="auth_menu" v-for="menu in authMenu" :key="menu.title" link :to="menu.path">
                             <v-list-item-content>
                                 <v-list-item-title>{{ menu.title }}</v-list-item-title>
                             </v-list-item-content>
@@ -70,6 +70,7 @@ export default {
             navdrawer: false,
             menuColor: '',
             menus: [
+                { title: "All Services", path: "/services"},
                 { title: "About Us", path: "/about-us"},
                 { title: "Contact Us", path: "/contact-us"},
                 { title: "Login", path: "/login"},
@@ -123,9 +124,58 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
+    button.v-btn{
+        text-decoration: none !important;
+        background-color: none !important;
+        transition: all .3s !important;
+        &:hover{
+            background-color: none !important;
+        } 
+        &:hover a{
+            transition: all .3s !important;
+            color: #ff5200 !important;
+        }
+        a{
+            transition: all .3s !important;
+            text-decoration: none !important;
+            text-transform:capitalize !important;
+        }
+    }
     a{
-        text-decoration: none;
-        text-transform:capitalize;
+        transition: all .3s !important;
+        text-decoration: none !important;
+
+        .app_name{
+            transition: all .3s !important;
+            &:hover{
+                color: #08F7EB !important;
+            }
+        }
+    }
+    button.logout{
+        text-decoration: none !important;
+        transition: all .3s !important;
+        background: none !important;
+        text-transform: capitalize !important;
+        &:hover{
+            background: none !important;
+            color: #ff5200 !important;
+        }
+    }
+    .v-toolbar__items button{
+        transition: all 0.3s;
+        &:hover{
+            background: #ff5200 !important;
+            color: #fff !important;
+            a{
+                color: #fff !important;
+            }
+        }
+    }
+    .auth_menu a.router-link-exact-active{
+        background: #ff5200 !important;
+        padding: 23.5px 10px;
+        color: #fff !important;
     }
 </style>

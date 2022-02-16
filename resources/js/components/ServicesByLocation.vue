@@ -1,14 +1,11 @@
 <template>
     <v-container>
-        <v-row justify="center" class="mt-5">
-            <v-col cols="4">
+        <v-row justify="start" class="mt-3">
+            <v-col cols="4" md="3">
                 <v-btn rounded color="primary lighten--2" dark elevation="4" left @click.prevent="$router.go(-1)"><v-icon left>arrow_left</v-icon> Back</v-btn>
             </v-col>
-            <v-col cols="8">
-                <div class="subtitle-1">Services for {{ pageLoc }} <v-chip>{{ total }}</v-chip></div>
-            </v-col>
         </v-row>
-        <v-progress-circular v-if="isLoading" indeterminate color="primary" :width="7" :size="70" justify="center" class="mx-auto"></v-progress-circular>
+        <v-progress-circular v-if="isLoading" indeterminate color="primary" :width="4" :size="40" justify="center" class="ma-5"></v-progress-circular>
         <template v-else>
             <template>
                 <v-row justify="space-around" class="mt-5 mb-3">
@@ -23,6 +20,11 @@
                     </v-col>
                     <v-col cols="12" md="4" class="d-flex">
                         <service-search-bar />
+                    </v-col>
+                </v-row>
+                <v-row justify="center" v-if="services.length > 0">
+                    <v-col cols="12" md="6">
+                        <div class="subtitle-1 py-2 text-center primary justify-center white--text">Services for {{ pageLoc }} <v-chip color="primary darken-1 white--text">{{ total }}</v-chip></div>
                     </v-col>
                 </v-row>
                 <template v-if="services && services.length > 0">
@@ -46,7 +48,7 @@
                     </v-row>
                 </template>
                 <template v-else>
-                    <v-row justify="center" class="mt-5">
+                    <v-row justify="center" class="mt-5 pb-6">
                         <v-col cols="12" md="6">
                             <v-alert type="error" border="left">
                                 There are no services for the selected state.
@@ -135,18 +137,17 @@ export default {
         },
         getCategories(){
             axios.get(this.api + '/categories').then((res) => {
-                console.log(res.data)
                 this.categories = res.data
             })
         },
         changeLoc(){
-            console.log(this.filter.loc)
-            // this.filter.cat = null
+            this.filter.cat = null
             this.$router.push({name: 'ServicesByLocation', params: {id: this.filter.loc.id, slug: this.filter.loc.slug}})
         },
         filterByCat(){
             this.hidePagination = true
-            let cat = this.locServices.data.filter(item => item.category_id == this.filter.cat)
+            // let cat = this.locServices.data.filter(item => item.category_id === this.filter.cat)
+            var cat = this.services.filter(serv => serv.category_id === this.filter.cat)
             this.services = cat
             this.total = cat.length
             this.showFilterClear = true
@@ -164,9 +165,6 @@ export default {
             this.hidePagination = false
             this.showFilterClear = false
         },
-        // getLocName(){
-        //     axios.get(this.api + '/get_loc_name/${this.params.id}')
-        // }
     },
     created(){
         this.getServices()

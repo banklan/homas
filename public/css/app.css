@@ -11010,7 +11010,7 @@ body {
 
 .welcome_banner .banner_caption h3 {
   font-size: 2.2rem;
-  font-weight: 300 !important;
+  font-weight: 400 !important;
   line-height: 1.8;
   text-align: center;
 }
@@ -11018,7 +11018,6 @@ body {
 .welcome_banner .banner_caption .loc {
   margin-top: 5px !important;
   padding: 15px !important;
-  width: 40% !important;
   text-align: center;
 }
 

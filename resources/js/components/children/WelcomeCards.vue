@@ -3,7 +3,7 @@
         <v-row justify="center" class="mt-7 mb-5">
             <v-col cols="12" md="8">
                 <div class="section_header text-center">
-                    Take your services to the next level in 2 easy steps!
+                    Take your services to the next level!
                 </div>
             </v-col>
         </v-row>
@@ -16,8 +16,8 @@
                         </svg>
                     </v-card-title>
                     <v-card-text class="text-center">
-                        <p class="card_headers pa-3">Join Our professionals</p>
-                        <p class="title pt-2 px-2">Register and create your service. <br> Be descriptive with the details of your services.</p>
+                        <p class="card_headers pa-3">Join Our professionals in 2 easy steps!</p>
+                        <p class="title pt-2 px-2">Register and list your service. <br> Be descriptive with the details of your service.</p>
                     </v-card-text>
                     <v-card-actions class="justify-center pb-8">
                         <v-btn dark color="primary white--text" rounded x-large to="/register" class="px-5">Register Now</v-btn>
@@ -36,7 +36,7 @@
                         <p class="title pt-2">Add your portfolio. Include valid contacts, socia media handles & business location & get verified.</p>
                     </v-card-text>
                     <v-card-actions class="justify-center pb-8 mt-n1">
-                        <v-btn color="primary white--text" rounded x-large @click="goToSearch" class="px-5">Join Our Professionals</v-btn>
+                        <v-btn color="primary white--text" rounded x-large :to="{name: 'CreatePortFolio'}" class="px-5">Create Portfolio</v-btn>
                         <a ref="search" href="#pick_loc" style="display:none"></a>
                     </v-card-actions>
                 </v-card>
@@ -70,5 +70,15 @@ export default {
     }
     .v-btn{
         text-decoration: none !important;
+        transition: all .4s !important;
+    }
+    .v-card .v-card__actions a{
+        text-decoration: none;
+        transition: all .3s !important;
+        &:hover{
+            background: transparent !important;
+            border:1px solid #ff5200 !important;
+            color: #ff5200 !important;
+        }
     }
 </style>

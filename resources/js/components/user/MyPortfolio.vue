@@ -44,7 +44,7 @@
                             </v-alert>
                         </v-card-text>
                         <v-card-actions class="justify-center mt-n3 pb-6">
-                            <v-btn large color="primary" :to="{name: 'CreatePortfolio'}">Create Portfolio</v-btn>
+                            <v-btn large color="primary" :to="{name: 'CreatePortFolio'}">Create Portfolio</v-btn>
                         </v-card-actions>
                     </v-card>
                 </v-col>

@@ -4,6 +4,7 @@
         <v-row v-else class="mt-4" justify="center">
             <v-col cols="12" md="5">
                 <v-card light raised outlined elevation="4" min-height="400" class="scroll" width="100%">
+                    <v-card-title class="primary white--text subtitle-1 justify-center">Profile</v-card-title>
                     <template v-if="!changePic">
                         <v-img v-if="authUser.picture" :src="`/images/profiles/users/${ authUser.picture }`" width="100%" height="350" transition="scale-transition"></v-img>
                         <v-img v-else src="/images/shared/user6.jpg" width="100%" height="350" transition="scale-transition"></v-img>
@@ -49,7 +50,7 @@
                             </table>
                         </v-card-text>
                         <v-card-actions class="justify-center mt-n10 pb-6">
-                            <v-btn icon color="admin" @click="openEditForm"><v-icon>edit</v-icon></v-btn>
+                            <v-btn icon color="blue darken-2" @click="openEditForm"><v-icon>edit</v-icon></v-btn>
                         </v-card-actions>
                     </template>
                     <template v-else>
@@ -60,7 +61,7 @@
                         </v-card-text>
                         <v-card-actions class="justify-space-around pb-6">
                             <v-btn text color="red darken-2" width="40%" @click="openEdit = false">Cancel</v-btn>
-                            <v-btn dark color="admin" width="40%" @click="updateProfile" :loading="isUpdating">Update</v-btn>
+                            <v-btn dark color="primary" width="40%" @click="updateProfile" :loading="isUpdating">Update</v-btn>
                         </v-card-actions>
                     </template>
                 </v-card>
@@ -80,7 +81,7 @@
                             <v-text-field label="Confirm Password" type="password" v-model="changePassword.confirm" v-validate="'required|confirmed:new_pswd'" :error-messages="errors.collect('pswd.confirm')" name="confirm" data-vv-scope="pswd" data-vv-as="confirm password"></v-text-field>
                             <v-card-actions class="justify-center pb-8 mt-3">
                                 <v-btn color="red darken-2" large width="50%" text @click="clearPswdFields">Clear</v-btn>
-                                <v-btn v-if="!pswdChngErr" dark color="admin" large width="50%" :loading="isUpdatingPswd" @click="updatePswd">Update Password</v-btn>
+                                <v-btn v-if="!pswdChngErr" dark color="primary" large width="50%" :loading="isUpdatingPswd" @click="updatePswd">Update Password</v-btn>
                             </v-card-actions>
                         </template>
                     </v-card-text>

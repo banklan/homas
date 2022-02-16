@@ -65,6 +65,7 @@ import NewTestimonial from './components/user/NewTestimonial';
 import AdminTestimonialList from './components/admin/AdminTestimonialList';
 import AdminTestimonialUpdate from './components/admin/AdminTestimonialUpdate';
 import AdminTestimonialShow from './components/admin/AdminTestimonialShow';
+import AllServices from './components/AllServices';
 
 // import AdminServiceDetail from './components/admin/AdminServiceDetail';
 
@@ -389,5 +390,8 @@ export default [
         meta: {
             requiresAuth: true
         }
+    },
+    {
+        path: '/services', name: 'AllServices', component: AllServices,
     },
 ]
