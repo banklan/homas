@@ -48,10 +48,9 @@ export default {
         },
         getFeatured(){
             axios.get(this.api + '/get_min_featured_services').then((res) => {
-                console.log("popular", res.data)
                 this.services = res.data
             }).catch((err)=>{
-                console.log("featured error", err)
+                // console.log("featured error", err)
             })
         }
     },

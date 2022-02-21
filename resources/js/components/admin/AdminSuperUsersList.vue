@@ -137,7 +137,6 @@ export default {
             .then((res) => {
                 this.isLoading = false
                 this.admins = res.data
-                console.log("admins", res.data)
             }).catch(() => {
                 this.isLoading = false
             })
@@ -160,7 +159,6 @@ export default {
             this.confirmDelDial = true
         },
         deleteAdmin(){
-            console.log(this.adminTodel)
             this.isDeleting = true
             axios.post(this.api + `/auth-admin/super_user/${this.adminTodel.id}/delete`, {}, this.adminHeaders)
             .then((res) => {
@@ -183,7 +181,6 @@ export default {
     },
     mounted() {
         this.getAdmins()
-        // console.log()
     },
 }
 </script>

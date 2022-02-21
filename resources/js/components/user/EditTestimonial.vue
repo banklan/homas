@@ -74,7 +74,6 @@ export default {
                         this.isUpdating = false
                         this.$store.commit('TestimonialUpdated')
                         this.$router.push({name: 'MyTestimonial'})
-                        console.log(res.data)
                     })
                 }
             })
@@ -85,7 +84,3 @@ export default {
     }
 }
 </script>
-
-<style scoped>
-
-</style>

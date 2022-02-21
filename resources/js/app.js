@@ -21,11 +21,6 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import VueSocialSharing from 'vue-social-sharing'
-// import { Swipe, SwipeItem } from 'vue-swipe'
-// import Swiper from 'vue-swipe'
-// const { Swipe, SwipeItem } = require('vue-swipe')
-// import EasySlider from 'vue-easy-slider'
-
 
 import App from './components/App'
 import vuetify from './plugins/vuetify';
@@ -40,8 +35,6 @@ Vue.use(Moment)
 Vue.use(VueAwesomeSwiper)
 Vue.use(VueSlickCarousel)
 Vue.use(VueSocialSharing)
-// Vue.use(EasySlider)
-// Vue.use(VueperSlides, VueperSlide)
 
 const router = new VueRouter({
     routes: Routes,
@@ -116,7 +109,7 @@ Vue.component('featured-sps', require('./components/children/FeaturedServices.vu
 Vue.component('popular-sps', require('./components/children/PopularServices.vue').default);
 Vue.component('popular-locs', require('./components/children/PopularLocations.vue').default);
 Vue.component('latest-sps', require('./components/children/FreshServices.vue').default);
-Vue.component('how-to', require('./components/Children/HowTo.vue').default);
+// Vue.component('how-to', require('./components/Children/HowTo.vue').default);
 Vue.component('portfolio-carousel', require('./components/children/PortfolioCarousel.vue').default);
 Vue.component('auth-navbar', require('./components/includes/AuthNavbar.vue').default);
 Vue.component('review-item', require('./components/Children/ReviewItem.vue').default);
@@ -124,7 +117,7 @@ Vue.component('review-item-gen', require('./components/Children/ReviewItemGenera
 Vue.component('single-service-card', require('./components/Children/SingleServiceCard.vue').default);
 Vue.component('service-search-bar', require('./components/Children/ServiceSearchBar.vue').default);
 Vue.component('gen-portfolio-carousel', require('./components/children/GenPortfolioCarousel.vue').default);
-Vue.component('similar-services-slide', require('./components/children/SimilarServicesSlide.vue').default);
+// Vue.component('similar-services-slide', require('./components/children/SimilarServicesSlide.vue').default);
 Vue.component('admin-top-panel', require('./components/children/AdminTopPanel.vue').default);
 Vue.component('admin-auth-navbar', require('./components/includes/AdminAuthNavbar.vue').default);
 Vue.component('admin-dash-card', require('./components/children/AdminDashboardCard.vue').default);

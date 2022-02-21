@@ -79,18 +79,6 @@
                     </v-list>
                     <v-divider light class="my-4"></v-divider>
                     <v-list dark>
-                        <!-- <v-list-group v-for="menu in authMenu" :key="menu.title" v-model="menu.active" :prepend-icon="menu.icon" no-action class="white--text">
-                            <template v-slot:activator>
-                                <v-list-item-content  link :to="menu.path">
-                                    <v-list-item-title v-text="menu.title" class="white--text"></v-list-item-title>
-                                </v-list-item-content>
-                            </template>
-                            <v-list-item v-for="child in menu.items" :key="child.title" link :to="menu.path">
-                                <v-list-item-content>
-                                    <v-list-item-title v-text="child.title"></v-list-item-title>
-                                </v-list-item-content>
-                            </v-list-item>
-                        </v-list-group> -->
                         <v-list-item v-for="menu in authMenu" :key="menu.title" link :to="menu.path" dark class="white--text" exact>
                             <v-list-item-icon>
                                 <v-icon color="white--text">{{ menu.icon }}</v-icon>
@@ -105,17 +93,10 @@
                             </v-list-item-icon>
                             <v-list-item-title class="body-2">Logout</v-list-item-title>
                         </v-list-item>
-                        <!-- <v-list-item v-if="adminNotifs">
-                            <v-list-item-icon>
-                                <v-icon>message</v-icon>
-                            </v-list-item-icon>
-                            <v-list-item-title class="body-2">{{ newNotif }}</v-list-item-title>
-                        </v-list-item> -->
+
                     </v-list>
                 </v-navigation-drawer>
                 </span>
-            <!-- </v-col> -->
-            <!-- <v-col cols="9"> -->
                 <span class="main">
                 <v-main>
                     <v-container class="px-4 py-5 fill-height" fluid>
@@ -130,8 +111,6 @@
                 </v-main>
                 </span>
             </span>
-            <!-- </v-col> -->
-        <!-- </v-row> -->
     </nav>
 </template>
 
@@ -141,9 +120,6 @@ export default {
         return{
             sidebarmenu: true,
             toggleMini: false,
-            // mini: true,
-            // expandOnHover: true,
-            // title: this.$vuetify.breakpoint.mobile ? ' M-Dashboard' : 'M-Dashboard by Materialfy',
             authMenu: [
                 { title: "Admin DashBoard", path: "/admin", icon:"dashboard"},
                 {title: "Admins", path: "/admin/super-users", icon:"supervisor_account"},
@@ -235,11 +211,10 @@ export default {
                     this.$router.push('/')
                 })
             }
-            // this.$router.push('/')
         },
         newUserAlert(){
             axios.get(this.api + '/auth-admin/get_new_users_alert', this.adminHeaders).then((res)=>{
-                console.log(res.data)
+                // console.log(res.data)
             })
         },
         getNotifications(){
@@ -272,10 +247,7 @@ export default {
         listenForNewRequest(){
             Echo.channel('notif')
                 .listen('TestNameSaved', (msg) => {
-                    console.log("received data from pusher", msg.notif)
-                    // this.notifs.push({
-                    //     color: 'green', icon: 'mdi-tools', text: 'New Services', path: '/admin/services'
-                    // })
+                    // console.log("received data from pusher", msg.notif)
                     if(msg){
                         let enqNotif = window.localStorage.getItem('enquiryNotif')
                         if(enqNotif){
@@ -293,7 +265,7 @@ export default {
         listenForNewEnquiry(){
             Echo.channel('enquiries')
                 .listen('EnquiryReceived', (enq) => {
-                    console.log(enq)
+                    // console.log(enq)
                     if(enq){
                         let enqNotif = window.localStorage.getItem('enquiryNotif')
                         if(enqNotif){
@@ -311,7 +283,7 @@ export default {
         listenForNewUser(){
             Echo.channel('newUser')
                 .listen('NewUserRegistered', (user) => {
-                    console.log(user)
+                    // console.log(user)
                     if(user){
                         let userNotif = window.localStorage.getItem('userNotif')
                         if(userNotif){
@@ -329,7 +301,7 @@ export default {
         listenForNewService(){
             Echo.channel('newService')
                 .listen('NewServiceCreated', (serv) => {
-                    console.log(serv)
+                    // console.log(serv)
                     if(serv){
                         let servNotif = window.localStorage.getItem('servNotif')
                         if(servNotif){
@@ -375,11 +347,6 @@ export default {
         transition: all .4s;
     }
     .main{
-        /* flex-wrap: wrap; */
         width: 100%;
     }
-
-    /* a.router-link-exact-active{
-        color: #08F7EB !important;
-    } */
 </style>

@@ -48,7 +48,7 @@ export default {
     methods: {
         getFeatured(){
             axios.get(this.api + '/get_min_popular_services').then((res) => {
-                console.log("popular", res.data)
+                // console.log("popular", res.data)
             }).catch(()=>{
             })
         },

@@ -66,7 +66,6 @@
                     </v-row>
                 </template>
             </template>
-
         </template>
     </v-container>
 </template>
@@ -125,12 +124,10 @@ export default {
         },
         getCategories(){
             axios.get(this.api + '/categories').then((res) => {
-                console.log(res.data)
                 this.categories = res.data
             })
         },
         filterWithCat(){
-            // console.log(this.filter.cat)
             this.CatFilter = true
             this.isFiltering = true
             var filt = this.services.filter(serv => serv.category_id === this.filter.cat)

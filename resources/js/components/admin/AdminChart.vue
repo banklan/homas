@@ -61,7 +61,7 @@ export default {
                 this.labels = res.data.map(item => item.week_starting)
                 this.loaded = true
             }).catch((e) =>{
-                console.log(e)
+                // console.log(e)
             })
         },
         getUsersChart(){
@@ -71,7 +71,7 @@ export default {
                 this.usersLabels = res.data.map(item => item.week_starting)
                 this.usersLoaded = true
             }).catch((e) =>{
-                console.log(e)
+                // console.log(e)
             })
         }
     },

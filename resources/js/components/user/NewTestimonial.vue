@@ -71,18 +71,10 @@ export default {
                         this.isSaving = false
                         this.$store.commit('TestimonialCreated')
                         this.$router.push({name: 'MyTestimonial'})
-                        // console.log(res.data)
                     })
                 }
             })
         }
     },
-    mounted(){
-        // this.getAuthTestimonial()
-    }
 }
 </script>
-
-<style scoped>
-
-</style>

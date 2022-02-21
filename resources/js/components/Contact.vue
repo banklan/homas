@@ -54,9 +54,6 @@
                         <v-alert type="success" border="left" class="mt-10 mb-10">
                             Thank you for sending enquiry to homas.com. We shall reply you via your email address within the next 24 hours.
                         </v-alert>
-                        <div>
-                            <!-- {{ adminEnquiryNotif }} -->
-                        </div>
                     </template>
                 </v-col>
             </v-row>
@@ -139,18 +136,6 @@ export default {
             this.$validator.errors.clear()
         }
     },
-    created(){
-        // alert('alerted!')
-        // window.Echo
-        // window.Echo.channel('enquiries')
-        //     .listen('EnquiryReceived', (enq) =>
-        //     {
-        //         alert('event fired!!')
-        //         console.log("event fired", enq)
-        //         this.tests.push(enq)
-        //         this.$store.commit('adminEnquiryNotif', enq)
-        //     })
-    }
 }
 </script>
 

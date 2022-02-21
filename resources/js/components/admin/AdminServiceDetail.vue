@@ -333,14 +333,8 @@ export default {
             axios.get(this.api + `/auth-admin/get_service/${this.id}`, this.headers).then((res) => {
                 this.isLoading = false
                 this.service = res.data
-                // console.log(res.data)
             })
         },
-        // getAuthor(id){
-        //     axios.get(this.api + `/auth-admin/get_service_author/${id}`, this.headers).then((res) => {
-        //         this.author = res.data
-        //     })
-        // },
         toggleApproved(){
             this.isTogglingApproved = true
             axios.post(this.api + `/auth-admin/toggle_is_approved/${this.id}`, {}, this.headers).then((res) =>{
@@ -369,7 +363,6 @@ export default {
             this.isLoading = true
             axios.post(this.api + `/auth-admin/delete_service/${this.id}`, {}, this.headers)
                  .then((res) => {
-                    //  console.log(res.data)
                      this.$router.push('/admin/services')
                  })
         },

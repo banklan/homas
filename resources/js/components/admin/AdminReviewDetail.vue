@@ -2,7 +2,6 @@
     <v-container>
         <v-row justify="start">
             <v-col cols="12" md="3">
-                <!-- <v-btn rounded color="admin" dark elevation="4" left :to="{name: 'AdminReviewList'}"><v-icon left>arrow_left</v-icon> Back</v-btn> -->
                 <v-btn dark small rounded color="admin" elevation="4" left @click.prevent="$router.go(-1)"><v-icon left>arrow_left</v-icon>Back</v-btn>
             </v-col>
         </v-row>

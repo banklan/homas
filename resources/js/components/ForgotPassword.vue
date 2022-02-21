@@ -49,7 +49,6 @@ export default {
                         email: this.email
                     }).then((res)=> {
                         // redirect to email sent msg
-                        console.log(res.data)
                         this.isLoading = false
                         this.showResetForm = false
                     }).catch((err) => {

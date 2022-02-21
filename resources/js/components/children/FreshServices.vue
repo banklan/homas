@@ -49,7 +49,6 @@ export default {
         getLatest(){
             axios.get(this.api + '/get_new_services').then((res) => {
                 this.services = res.data
-                console.log(res.data)
             }).catch(()=>{
             })
         },

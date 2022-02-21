@@ -64,13 +64,11 @@ export default {
                     axios.post(this.api + `/auth-admin/update_testimonial/${this.$route.params.id}`, {
                         testimonial: this.testimonial
                     }, this.headers).then((res) => {
-                        // this.$store.commit('adminUpdatedTestimonial')
                         this.$store.commit('adminUpdatedTestimonial')
                         this.$router.push({name: 'AdminTestimonialShow', params: {id:res.data.id}})
                     })
                 }
             })
-            // console.log(this.testimonial)
         }
     },
     created(){

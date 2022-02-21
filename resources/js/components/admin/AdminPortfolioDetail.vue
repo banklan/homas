@@ -104,12 +104,7 @@
                 </v-card-text>
                 <v-card-actions class="justify-space-around pb-8">
                     <v-btn text color="red darken-2" width="40%" @click="confirmDelFileDial = false">Cancel</v-btn>
-                    <!-- <v-btn dark color="admin" width="40%" v-if="delDialFiles.length > 0">Update</v-btn> -->
                 </v-card-actions>
-                <!-- <v-card-actions class="mt-5 pb-8 justify-center">
-                    <v-btn text color="red darken--2" @click="confirmDelFileDial = false" width="40%">Cancel</v-btn>
-                    <v-btn dark color="admin" :loading="isBusy" @click="deletePf" width="40%">Yes, Delete</v-btn>
-                </v-card-actions> -->
             </v-card>
         </v-dialog>
         <v-snackbar :value="adminUpdatedPortfolio" :timeout="4000" top color="green darken-1 white--text">
@@ -162,7 +157,6 @@ export default {
             axios.get(this.api + `/auth-admin/admin_get_portfolio/${this.$route.params.id}`, this.adminHeaders)
             .then((res) => {
                 this.isLoading = false
-                console.log(res.data)
                 this.portfolio = res.data
             })
         },
@@ -194,9 +188,7 @@ export default {
             this.delDialFiles = this.files
         },
         removeFile(file){
-            console.log(file)
             axios.post(this.api + `/auth-admin/admin_del_portfolio_file/${file.id}`, {}, this.adminHeaders).then((res) =>{
-                console.log(res.data)
             })
             this.delDialFiles.splice(file, 1)
         }

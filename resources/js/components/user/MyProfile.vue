@@ -293,9 +293,6 @@ export default {
 </script>
 
 <style lang="css" scoped>
-    /* .v-card.scroll .v-card__text{
-        overflow-x: scroll !important;
-    } */
     table tbody tr td{
         white-space: nowrap !important;
     }

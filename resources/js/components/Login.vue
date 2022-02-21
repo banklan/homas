@@ -95,7 +95,6 @@ export default {
         getAuthService(){
             axios.get(this.api + '/auth/get_auth_user_service', this.authHeaders)
             .then((res) =>{
-                console.log(res.data)
                 this.$store.commit('setAuthUserService', res.data)
             })
         }

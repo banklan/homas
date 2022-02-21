@@ -119,7 +119,7 @@ export default {
         }
     },
     created(){
-        console.log(this.adminIsLoggedIn)
+
     }
 }
 </script>
@@ -131,7 +131,7 @@ export default {
         transition: all .3s !important;
         &:hover{
             background-color: none !important;
-        } 
+        }
         &:hover a{
             transition: all .3s !important;
             color: #ff5200 !important;

@@ -76,7 +76,6 @@ export default {
         getService(){
             this.isLoading = true
             axios.get(this.api + `/get_service/${this.id}`).then((res) => {
-                console.log(res.data)
                 this.isLoading = false
                 this.service = res.data
             })

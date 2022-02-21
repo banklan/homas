@@ -93,8 +93,6 @@ export default {
             axios.get(this.api + `/get_portfolio/${this.$route.params.id}`).then((res) => {
                 this.isLoading = false
                 this.portfolio = res.data
-                console.log(res.data)
-                // this.getPortfolioFiles(res.data.id)
             })
         },
         getPortfolioFiles(portfolio){
@@ -109,7 +107,6 @@ export default {
             this.isLoading = true
             axios.get(this.api + `/get_other_portfolios/${this.$route.params.id}`).then((res)=>{
                 this.isLoading = false
-                // console.log(res.data)
                 this.others = res.data
             }).catch(()=>{
                 this.isLoading = false

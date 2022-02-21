@@ -107,13 +107,11 @@ export default {
     methods: {
         getCategories(){
             axios.get(this.api + '/categories').then((res) => {
-                // console.log(res.data)
                 this.categories = res.data
             })
         },
         getStates(){
             axios.get(this.api + '/locations').then((res) => {
-                // console.log(res.data)
                 this.locations = res.data
             })
         },
@@ -129,9 +127,7 @@ export default {
                         }
                     }).then((res) => {
                         this.isLoading = false
-                        console.log(res.data)
                         this.$store.commit('setService', res.data)
-                        // this.$router.push('/my-service')
                         this.$router.push(`/create-service/add-image`)
                     }).catch((err) => {
                         this.isLoading = false

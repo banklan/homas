@@ -33,7 +33,6 @@ export default {
         Navbar, AdminNavDrawer, Footer, AdminNavBar
     },
     computed: {
-
         AdminAuthNavbar(){
             return this.$store.getters.authUser
         },

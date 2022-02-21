@@ -71,7 +71,6 @@ export default {
                         }
                     }).then((res) => {
                         this.isLoading = false
-                        console.log(res.data)
                         this.createSuccess = true
                         this.$store.dispatch('fetchService')
                         this.$store.commit('portfolioCreated')
@@ -79,7 +78,6 @@ export default {
                         // redirect
                     }).catch((err) => {
                         this.isLoading = false
-                        console.log(err)
                         this.createFail = true
                     })
                 }
@@ -96,13 +94,6 @@ export default {
         }
     },
     mounted() {
-        // let pfLen = this.authService.portfolio.length
-        // let pfLen = this.authUser.service.portfolio.length
-        // let prem = this.authUser.service.is_premium
-        // // console.log(!prem)
-        // if(!prem && pfLen > 2){
-        //         this.$router.push('/my-portfolio')
-        // }
     },
 }
 </script>

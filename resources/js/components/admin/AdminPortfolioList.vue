@@ -166,7 +166,6 @@ export default {
         },
         search(){
             if(this.q.trim() !== ''){
-                console.log(this.q)
                 this.$router.push({name: 'AdminSearchPortfolioRes', query:{q: this.q}})
             }
         }

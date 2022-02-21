@@ -286,7 +286,6 @@ export default {
         getService(){
             this.isLoading = true
             axios.get(this.api + `/get_service/${this.id}`).then((res) => {
-                // console.log(res.data)
                 this.isLoading = false
                 this.service = res.data
                 this.service.views = res.data.views ++
@@ -337,7 +336,6 @@ export default {
         getLocTopServices(cat, loc){
             axios.get(this.api + `/get_top_services_for_location/${cat}/${loc}/${this.id}`).then((res) => {
                 this.locTopServices = res.data
-                // console.log(res.data)
             })
         }
     },

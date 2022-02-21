@@ -111,7 +111,6 @@ export default {
             }, this.adminHeaders).then((res)=>{
                 this.isLoading = false
                 this.portfolios = res.data
-                console.log(res.data)
             })
         },
         showPortfolio(portfolio){

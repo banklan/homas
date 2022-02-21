@@ -63,7 +63,6 @@
                 </v-card>
             </v-col>
         </v-row>
-        <!-- <admin-dialog v-model="confirmDelDial" title="Delete this user?" text="If you proceed to delete, the user will be deleted irrecoverably."/> -->
         <v-dialog v-model="confirmDelDial" max-width="480">
             <v-card min-height="150">
                 <v-card-title class="subtitle-1 admin white--text justify-center">Delete this user?</v-card-title>

@@ -57,7 +57,6 @@ export default {
     },
     methods: {
         expandReview(){
-            console.log(this.review)
             this.miniRev = false
         },
         toggleIsApproved(){
@@ -76,7 +75,6 @@ export default {
             .then((res) => {
                 this.isLoading = false
                 this.reviewDelDialog = false
-                console.log(res.data)
                 this.$store.commit('reviewDeleted', this.index)
             })
         }

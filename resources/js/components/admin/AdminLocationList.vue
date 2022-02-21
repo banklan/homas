@@ -263,8 +263,7 @@ export default {
             this.updateDial = true
             this.locToEdit.id = loc.id
             this.locToEdit.state = loc.state
-            console.log(loc)
-        },
+         },
         updateLoc(){
             this.$validator.validateAll().then((isValid) => {
                 if(isValid) {
@@ -361,7 +360,6 @@ export default {
                     this.showBtn = true
                     this.uploadSuccessful = true
                     this.getLocations()
-                    console.log(res.data)
                 }).catch(() => {
                     this.isUploading = false
                     this.uploadFailed = true
@@ -370,7 +368,6 @@ export default {
         },
         downloadClient(){
             axios.get(this.api + '/clients/export').then((res) => {
-                console.log(res.data)
             })
         },
         cancelUpld(){

@@ -125,7 +125,6 @@ export default {
         enquiryHasBeenread(){
             axios.post(this.api + `/auth-admin/enquiry_was_read/${this.id}`, {}, this.adminHeaders)
             .then((res) => {
-                console.log(res.data)
             })
         }
     },

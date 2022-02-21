@@ -265,12 +265,8 @@ export default {
         }
     },
     mounted(){
-        // this.getService()
         this.$store.dispatch('fetchService')
     },
-    created(){
-        console.log(this.authUser.service)
-    }
 }
 </script>
 

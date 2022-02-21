@@ -76,7 +76,7 @@ export default {
         },
     },
     created(){
-        console.log(this.userIsLoggedIn)
+        // console.log(this.userIsLoggedIn)
     }
 }
 </script>

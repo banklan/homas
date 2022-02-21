@@ -5,7 +5,6 @@
                <v-text-field placeholder="Search for Categories..." v-model="q" outlined dense append-icon="search" clearable @keyup="searchForCats"></v-text-field>
            </v-col>
            <v-col cols="11" md="5" offset-md="1">
-                <!-- <v-btn dark color="admin" @click="addNewCatDial = true"><v-icon left>add</v-icon>New</v-btn> -->
                 <div :class="$vuetify.breakpoint.smAndDown ? 'mt-n6 mb-4 float-right mr-10' : ''">
                     <v-btn v-if="showBtn" dark color="admin" @click="addNewCatDial = true"><v-icon left>add</v-icon>New</v-btn>
                     <span v-if="showFilePicker">

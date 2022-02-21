@@ -94,7 +94,6 @@ export default {
             axios.get(this.api + '/auth/get_auth_testimonial', this.authHeaders).then((res) => {
                 this.loading = false
                 this.testimonial = res.data
-                console.log(res.data)
             })
         }
     },

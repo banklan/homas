@@ -26,9 +26,9 @@
                         <v-card-actions class="ml-4 mt-n7">
                             <v-checkbox v-model="agree">
                                 <template v-slot:label>
-                                   <div class="pt-2">I agree to 
+                                   <div class="pt-2">I agree to
                                        <router-link to="/terms-conditions">all the terms, conditions and code of conducts</router-link>.
-                                    </div> 
+                                    </div>
                                 </template>
                             </v-checkbox>
                         </v-card-actions>
@@ -92,7 +92,6 @@ export default {
                         }).then((res) => {
                             this.isLoading = false
                             this.userCreated = true
-                            console.log(res.data)
                         }).catch((err) =>{
                             this.isLoading = false
                             if(err.response.status === 422){
@@ -103,7 +102,7 @@ export default {
                             }
                         })
                     }else{
-                        this.agreeToTerms = true  
+                        this.agreeToTerms = true
                     }
                 }
             })

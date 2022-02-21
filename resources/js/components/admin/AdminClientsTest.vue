@@ -96,7 +96,6 @@ export default {
             axios.get(this.api + '/auth-admin/get_test_clients', this.adminHeaders).then((res) => {
                 this.isLoading = false
                 this.clients = res.data
-                console.log(res.data)
             })
         },
         openUpload(){
@@ -118,7 +117,6 @@ export default {
                     this.showFilePicker = true
                     this.uploadSuccessful = true
                     this.getClients()
-                    console.log(res.data)
                 }).catch(() => {
                     this.isUploading = false
                     this.uploadFailed = true

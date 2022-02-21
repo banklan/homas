@@ -168,7 +168,6 @@ export default {
             axios.get(this.api + `/auth-admin/get_super_user/${this.id}`, this.adminHeaders).then((res) => {
                 this.isLoading = false
                 this.user = res.data
-                console.log(res.data)
             })
         },
         deleteUser(){

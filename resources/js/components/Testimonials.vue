@@ -78,9 +78,7 @@ export default {
             pag = pag || `${this.api}/get_pgntd_testimonials`
             axios.get(pag).then((res) =>{
                 this.loading = false
-                console.log(res.data)
                 this.testimonials = res.data.data
-                console.log(res.data.data)
                 this.pagination = {
                     current_page: res.data.current_page,
                     last_page: res.data.last_page,

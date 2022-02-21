@@ -275,7 +275,6 @@ export default {
             axios.get(this.api + '/auth-admin/get_last_weeks_users', this.adminHeaders).then((res) => {
                 this.chartUsersCount = res.data.map(item => item.users_count)
                 this.chartUsersLabels = res.data.map(item => item.week_starting)
-                console.log(this.chartUsersCount)
                 this.usersChartLoaded = true
             }).catch((e) =>{
                 this.UsersChartError = e

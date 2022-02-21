@@ -27,7 +27,7 @@
 
 <script>
 // import Slider from '../slider.vue'
-import { Slider, SliderItem } from 'vue-easy-slider'
+// import { Slider, SliderItem } from 'vue-easy-slider'
 export default {
     data() {
         return {
@@ -44,7 +44,7 @@ export default {
     },
     methods: {
         hello($event) {
-            console.log(`hello index: ${$event}`)
+            // console.log(`hello index: ${$event}`)
         },
     }
 }

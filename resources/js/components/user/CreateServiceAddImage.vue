@@ -3,7 +3,6 @@
         <v-row justify="center">
             <v-col cols="12" md="8">
                 <v-card light raised elevation="12" min-height="300" class="mx-auto">
-                    <!-- <v-card-title class="primary white--text justify-center title"> Add A Piture Of Your Service</v-card-title> -->
                     <v-card-text class="mt-5 pb-5 mx-5">
                         <div class="title black--text lighten-3 mt-5 pb-5">A picture is worth more than a million words! Add a picture of your service/logo/brand for identity.</div>
                         <template v-if="!previewImg">
@@ -81,7 +80,6 @@ export default {
                         "Authorization": `Bearer ${this.authUser.token}`
                     }
                 }).then((res) => {
-                    console.log(res.data)
                     this.$router.push('/my-service')
                 }).catch(() => {
                     this.uploadFailed = true

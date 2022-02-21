@@ -87,7 +87,7 @@ export default {
             })
         },
         changeMini(){
-            console.log(this.reviews)
+            // console.log(this.reviews)
         }
     },
     mounted() {

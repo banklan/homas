@@ -80,7 +80,6 @@
                             this.isSaving = false
                             this.resetPasswordForm = false
                             this.resetSuccess = true
-                            // console.log(res.data)
                         }).catch((err) => {
                             this.isSaving = false
                         })

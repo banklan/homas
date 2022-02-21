@@ -216,7 +216,7 @@ export default {
         listenForNewRequest(){
             Echo.channel('notif')
                 .listen('TestNameSaved', (msg) => {
-                    console.log("received data from pusher", msg.notif)
+                    // console.log("received data from pusher", msg.notif)
                     if(msg){
                         let enqNotif = window.localStorage.getItem('enquiryNotif')
                         if(enqNotif){
@@ -234,7 +234,6 @@ export default {
         listenForNewEnquiry(){
             Echo.channel('enquiries')
                 .listen('EnquiryReceived', (enq) => {
-                    console.log(enq)
                     if(enq){
                         this.$store.commit('setEnqNotif')
                     }
@@ -243,7 +242,7 @@ export default {
         listenForNewUser(){
             Echo.channel('newUser')
                 .listen('NewUserRegistered', (user) => {
-                    console.log(user)
+                    // console.log(user)
                     if(user){
                         this.$store.commit('setUserNotif')
                     }
@@ -252,7 +251,7 @@ export default {
         listenForNewService(){
             Echo.channel('newService')
                 .listen('NewServiceCreated', (serv) => {
-                    console.log(serv)
+                    // console.log(serv)
                     if(serv){
                         this.$store.commit('setServiceNotif')
                     }
@@ -284,11 +283,6 @@ export default {
         transition: all .4s;
     }
     .main{
-        /* flex-wrap: wrap; */
         width: 100%;
     }
-
-    /* a.router-link-exact-active{
-        color: #08F7EB !important;
-    } */
 </style>

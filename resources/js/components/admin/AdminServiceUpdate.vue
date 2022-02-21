@@ -100,16 +100,13 @@ export default {
             this.$validator.validateAll().then((isValid) => {
                 if(isValid) {
                     this.isUpdating = true
-                    // console.log(this.edit)
                     axios.post(this.api + `/auth-admin/admin_service_update/${this.id}`, {
                         service: this.edit
                     }, this.adminHeader).then((res) => {
                         this.isUpdating = false
                         this.$store.commit('adminUpdated')
-                        console.log(res.data)
                         this.$router.push({name: 'AdminServiceDetail', params: {id: res.data.id, slug:res.data.slug}})
-                    }).catch((e)=>{
-                        console.log(e)
+                    }).catch(()=>{
                         this.isUpdating = false
                     })
                 }
@@ -122,14 +119,12 @@ export default {
                     "Authorization": `Bearer ${this.authAdmin.token}`
                 }
             }).then((res) => {
-                // console.log(res.data)
                 this.isLoading = false
                 this.edit = res.data
             })
         },
         getLocations(){
             axios.get(this.api + `/locations`).then((res) => {
-                // console.log(res.data)
                 this.locations = res.data
             })
         },
