@@ -200,8 +200,15 @@ class ServiceController extends Controller
         return response()->json($servs, 200);
     }
 
-    public function getTopServicesForLocation($service, $id){
-        $services = Service::where('id', '!=', $service)->where('location_id', $id)->get();
+    // public function getTopServicesForLocation($service, $id){
+    //     $services = Service::where('id', '!=', $service)->where('location_id', $id)->get();
+    //     $services = $services->sortByDesc('ratings')->values()->take(4);
+
+    //     return response()->json($services, 200);
+    // }
+
+    public function getTopServicesForLocation($cat, $loc, $id){
+        $services = Service::where('id', '!=', $id)->where('category_id', $cat)->where('location_id', $loc)->get();
         $services = $services->sortByDesc('ratings')->values()->take(4);
 
         return response()->json($services, 200);
@@ -216,17 +223,17 @@ class ServiceController extends Controller
         $servs = Service::latest()->paginate(15);
         return response()->json($servs, 200);
     }
-    
+
     public function filterServicesByCat($id){
         $servs = Service::where('category_id', $id)->get();
         return response()->json($servs, 200);
     }
-    
+
     public function filterServicesByLoc($id){
         $servs = Service::where('location_id', $id)->get();
         return response()->json($servs, 200);
     }
-    
+
     public function filterServices($cat, $loc){
         if($loc && $cat){
             $servs = Service::where('location_id', $loc)->where('category_id', $cat)->get();

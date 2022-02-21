@@ -29,8 +29,7 @@
                             Your search for <em>"{{ q }}"</em> returned no services.
                         </v-alert>
                         <div class="text-center py-5">
-                            <v-btn large ripple="10" outlined color="primary" :to="{name: 'AllServices'}">All Services</v-btn>
-
+                            <v-btn large ripple outlined color="primary" :to="{name: 'AllServices'}">All Services</v-btn>
                         </div>
                     </v-col>
                 </v-row>

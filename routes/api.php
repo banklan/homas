@@ -45,7 +45,7 @@ Route::group(['middleware' => 'api'], function($router){
     Route::get('get_similar_services/{id}', 'ServiceController@getSimilarServices');
     Route::get('get_popular_services', 'ServiceController@getPopularServices');
     Route::get('get_all_services', 'ServiceController@getAllServices');
-    Route::get('get_top_services_for_location/{service}/{id}', 'ServiceController@getTopServicesForLocation');
+    Route::get('get_top_services_for_location/{cat}/{loc}/{id}', 'ServiceController@getTopServicesForLocation');
     Route::get('clients/export/', 'TestClientController@export');
     Route::post('send_enquiry', 'EnquiryController@sendEnquiry');
     Route::post('send-notification', 'MiscController@sendNotification');

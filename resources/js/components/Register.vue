@@ -23,6 +23,15 @@
                             <v-text-field type="password" label="Password" v-model="user.password" required ref="pswd" v-validate="'required|min:5|max:20'" :error-messages="errors.collect('password')" name="password"></v-text-field>
                             <v-text-field type="password" label="Confirm Password" v-model="user.password_confirmation" required v-validate="'required|confirmed:pswd'" :error-messages="errors.collect('password_confirmation')" name="password_confirmation" data-vv-as="password confirmation"></v-text-field>
                         </v-card-text>
+                        <v-card-actions class="ml-4 mt-n7">
+                            <v-checkbox v-model="agree">
+                                <template v-slot:label>
+                                   <div class="pt-2">I agree to 
+                                       <router-link to="/terms-conditions">all the terms, conditions and code of conducts</router-link>.
+                                    </div> 
+                                </template>
+                            </v-checkbox>
+                        </v-card-actions>
                         <v-card-actions class="justify-center">
                             <v-btn color="primary" width="50%" class="mb-5" large @click="register" :loading="isLoading">Register</v-btn>
                         </v-card-actions>
@@ -40,6 +49,10 @@
                 </v-col>
             </template>
         </v-row>
+        <v-snackbar v-model="agreeToTerms" :timeout="6000" top color="green darken-1 white--text">
+            Kindly read our <router-link to="/terms-conditions">terms & conditions</router-link> and agree before registering.
+            <v-btn text color="white--text" @click="agreeToTerms = false">Close</v-btn>
+        </v-snackbar>
     </v-container>
 </template>
 
@@ -58,7 +71,9 @@ export default {
             isLoading: false,
             createFail: false,
             createError: null,
-            userCreated: false
+            userCreated: false,
+            agree: false,
+            agreeToTerms: false
         }
     },
     computed: {
@@ -70,22 +85,26 @@ export default {
         register(){
             this.$validator.validateAll().then((isValid) => {
                 if (isValid) {
-                    this.isLoading = true
-                    axios.post(this.api + `/register`, {
-                        user: this.user
-                    }).then((res) => {
-                        this.isLoading = false
-                        this.userCreated = true
-                        console.log(res.data)
-                    }).catch((err) =>{
-                        this.isLoading = false
-                        if(err.response.status === 422){
-                            this.createFail = true
-                            this.createError = "The email you are trying to register with is already taken. please try another email."
-                        }else{
-                            this.createError = 'There was an error while trying to register. Please ensure you are connected to the internet and try again.'
-                        }
-                    })
+                    if(this.agree){
+                        this.isLoading = true
+                        axios.post(this.api + `/register`, {
+                            user: this.user
+                        }).then((res) => {
+                            this.isLoading = false
+                            this.userCreated = true
+                            console.log(res.data)
+                        }).catch((err) =>{
+                            this.isLoading = false
+                            if(err.response.status === 422){
+                                this.createFail = true
+                                this.createError = "The email you are trying to register with is already taken. please try another email."
+                            }else{
+                                this.createError = 'There was an error while trying to register. Please ensure you are connected to the internet and try again.'
+                            }
+                        })
+                    }else{
+                        this.agreeToTerms = true  
+                    }
                 }
             })
         }
@@ -96,5 +115,8 @@ export default {
 <style lang="scss" scoped>
     .login_link a{
         text-decoration: none;
+    }
+    a{
+        text-decoration: none !important;
     }
 </style>

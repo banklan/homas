@@ -21,12 +21,18 @@ import VueAwesomeSwiper from 'vue-awesome-swiper'
 import VueSlickCarousel from 'vue-slick-carousel'
 import 'vue-slick-carousel/dist/vue-slick-carousel.css'
 import VueSocialSharing from 'vue-social-sharing'
+// import { Swipe, SwipeItem } from 'vue-swipe'
+// import Swiper from 'vue-swipe'
+// const { Swipe, SwipeItem } = require('vue-swipe')
+// import EasySlider from 'vue-easy-slider'
+
 
 import App from './components/App'
 import vuetify from './plugins/vuetify';
 import Routes from './routes';
 import { store } from './store';
 import './filters'
+import Vue from 'vue';
 
 Vue.use(VueRouter)
 Vue.use(VeeValidate)
@@ -34,6 +40,7 @@ Vue.use(Moment)
 Vue.use(VueAwesomeSwiper)
 Vue.use(VueSlickCarousel)
 Vue.use(VueSocialSharing)
+// Vue.use(EasySlider)
 // Vue.use(VueperSlides, VueperSlide)
 
 const router = new VueRouter({
@@ -128,8 +135,12 @@ Vue.component('admin-location-popular', require('./components/children/AdminLoca
 Vue.component('my-service-review', require('./components/children/MyServiceReview.vue').default);
 Vue.component('how-it-works', require('./components/children/HowItWorks.vue').default);
 Vue.component('sp-testimonials', require('./components/children/SpTestimonials.vue').default);
+// Vue.component('slider-test', require('./components/children/SliderTest.vue').default);
+Vue.component('similar-services', require('./components/children/SimilarServices.vue').default);
+Vue.component('loc-top-services', require('./components/children/LocTopServices.vue').default);
 
-
+// Vue.component('swipe', Swipe)
+// Vue.component('swipe-item', SwipeItem)
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

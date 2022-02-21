@@ -19,7 +19,6 @@ import ServicesByLocation from './components/ServicesByLocation';
 import ServiceSearchResult from './components/ServiceSearchResult';
 import ForgotPassword from './components/ForgotPassword';
 import PasswordReset from './components/PasswordReset';
-import Slider from './components/Slider';
 import AdminLogin from './components/admin/AdminLogin';
 import AdminDashboard from './components/admin/AdminDashboard';
 import AdminSuperUsersList from './components/admin/AdminSuperUsersList';
@@ -66,8 +65,6 @@ import AdminTestimonialList from './components/admin/AdminTestimonialList';
 import AdminTestimonialUpdate from './components/admin/AdminTestimonialUpdate';
 import AdminTestimonialShow from './components/admin/AdminTestimonialShow';
 import AllServices from './components/AllServices';
-
-// import AdminServiceDetail from './components/admin/AdminServiceDetail';
 
 export default [
     {path: '*', name: 'NotFound', component: NotFound},
@@ -148,9 +145,6 @@ export default [
     },
     {
         path: '/password-reset', name: 'PasswordReset', component: PasswordReset, props: true,
-    },
-    {
-        path: '/slider', name:'Slider', component: Slider,
     },
     { path: '/admin/login', name: 'AdminLogin', component: AdminLogin },
     {

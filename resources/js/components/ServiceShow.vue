@@ -44,18 +44,6 @@
                                                             <v-list-item>
                                                                 <ShareNetwork network="telegram" url="https://www.google.com" title="service.title" descr="social.details" hashtags="cccrrrzz"><v-icon color="blue" class="px-2">mdi-telegram</v-icon></ShareNetwork>
                                                             </v-list-item>
-                                                                <!-- <v-btn data-social="twitter">Share now</v-btn> -->
-                                                                <!-- <vue-goodshare-facebook button_design="outline" page_url="`http://localhost/service/${service.id}/${service.slug}`"
-                                                                    title_social="Facebook" has_counter has_icon></vue-goodshare-facebook>
-                                                                <vue-goodshare-twitter button_design="outline" page_url="`http://localhost/service/${service.id}/${service.slug}`"
-                                                                    title_social="Twitter" has_counter has_icon></vue-goodshare-twitter> -->
-                                                                <!-- <v-list-item-icon class="mr-4 mb-1">
-                                                                    <v-icon :color="item.color" v-text="item.icon"></v-icon>
-                                                                </v-list-item-icon>
-                                                                <v-list-item-content>
-                                                                    <v-list-item-title v-text="item.text"></v-list-item-title>
-                                                                </v-list-item-content> -->
-                                                            <!-- </v-list-item> -->
                                                         </v-list-item-group>
                                                     </v-list>
                                                 </v-menu>
@@ -128,7 +116,7 @@
                         </v-card>
                     </v-col>
                     <v-col cols="12" md="4">
-                        <v-card light raised elevation="12" min-height="400" class="mx-auto">
+                        <v-card light raised elevation="12" min-height="400" class="mx-auto scroll">
                             <v-card-title class="subtitle-1 primary white--text justify-center">Service Details</v-card-title>
                             <v-card-text class="px-3 py-3">
                                 <table class="table table-condensed table-hover">
@@ -192,44 +180,14 @@
                         </v-card>
                     </v-col>
                 </v-row>
-                <v-row justify="center" class="mt-7 pb-8" v-if="similarServices.length > 0">
+                <v-row justify="center" class="mt-10 pb-5" v-if="similarServices.length > 0">
                     <v-col cols="12">
-                        <div class="title text-center my-6">Similar Services</div>
-                        <v-row justify="start">
-                            <v-col v-for="serv in similarServices" :key="serv.id" cols="6" md="3">
-                                <v-card min-height="250" light raised elevation="12" class="similar" :to="{name: 'ServiceShow', params:{id: serv.id, slug: serv.slug}}">
-                                    <v-img :src="`/images/services/${serv.image}`" height="200" width="100%" transition="scale-transition"></v-img>
-                                    <v-card-text class="text-center py-3 body_text">{{ serv.title }}</v-card-text>
-                                    <v-card-actions class="mt-n2 mx-2 pb-6 justify-center">
-                                        <v-chip v-if="serv.is_approved" color="green darken-2" text-color="white" class="mr-5">
-                                            <v-avatar left><v-icon>mdi-checkbox-marked-circle</v-icon></v-avatar>
-                                            Verified
-                                        </v-chip>
-                                        <v-rating v-model="serv.ratings" readonly dense small color="primary"></v-rating>
-                                    </v-card-actions>
-                                </v-card>
-                            </v-col>
-                        </v-row>
+                        <similar-services :services="similarServices" />
                     </v-col>
                 </v-row>
-                <v-row justify="center" class="mt-7 pb-8" v-if="servicesInCity.length > 0">
+                <v-row justify="center" class="mt-5 pb-5" v-if="locTopServices.length > 0">
                     <v-col cols="12">
-                        <div class="title text-center my-6">Top Services in {{ service.location && service.location.state }} state</div>
-                        <v-row justify="start">
-                            <v-col v-for="serv in servicesInCity" :key="serv.id" cols="6" md="3">
-                                <v-card min-height="250" light raised elevation="12" class="similar" :to="{name: 'ServiceShow', params:{id: serv.id, slug: serv.slug}}">
-                                    <v-img :src="`/images/services/${serv.image}`" height="200" width="100%" transition="scale-transition"></v-img>
-                                    <v-card-text class="text-center py-3 body_text">{{ serv.title }}</v-card-text>
-                                    <v-card-actions class="mt-n2 mx-2 pb-6 justify-center">
-                                        <v-chip v-if="serv.is_approved" color="green darken-2" text-color="white" class="mr-5">
-                                            <v-avatar left><v-icon>mdi-checkbox-marked-circle</v-icon></v-avatar>
-                                            Verified
-                                        </v-chip>
-                                        <v-rating v-model="serv.ratings" readonly dense small color="primary"></v-rating>
-                                    </v-card-actions>
-                                </v-card>
-                            </v-col>
-                        </v-row>
+                        <loc-top-services :services="locTopServices" />
                     </v-col>
                 </v-row>
             </template>
@@ -287,7 +245,8 @@ export default {
                 {color: '#1877f2', icon: 'mdi-facebook', text: 'Facebook'},
                 {color: '#1da1f2', icon: 'mdi-twitter', text: 'Twitter'},
                 {color: '#c32aa3', icon: 'mdi-instagram', text: 'Instagram'},
-            ]
+            ],
+            locTopServices: []
         }
     },
     watch:{
@@ -327,11 +286,11 @@ export default {
         getService(){
             this.isLoading = true
             axios.get(this.api + `/get_service/${this.id}`).then((res) => {
-                console.log(res.data)
+                // console.log(res.data)
                 this.isLoading = false
                 this.service = res.data
                 this.service.views = res.data.views ++
-                this.getCityServices(res.data.location_id)
+                this.getLocTopServices(res.data.category_id, res.data.location_id)
             })
         },
         incrementCount(){
@@ -350,7 +309,6 @@ export default {
                             rating: this.newReview.rating,
                         }, this.headers).then((res) => {
                             this.isSubmitting = false
-                            // console.log(res.data)
                             this.service.review.unshift(res.data)
                             this.newReview.title = ""
                             this.newReview.detail = ""
@@ -371,16 +329,17 @@ export default {
         },
         getSimilarServices(){
             this.isLoading = true
-            axios.get(this.api + `/get_similar_services/${this.$route.params.id}`).then((res) => {
+            axios.get(this.api + `/get_similar_services/${this.id}`).then((res) => {
                 this.isLoading = false
                 this.similarServices = res.data
             })
         },
-        getCityServices(id){
-            axios.get(this.api + `/get_top_services_for_location/${this.$route.params.id}/${id}`).then((res)=> {
-
+        getLocTopServices(cat, loc){
+            axios.get(this.api + `/get_top_services_for_location/${cat}/${loc}/${this.id}`).then((res) => {
+                this.locTopServices = res.data
+                // console.log(res.data)
             })
-        },
+        }
     },
     mounted(){
         this.getService()
@@ -393,6 +352,9 @@ export default {
 <style lang="scss" scoped>
     a{
         text-decoration: none !important;
+    }
+    .v-card.scroll .v-card__text{
+        overflow-x: scroll !important;
     }
     table .no_border th, table .no_border td{
         border: none !important;
