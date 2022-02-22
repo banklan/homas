@@ -50,4 +50,9 @@ export default {
          margin-bottom: 25px;
      }
  }
+ @media screen and (max-width: 782px) {
+     .how_to{
+         padding: 20px 10px;
+     }
+ }
 </style>

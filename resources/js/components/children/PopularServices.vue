@@ -24,10 +24,12 @@
                 </v-col>
             </template>
             <template v-else>
-                There are no services to display at the moment.
+                <div class="px-2">
+                    There are no services to display at the moment.
+                </div>
             </template>
         </v-row>
-        <v-row justify="center" class="mr-2">
+        <v-row justify="center" class="mr-2" v-if="services.length > 0">
             <v-btn x-large outlined color="primary" to="/services" class="px-10">All Services</v-btn>
         </v-row>
     </v-container>

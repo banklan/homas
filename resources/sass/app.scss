@@ -99,6 +99,19 @@ body{
         }
     }
 }
+@media screen and (max-width: 600px){
+    .welcome_banner{
+        height: 30rem;
+
+        .banner_caption{
+            padding-top: 4rem;
+            margin: 4rem 2rem 2rem 2rem !important;
+        }
+        .loc{
+            margin-top: 2rem;
+        }
+    }
+}
 .section_header{
     color: #323232 !important;
     font-weight: 400 !important;

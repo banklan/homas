@@ -24,7 +24,9 @@
                 </v-col>
             </template>
             <template v-else>
-                There are no services to show at the moment.
+                <div class="px-2">
+                    There are no services to show at the moment.
+                </div>
             </template>
         </v-row>
     </v-container>
