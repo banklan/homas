@@ -4,7 +4,7 @@
         <v-container>
             <v-row justify="center" class="text-center mt-n10">
                 <v-col cols="12" md="10">
-                    <v-card v-if="!enquiryMailSent" elevation="8" light min-height="400" class="mx-auto mt-n10 py-5" :class="$vuetify.breakpoint.smAndDown ? 'px-1 mx-2' : 'px-6 ml-8 mr-3'">
+                    <v-card v-if="!enquiryMailSent" elevation="8" light min-height="400" class="mx-auto mt-n10 py-5" :class="$vuetify.breakpoint.smAndDown ? 'px-1 ml-n4 mr-n2' : 'px-6 ml-8 mr-3'">
                         <v-card-title class="headline justify-center mt-3 pb-5">Drop us a line</v-card-title>
                         <v-card-text class="mt-3">
                             <v-row justify="space-around">
@@ -70,9 +70,9 @@ export default {
     data(){
         return{
             contacts: [
-                {icon: 'email', text: 'info@homas.com'},
-                {icon: 'phone', text: '08023456789'},
-                {icon: 'place', text: 'Some Address Here'},
+                {icon: 'mdi-email', text: 'info@homas.com'},
+                {icon: 'mdi-phone', text: '08023456789'},
+                {icon: 'mdi-place', text: 'Some Address Here'},
             ],
             socials: [
                 {icon: 'mdi-facebook', color: '#1877f2', link: 'https://www.facebook.com/homas'},
