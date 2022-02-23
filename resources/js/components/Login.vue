@@ -2,7 +2,7 @@
     <v-container>
         <v-row justify="center" class="mt-6">
             <v-col cols="12" md="5">
-                <v-card light raised elevation="12" min-height="320" width="90%" class="mx-auto">
+                <v-card light raised elevation="12" min-height="320" width="100%" class="mx-auto">
                     <v-card-title class="primary white--text justify-center title font-weight-bold">User Login</v-card-title>
                     <v-card-text class="mt-4">
                         <v-text-field label="Email" type="text" v-model="cred.email" required v-validate="'required|email'" :error-messages="errors.collect('email')" name="email"></v-text-field>
@@ -11,9 +11,10 @@
                     <v-card-actions class="justify-center px-5">
                         <v-btn color="primary" large block @click.prevent="login" :loading="isLoading">Login</v-btn>
                     </v-card-actions>
-                    <v-card-actions class="justify-center mt-2 pb-6 mx-2">
-                        Not a member? <router-link to="/register">&nbsp; Register </router-link>&nbsp; | &nbsp;<router-link to="/forgot-password"> Forgot Password</router-link>
+                    <v-card-actions class="justify-center mt-2 pb-6" :class="$vuetify.breakpoint.smAndDown ? 'mx-1' : 'mx-2'">
+                        Not a member? <router-link to="/register">&nbsp; Register </router-link><span v-if="$vuetify.breakpoint.mdAndUp"> &nbsp; | &nbsp;<router-link to="/forgot-password"> Forgot Password</router-link>"></span>
                     </v-card-actions>
+                    <div v-if="$vuetify.breakpoint.smAndDown" class="text-center"><router-link to="/forgot-password"> Forgot Password</router-link></div>
                     <div v-if="authError" class="pb-5">
                         <div class="error white--text pa-4 mx-3">
                             {{ errorMsg }}

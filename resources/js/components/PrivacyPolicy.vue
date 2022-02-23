@@ -2,7 +2,7 @@
     <v-container>
         <v-row wrap justify="center" class="mt-6">
             <v-col cols="12" md="10">
-                <v-card shaped light min-height="600" class="mt-6 mx-auto pa-7">
+                <v-card shaped light min-height="600" class="mt-6 mx-auto pa-5">
                     <v-card-title class="headline mb-3 justify-center font-weight-bold">Privacy And Cookie Policy</v-card-title>
                     <v-card-text>
                         <div class="policy">

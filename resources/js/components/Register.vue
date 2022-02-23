@@ -36,7 +36,7 @@
                             <v-btn color="primary" width="50%" class="mb-5" large @click="register" :loading="isLoading">Register</v-btn>
                         </v-card-actions>
                         <v-card-actions class="justify-center mt-n4 pb-5 login_link">
-                            Already a member? <router-link to="/login" class="tertiary--text">&nbsp; Login</router-link>
+                            Already a member? <router-link to="/login" class="primary--text">&nbsp; Login</router-link>
                         </v-card-actions>
                     </v-card>
                 </v-col>
