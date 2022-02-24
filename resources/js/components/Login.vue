@@ -14,7 +14,7 @@
                     <v-card-actions class="justify-center mt-2 pb-6" :class="$vuetify.breakpoint.smAndDown ? 'mx-1' : 'mx-2'">
                         Not a member? <router-link to="/register">&nbsp; Register </router-link><span v-if="$vuetify.breakpoint.mdAndUp"> &nbsp; | &nbsp;<router-link to="/forgot-password"> Forgot Password</router-link>"></span>
                     </v-card-actions>
-                    <div v-if="$vuetify.breakpoint.smAndDown" class="text-center"><router-link to="/forgot-password"> Forgot Password</router-link></div>
+                    <div v-if="$vuetify.breakpoint.smAndDown" class="text-center pb-5"><router-link to="/forgot-password"> Forgot Password</router-link></div>
                     <div v-if="authError" class="pb-5">
                         <div class="error white--text pa-4 mx-3">
                             {{ errorMsg }}

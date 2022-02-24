@@ -4,7 +4,7 @@
         <v-container>
             <v-row justify="center" class="text-center mt-n10">
                 <v-col cols="12" md="10">
-                    <v-card v-if="!enquiryMailSent" elevation="8" light min-height="400" class="mx-auto mt-n10 py-5" :class="$vuetify.breakpoint.smAndDown ? 'px-1 ml-n4 mr-n2' : 'px-6 ml-8 mr-3'">
+                    <v-card v-if="!enquiryMailSent" elevation="8" light min-height="400" class="mx-auto mt-n10 py-5" :class="$vuetify.breakpoint.smAndDown ? 'px-1 ml-n1 mr-n3' : 'px-6 ml-8 mr-3'">
                         <v-card-title class="headline justify-center mt-3 pb-5">Drop us a line</v-card-title>
                         <v-card-text class="mt-3">
                             <v-row justify="space-around">

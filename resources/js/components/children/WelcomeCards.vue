@@ -12,7 +12,7 @@
                 <v-card tile raised elevation="12" outlined ripple min-height="400" light>
                     <v-card-title class="justify-center mt-5">
                         <svg class="svg_icon">
-                            <use xlink:href="/svg_icons/sprite2.svg#icon-tools-2" />
+                            <use xlink:href="svg_icons/sprite2.svg#icon-tools-2"></use>
                         </svg>
                     </v-card-title>
                     <v-card-text class="text-center">
@@ -28,7 +28,7 @@
                 <v-card hover tile raised outlined ripple min-height="400" light>
                     <v-card-title class="justify-center mt-5">
                         <svg class="svg_icon">
-                            <use xlink:href="/svg_icons/sprite.svg#icon-like" />
+                            <use xlink:href="svg_icons/sprite.svg#icon-like"></use>
                         </svg>
                     </v-card-title>
                     <v-card-text class="text-center">
@@ -65,8 +65,9 @@ export default {
 
 <style lang="scss" scoped>
     .svg_icon{
-        height: 6rem;
-        fill: #FF5200;
+        height: 6rem !important;
+        width: 6rem !important;
+        fill: #FF5200 !important;
     }
     .v-btn{
         text-decoration: none !important;
