@@ -4,7 +4,7 @@
         <v-container>
             <v-row wrap justify="center" class="mt-n10">
                 <v-col cols="12" md="10">
-                    <v-card shaped light class="mx-auto mt-n10 py-5" :class="$vuetify.breakpoint.smAndDown ? 'px-1 ml-n1 mr-n3' : 'px-6 ml-8 mr-3'">
+                    <v-card shaped light class="mx-auto mt-n10 py-5" :class="$vuetify.breakpoint.smAndDown ? 'px-1' : 'px-6 ml-8 mr-3'">
                         <v-card-title class="headline justify-center primary--text">Our Story</v-card-title>
                         <v-card-text>
                             <div class="title mb-3 primary--text">Our Mission</div>
@@ -50,7 +50,7 @@
             color: rgba(0,0,0,.88) !important;
 
             .mission{
-                font-size: .9rem !important;
+                font-size: 1.1rem !important;
                 line-height: 1.7 !important;
                 font-weight: 500 !important;
             }

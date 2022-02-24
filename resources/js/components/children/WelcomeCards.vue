@@ -12,7 +12,8 @@
                 <v-card tile raised elevation="12" outlined ripple min-height="400" light>
                     <v-card-title class="justify-center mt-5">
                         <svg class="svg_icon">
-                            <use xlink:href="svg_icons/sprite2.svg#icon-tools-2"></use>
+                            <use xlink:href="/svg_icons/sprite2.svg#icon-tools-2"></use>
+                            <!-- <use xlink:href="require('@/svg_icons/sprite2.svg#icon-tools-2'"></use> -->
                         </svg>
                     </v-card-title>
                     <v-card-text class="text-center">

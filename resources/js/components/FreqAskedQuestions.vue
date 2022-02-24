@@ -4,7 +4,7 @@
         <v-container>
             <v-row wrap justify="center" class="mt-n10">
                 <v-col cols="12" md="10">
-                    <v-card shaped min-height="600" class="mx-auto mt-n10 py-5" :class="$vuetify.breakpoint.smAndDown ? 'px-1 ml-n1 mr-n3' : 'px-6 ml-8 mr-3'">
+                    <v-card shaped min-height="600" class="mx-auto mt-n10 py-5" :class="$vuetify.breakpoint.smAndDown ? 'px-1 ml-n1 mr-n4' : 'px-6 ml-8 mr-3'">
                         <v-card-title class="headline justify-center primary--text my-5">Frequently Asked Questions</v-card-title>
                         <v-card-text>
                             <div class="faqs" v-for="(faq, i) in faqs" :key="i">
