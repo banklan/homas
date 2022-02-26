@@ -54,11 +54,11 @@ export default {
             background-repeat: no-repeat;
         }
         .v-card__text{
-            line-height: 1.75 !important;
             color: rgba(0, 0, 0, .88) !important;
 
             .title{
-                font-size: 19px !important;
+                line-height: 1.75 !important;
+                font-size: 1.2rem !important;
             }
             .answers{
                 font-size: 18px !important;

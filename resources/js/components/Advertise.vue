@@ -4,8 +4,8 @@
         <v-container>
             <v-row justify="center" class="mt-n10">
                 <v-col cols="12" md="10">
-                    <v-card elevation="8" light min-height="400" class="mx-auto mt-n10 py-5" :class="$vuetify.breakpoint.smAndDown ? 'px-1 ml-n1 mr-n4' : 'px-6 ml-8 mr-3'" shaped>
-                        <v-card-title class="headline justify-center mt-3 pb-5">Advertise Your Services</v-card-title>
+                    <v-card elevation="8" light min-height="150" class="mx-auto mt-n10 py-5" :class="$vuetify.breakpoint.smAndDown ? 'px-1 ml-n1 mr-n4' : 'px-6 ml-8 mr-3'" shaped>
+                        <v-card-title class="headline justify-center mt-3 pb-5 primary--text">Advertise Your Services</v-card-title>
                         <v-card-text class="mt-3 grey--text text--darken-3">
                             Kindly reach us through any of the means on our <router-link to="/contact-us">Contact page</router-link> for your advert placements.
                         </v-card-text>
@@ -35,7 +35,8 @@
             z-index: 1000;
             margin-bottom: 8rem;
             .v-card__text{
-                font-size: 1rem !important;
+                font-size: 1.1rem !important;
+                line-height: 1.7 !important;
             }
         }
         a{

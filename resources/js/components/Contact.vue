@@ -10,8 +10,8 @@
                             <v-row justify="space-around">
                                 <v-col cols="12" md="6">
                                     <v-text-field label="Full Name" v-model="enquiry.fullname" placeholder="Fullname (Last name and First Name)" solo dense name="fullname" required v-validate="'required|min:3|max:100'" :error-messages="errors.collect('fullname')" data-vv-as="fullname"></v-text-field>
-                                    <v-text-field label="Organization" v-model="enquiry.organization" placeholder="Your Organization" solo dense name="organization" v-validate="'required|min:3|max:50'" :error-messages="errors.collect('organization')" data-vv-as="organization"></v-text-field>
                                     <v-text-field label="Position" v-model="enquiry.position" placeholder="Your position"  solo dense name="position" v-validate="'min:2|max:30'" :error-messages="errors.collect('position')" data-vv-as="position"></v-text-field>
+                                    <v-text-field label="Organization" v-model="enquiry.organization" placeholder="Your Organization" solo dense name="organization" v-validate="'required|min:3|max:50'" :error-messages="errors.collect('organization')" data-vv-as="organization"></v-text-field>
                                     <v-row wrap>
                                         <v-col cols="12" md="6">
                                             <v-text-field label="Email Address" v-model="enquiry.email" solo dense name="email" required v-validate="'required|email'" :error-messages="errors.collect('email')"></v-text-field>
@@ -25,7 +25,7 @@
                                     <v-btn block dark large color="primary" class="my-3" @click="sendEnquiry" :loading="loading">Send Enquiry</v-btn>
                                 </v-col>
                                 <v-col cols="12" md="5">
-                                    <div class="subtitle-1 font-weight-bold mt-5">You can reach us on any of the following means:</div>
+                                    <div class="subtitle-1 font-weight-bold mt-5">You can reach us through any of the following means:</div>
                                     <v-list>
                                         <v-list-item-group>
                                             <v-list-item v-for="(contact, i) in contacts" :key="i">
@@ -72,7 +72,8 @@ export default {
             contacts: [
                 {icon: 'mdi-email', text: 'info@homas.com'},
                 {icon: 'mdi-phone', text: '08023456789'},
-                {icon: 'mdi-place', text: 'Some Address Here'},
+                // {icon: 'navigation', text: 'Some Address Here'},
+                // {icon: 'mdi-pin', text: 'Some Address Here'},
             ],
             socials: [
                 {icon: 'mdi-facebook', color: '#1877f2', link: 'https://www.facebook.com/homas'},

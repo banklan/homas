@@ -3,7 +3,7 @@
         <v-container>
             <v-row wrap justify="center" class="mt-6">
                 <v-col cols="12" md="11">
-                    <v-card shaped light min-height="600" class="mt-6 mx-auto pa-5">
+                    <v-card shaped light min-height="600" class="mt-6 mx-auto py-5 px-2">
                         <v-card-title class="headline mb-3 justify-center font-weight-bold">Terms and Conditions Of Use Of This Website</v-card-title>
                         <v-card-text class="body-1">
                             <p>Welcome to homas.com.ng. This website is owned by Vidspectra Resources, a company incorporated with the Corporate Affairs Commission, Abuja, according to the Companies and Allied Matters Act.<p/>

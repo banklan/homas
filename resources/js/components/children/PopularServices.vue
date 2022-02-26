@@ -67,10 +67,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .svg_icon{
-        height: 6.25rem;
-        fill: #FF5200;
-    }
     .v-btn, a{
         text-decoration: none !important;
     }

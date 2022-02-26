@@ -106,9 +106,5 @@ export default {
             align-items: flex-start;
             margin-left: .7rem;
         }
-        .svg_icon{
-            fill: #003B63 !important;
-            height: 3rem;
-        }
     }
 </style>

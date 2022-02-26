@@ -1,6 +1,6 @@
 <template>
     <div class="how_to">
-        <div class="section_header white--text mt-2 mb-3 text-center">How it works</div>
+        <div class="section_header white--text mt-6 mb-3 text-center">How it works</div>
         <div class="how_details">
             <v-list class="white--text ml-5">
                 <v-list-item dark v-for="item in hows" :key="item.i" class="white--text">
@@ -21,7 +21,7 @@ export default {
                 {i: 3, b: 'Add your portfolio, upload relevant pictures of your jobs.'},
                 {i: 4, b: 'Be descriptive in the details of your services, cost, highlight your strengths and emphasize your selling points.'},
                 {i: 5, b: 'Ensure your contact details and social media handles are correctly typed in your profile.'},
-                {i: 6, b: 'Share and re-share your services with our share-button on you social media.'},
+                {i: 6, b: 'Share and re-share your services with our share-buttons on you social media.'},
             ]
         }
     },
@@ -30,8 +30,15 @@ export default {
 
 <style lang="scss" scoped>
  .how_to{
-     background-image:linear-gradient(to bottom right, rgba(227, 81, 12, 0.96), rgba(255, 82, 0, 1), rgba(214, 68, 0, 0.92));
-     min-height: 30rem;
+    //  height: 35rem;
+    // width: 100vw;
+    background-image: url('/images/background/howto5.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+    //  background-image:linear-gradient(to bottom right, rgba(227, 81, 12, 0.96), rgba(255, 82, 0, 1), rgba(214, 68, 0, 0.92));
+     min-height: 35rem;
      width: 100vw;
      color: #fff;
      padding: 20px;

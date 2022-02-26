@@ -47,10 +47,6 @@ export default {
 <style lang="scss" scoped>
     .locations{
         background: rgba(255, 255, 255, 1);
-        .svg_icon{
-            fill: #08F7EB !important;
-            height: 4rem;
-        }
         .v-btn{
             text-decoration: none !important;
         }
