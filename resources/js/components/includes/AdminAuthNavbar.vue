@@ -242,7 +242,6 @@ export default {
         listenForNewUser(){
             Echo.channel('newUser')
                 .listen('NewUserRegistered', (user) => {
-                    // console.log(user)
                     if(user){
                         this.$store.commit('setUserNotif')
                     }
@@ -251,7 +250,6 @@ export default {
         listenForNewService(){
             Echo.channel('newService')
                 .listen('NewServiceCreated', (serv) => {
-                    // console.log(serv)
                     if(serv){
                         this.$store.commit('setServiceNotif')
                     }
@@ -276,7 +274,6 @@ export default {
         display: flex;
         justify-content: flex-start;
         background: #f4f2ff;
-        /* align-items: center; */
     }
     .navdrawer{
         max-width: 25%;

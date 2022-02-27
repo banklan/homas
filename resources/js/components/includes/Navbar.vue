@@ -83,7 +83,6 @@ export default {
                 { title: "My Account", path: "/profile"},
             ],
             notLoggedInDrawer: false,
-
         }
     },
     computed: {
@@ -118,9 +117,6 @@ export default {
             }
         }
     },
-    created(){
-
-    }
 }
 </script>
 
