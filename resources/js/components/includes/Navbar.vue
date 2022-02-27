@@ -149,7 +149,7 @@ export default {
         .app_name{
             transition: all .3s !important;
             &:hover{
-                color: #08F7EB !important;
+                color: #c54104 !important;
             }
         }
     }

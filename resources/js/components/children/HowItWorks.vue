@@ -30,32 +30,28 @@ export default {
 
 <style lang="scss" scoped>
  .how_to{
-    //  height: 35rem;
-    // width: 100vw;
-    background-image: url('/images/background/howto5.png');
+    background-image: url('/images/background/howto.png');
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    min-height: 35rem;
+    width: 100vw;
+    color: #fff;
+    padding: 20px;
+    margin-top: 25px;
+    color: #fff !important;
+    .v-list{
+        background: inherit !important;
+    }
 
-    //  background-image:linear-gradient(to bottom right, rgba(227, 81, 12, 0.96), rgba(255, 82, 0, 1), rgba(214, 68, 0, 0.92));
-     min-height: 35rem;
-     width: 100vw;
-     color: #fff;
-     padding: 20px;
-     margin-top: 25px;
-     color: #fff !important;
-     .v-list{
-         background: inherit !important;
-     }
-
-     .list_text{
-         font-size: 1.30rem !important;
-         font-weight: 400 !important;
-         color: #fff !important;
-         line-height: 1.8;
-         letter-spacing: .0125em!important;
-         margin-bottom: 25px;
-     }
+    .list_text{
+        font-size: 1.30rem !important;
+        font-weight: 400 !important;
+        color: #fff !important;
+        line-height: 1.8;
+        letter-spacing: .0125em!important;
+        margin-bottom: 25px;
+    }
  }
  @media screen and (max-width: 782px) {
      .how_to{

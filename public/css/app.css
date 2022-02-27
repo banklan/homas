@@ -10982,7 +10982,7 @@ body {
   margin-top: -5rem;
   height: 35rem;
   width: 100vw;
-  background-image: url(/images/banner2.png?72b40d4dc171b48f959c6ba8d3564a57);
+  background-image: linear-gradient(to bottom, rgba(3, 75, 71, 0.88), rgba(5, 138, 131, 0.92), rgba(3, 75, 71, 0.92)), url(/images/banner.jpg?c5402fff2cf5118a67a0414ed18d6c91);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;

@@ -39,7 +39,8 @@ body{
     margin-top: -5rem;
     height: 35rem;
     width: 100vw;
-    background-image: url('images/background/banner2.png');
+    // background-image: url('images/background/home3.png');
+    background-image: linear-gradient(to bottom, rgba(3, 75, 71, 0.88), rgba(5, 138, 131, 0.92), rgba(3, 75, 71, 0.92)), url(../images/background/banner.jpg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
