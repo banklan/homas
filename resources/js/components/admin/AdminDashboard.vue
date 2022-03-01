@@ -104,7 +104,7 @@
                 <v-card dark elevation="6" raised outlined width="100%" min-height="200" class="mx-auto scroll" color="#720e93">
                     <v-card-title class="subtitle-1 justify-center">Popular Services</v-card-title>
                     <v-card-text>
-                        <table class="table table-hover table-striped">
+                        <table class="table table-hover table-striped" v-if="popularServs.length > 0">
                             <thead></thead>
                             <tbody class="white--text">
                                 <tr v-for="serv in popularServs" :key="serv.id">
@@ -113,6 +113,7 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <div v-else class="mt-3 white--text">There are no services to be displayed at the moment.</div>
                     </v-card-text>
                 </v-card>
             </v-col>
@@ -120,7 +121,7 @@
                 <v-card dark elevation="6" raised outlined width="100%" min-height="200" class="mx-auto scroll" color="#065408">
                     <v-card-title class="subtitle-1 justify-center">Latest Services</v-card-title>
                     <v-card-text>
-                        <table class="table table-hover table-striped white--text">
+                        <table class="table table-hover table-striped white--text" v-if="latestServs.length > 0">
                             <thead>
                                 <tr>
                                     <th>Service</th>
@@ -134,6 +135,7 @@
                                 </tr>
                             </tbody>
                         </table>
+                        <div v-else class="mt-3 white--text">There are no services to be displayed at the moment.</div>
                     </v-card-text>
                 </v-card>
             </v-col>
@@ -142,18 +144,24 @@
             <v-col cols="12" md="6">
                 <v-card light elevation="6" raised outlined width="100%" min-height="100" class="mx-auto scroll">
                     <v-card-title class="subtitle-1 justify-center">Services Created Last Weeks</v-card-title>
-                    <v-card-text>
+                    <v-card-text v-if="chartServicesCount.length > 0">
                         <service-line-charts v-if="servChartLoaded" :chart-data="chartServicesCount" :chart-labels="chartServicesLabels"></service-line-charts>
                         <template v-if="ServiceChartError">{{ ServiceChartError }}</template>
+                    </v-card-text>
+                    <v-card-text v-else>
+                        There are no services data to be displayed at the moment.
                     </v-card-text>
                 </v-card>
             </v-col>
             <v-col cols="12" md="6">
                 <v-card light elevation="6" raised outlined width="100%" min-height="100" class="mx-auto scroll">
                     <v-card-title class="subtitle-1 justify-center admin--text">Users Created Last Weeks</v-card-title>
-                    <v-card-text>
+                    <v-card-text v-if="chartUsersCount.length > 0">
                         <service-line-charts v-if="usersChartLoaded" :chart-data="chartUsersCount" :chart-labels="chartUsersLabels" />
                         <template v-if="UsersChartError">{{ UsersChartError }}</template>
+                    </v-card-text>
+                    <v-card-text v-else>
+                        There are no users data to be displayed at the moment.
                     </v-card-text>
                 </v-card>
             </v-col>

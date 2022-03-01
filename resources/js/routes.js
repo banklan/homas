@@ -65,6 +65,8 @@ import AdminTestimonialList from './components/admin/AdminTestimonialList';
 import AdminTestimonialUpdate from './components/admin/AdminTestimonialUpdate';
 import AdminTestimonialShow from './components/admin/AdminTestimonialShow';
 import AllServices from './components/AllServices';
+import AdminLocationBulkAdd from './components/admin/AdminLocationBulkAdd';
+import AdminCategoryBulkAdd from './components/admin/AdminCategoryBulkAdd';
 
 export default [
     {path: '*', name: 'NotFound', component: NotFound},
@@ -387,5 +389,17 @@ export default [
     },
     {
         path: '/services', name: 'AllServices', component: AllServices,
+    },
+    {
+        path: '/admin/locations/new-bulk', name: 'AdminLocationBulkAdd', component: AdminLocationBulkAdd,
+        meta: {
+            requireAdminsAuth: true
+        }
+    },
+    {
+        path: '/admin/categories/new-bulk', name: 'AdminCategoryBulkAdd', component: AdminCategoryBulkAdd,
+        meta: {
+            requireAdminsAuth: true
+        }
     },
 ]

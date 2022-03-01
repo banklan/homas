@@ -1,7 +1,6 @@
 <template>
     <span>
-        <v-btn dark small :color="loc.is_popular ? 'primary' : 'admin lighten-1'" @click="toggleStatus(loc, index)" :loading="isToggling">{{ loc.is_popular ? 'Enable' : 'Disable' }}</v-btn>
-        <!-- {{ loc }} -->
+        <v-btn dark small :color="loc.is_popular ? 'primary' : 'admin lighten-1'" @click="toggleStatus(loc, index)" :loading="isToggling">{{ loc.is_popular ? 'Disable' : 'Enable' }}</v-btn>
     </span>
 </template>
 

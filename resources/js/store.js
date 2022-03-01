@@ -53,8 +53,8 @@ const servNotif = serv_notf ? serv_notf : 0
 
 export const store = new Vuex.Store({
     state: {
-        // api: 'http://localhost:8000/api',
-        api: 'https://hozulinks.herokuapp.com/api',
+        api: 'http://localhost:8000/api',
+        // api: 'https://hozulinks.herokuapp.com/api',
         isBusy: false,
         redirectOnLogin: redirectOnLogin,
         userIsLoggedIn: userIsLoggedIn,
@@ -94,6 +94,8 @@ export const store = new Vuex.Store({
         testimonialCreated: false,
         adminDelTestimonial: false,
         adminUpdatedTestimonial: false,
+        bulkLocationsCreated: false,
+        bulkCategoriesCreated: false,
     },
     getters: {
         api(state)
@@ -259,6 +261,14 @@ export const store = new Vuex.Store({
         adminUpdatedTestimonial(state)
         {
             return state.adminUpdatedTestimonial
+        },
+        bulkLocationsCreated(state)
+        {
+            return state.bulkLocationsCreated
+        },
+        bulkCategoriesCreated(state)
+        {
+            return state.bulkCategoriesCreated
         }
     },
     actions: {
@@ -576,6 +586,14 @@ export const store = new Vuex.Store({
         adminUpdatedTestimonial(state)
         {
             state.adminUpdatedTestimonial = true
+        },
+        bulkLocationsCreated(state, payload)
+        {
+            state.bulkLocationsCreated = true
+        },
+        bulkCategoriesCreated(state, payload)
+        {
+            state.bulkCategoriesCreated = true
         }
     },
 })

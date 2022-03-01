@@ -7,7 +7,7 @@
            <v-col cols="11" md="5" offset-md="1">
                <div :class="$vuetify.breakpoint.smAndDown ? 'mt-n6 mb-4 float-right mr-10' : ''">
                     <v-btn v-if="showBtn" dark color="admin" @click="addNewLocDial = true"><v-icon left>add</v-icon>New</v-btn>
-                    <!-- <v-btn dark color="admin" :href="`http://localhost:8000/api/clients/export`"><v-icon left>mdi-download</v-icon>Download</v-btn> -->
+                    <v-btn v-if="showBtn" dark color="secondary darken-2" :to="{name: 'AdminLocationBulkAdd'}"><v-icon left>add</v-icon>Bulk</v-btn>
                     <span v-if="showFilePicker">
                         <v-btn dark color="admin" class="" @click="openUpload"><v-icon left>mdi-upload</v-icon>Upload CSV</v-btn>
                         <input type="file" ref="file" style="display:none" @change.prevent="pickFile" accept=".csv">
@@ -178,6 +178,10 @@
             Your file upload failed. Please ensure that the file you are trying to upload is in csv format and it doesn't contain invalid or locations already existing in the database.
             <v-btn text color="white--text" @click="uploadFailed = false">Close</v-btn>
         </v-snackbar>
+        <v-snackbar :value="bulkLocationsCreated" :timeout="4000" top color="green darken-1 white--text">
+            New locations have been added successfully.
+            <v-btn text color="white--text" @click="bulkLocationsCreated = false">Close</v-btn>
+        </v-snackbar>
     </v-container>
 </template>
 
@@ -239,6 +243,9 @@ export default {
         },
         locationStatusUpdated(){
             return this.$store.getters.locationStatusUpdated
+        },
+        bulkLocationsCreated(){
+            return this.$store.getters.bulkLocationsCreated
         }
     },
     methods: {

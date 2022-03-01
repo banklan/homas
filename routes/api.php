@@ -181,6 +181,8 @@ Route::group(['prefix' => 'auth-admin', 'middleware' => ['assign.guard:admin-api
     Route::post('change_testimonial_feature_status/{id}', 'AdminController@toggleTestimonialFeature');
     Route::post('update_testimonial/{id}', 'AdminController@updateTestimonial');
     Route::get('get_testimonial_count', 'AdminController@getTestimonialCount');
+    Route::post('admin_create_bulk_locations', 'AdminController@createBulkLocations');
+    Route::post('admin_create_bulk_categories', 'AdminController@createBulkCategories');
 
     // Route::get('get_admin_notifications', 'AdminController@getNotifs');
     // Route::post('clear_new_users_notification', 'AdminController@resetNewUsersNotif');

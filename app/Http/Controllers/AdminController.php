@@ -1052,4 +1052,44 @@ class AdminController extends Controller
         $count = Testimonial::all()->count();
         return response()->json($count, 200);
     }
+
+    public function createBulkLocations(Request $request){
+        $locs = $request->locations;
+
+        $data = ['data' => $locs];
+        $validator = Validator::make($data, [
+            'data.*.name' => 'required|min:3|max:50|unique:locations,state'
+        ]);
+
+        if($validator->fails()){
+            return response()->json(['message' => 'validation failed'], 500);
+        }else{
+            foreach($locs as $loc){
+                $state = new Location;
+                $state->state = $loc['name'];
+                $state->save();
+            }
+            return response()->json(['message' => 'Created successfully'], 201);
+        }
+    }
+
+    public function createBulkCategories(Request $request){
+        $cats = $request->categories;
+
+        $data = ['data' => $cats];
+        $validator = Validator::make($data, [
+            'data.*.name' => 'required|min:3|max:50|unique:categories,name'
+        ]);
+
+        if($validator->fails()){
+            return response()->json(['message' => 'validation failed'], 500);
+        }else{
+            foreach($cats as $cat){
+                $categ = new Category;
+                $categ->name = $cat['name'];
+                $categ->save();
+            }
+            return response()->json(['message' => 'Categories created successfully'], 201);
+        }
+    }
 }

@@ -7,6 +7,7 @@
            <v-col cols="11" md="5" offset-md="1">
                 <div :class="$vuetify.breakpoint.smAndDown ? 'mt-n6 mb-4 float-right mr-10' : ''">
                     <v-btn v-if="showBtn" dark color="admin" @click="addNewCatDial = true"><v-icon left>add</v-icon>New</v-btn>
+                    <v-btn v-if="showBtn" dark color="secondary darken-2" :to="{name: 'AdminCategoryBulkAdd'}"><v-icon left>add</v-icon>Bulk</v-btn>
                     <span v-if="showFilePicker">
                         <v-btn dark color="admin" class="" @click="openUpload"><v-icon left>mdi-upload</v-icon>Upload CSV</v-btn>
                         <input type="file" ref="file" style="display:none" @change.prevent="pickFile" accept=".csv">
@@ -166,6 +167,10 @@
             Your file upload failed. Please ensure that the file you are trying to upload is in csv format and it does not contain invalid or categories already existing in the database.
             <v-btn text color="white--text" @click="uploadFailed = false">Close</v-btn>
         </v-snackbar>
+        <v-snackbar :value="bulkCategoriesCreated" :timeout="4000" top color="green darken-1 white--text">
+            New categories have been added successfully.
+            <v-btn text color="white--text" @click="bulkCategoriesCreated = false">Close</v-btn>
+        </v-snackbar>
     </v-container>
 </template>
 
@@ -222,6 +227,9 @@ export default {
             }
             return headers
         },
+        bulkCategoriesCreated(){
+            return this.$store.getters.bulkCategoriesCreated
+        }
     },
     methods: {
         getCategories(pag){
