@@ -5,10 +5,10 @@
                <v-text-field placeholder="Search for Categories..." v-model="q" outlined dense append-icon="search" clearable @keyup="searchForCats"></v-text-field>
            </v-col>
            <v-col cols="11" md="5" offset-md="1">
-                <div :class="$vuetify.breakpoint.smAndDown ? 'mt-n6 mb-4 float-right mr-5' : ''">
+                <div :class="$vuetify.breakpoint.smAndDown ? 'mt-n6 mb-4 mr-5' : ''">
                     <v-btn v-if="showBtn" dark color="admin" @click="addNewCatDial = true"><v-icon left>add</v-icon>New</v-btn>
                     <v-btn v-if="showBtn" dark color="secondary darken-2" :to="{name: 'AdminCategoryBulkAdd'}"><v-icon left>add</v-icon>Bulk</v-btn>
-                    <span v-if="showFilePicker"  :class="$vuetify.breakpoint.smAndDown ? 'mt-2' : ''">
+                    <span v-if="showFilePicker" :class="$vuetify.breakpoint.smAndDown ? 'mt-2 pt-2' : ''">
                         <v-btn dark color="admin" class="" @click="openUpload"><v-icon left>mdi-upload</v-icon>Upload CSV</v-btn>
                         <input type="file" ref="file" style="display:none" @change.prevent="pickFile" accept=".csv">
                     </span>
