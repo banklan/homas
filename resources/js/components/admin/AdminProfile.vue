@@ -1,7 +1,7 @@
 <template>
     <v-container>
         <v-progress-circular indeterminate color="primary" :width="4" :size="40" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
-        <v-row v-else class="mt-4" justify="center" :class="$vuetify.breakpoint.smAndDown ? 'ml-n10':''">
+        <v-row v-else class="mt-4" justify="center" :class="$vuetify.breakpoint.smAndDown ? 'mx-2': ''">
             <v-col cols="12" md="5">
                 <v-card light raised outlined elevation="4" min-height="400" class="scroll" width="100%">
                     <template v-if="!changePic">
@@ -88,7 +88,7 @@
                             <v-text-field label="Confirm Password" type="password" v-model="changePassword.confirm" v-validate="'required|confirmed:new_pswd'" :error-messages="errors.collect('pswd.confirm')" name="confirm" data-vv-scope="pswd" data-vv-as="confirm password"></v-text-field>
                             <v-card-actions class="justify-center pb-8 mt-3">
                                 <v-btn color="red darken-2" large width="50%" text @click="clearPswdFields">Clear</v-btn>
-                                <v-btn  v-if="!pswdChngErr" dark color="admin" large width="50%" :loading="isUpdatingPswd" @click="updatePswd">Update Password</v-btn>
+                                <v-btn  v-if="!pswdChngErr" dark color="admin" large width="50%" :loading="isUpdatingPswd" @click="updatePswd">Update</v-btn>
                             </v-card-actions>
                         </template>
                     </v-card-text>

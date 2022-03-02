@@ -5,10 +5,10 @@
                <v-text-field placeholder="Search for Categories..." v-model="q" outlined dense append-icon="search" clearable @keyup="searchForCats"></v-text-field>
            </v-col>
            <v-col cols="11" md="5" offset-md="1">
-                <div :class="$vuetify.breakpoint.smAndDown ? 'mt-n6 mb-4 float-right mr-10' : ''">
+                <div :class="$vuetify.breakpoint.smAndDown ? 'mt-n6 mb-4 float-right mr-5' : ''">
                     <v-btn v-if="showBtn" dark color="admin" @click="addNewCatDial = true"><v-icon left>add</v-icon>New</v-btn>
                     <v-btn v-if="showBtn" dark color="secondary darken-2" :to="{name: 'AdminCategoryBulkAdd'}"><v-icon left>add</v-icon>Bulk</v-btn>
-                    <span v-if="showFilePicker">
+                    <span v-if="showFilePicker"  :class="$vuetify.breakpoint.smAndDown ? 'mt-2' : ''">
                         <v-btn dark color="admin" class="" @click="openUpload"><v-icon left>mdi-upload</v-icon>Upload CSV</v-btn>
                         <input type="file" ref="file" style="display:none" @change.prevent="pickFile" accept=".csv">
                     </span>
@@ -28,7 +28,6 @@
                 <v-progress-circular indeterminate color="primary" :width="7" :size="70" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
                 <v-card v-else light raised elevation="6" min-height="200" class="scroll mr-3">
                     <v-card-title class="subtitle-1 admin white--text justify-center">Categories <v-chip class="ml-1" dark color="admin lighten-2">{{ total }}</v-chip></v-card-title>
-                    <!-- <v-card-title v-else class="subtitle-1 admin white--text justify-center">Result for {{ q }} <v-chip class="ml-1" dark color="admin lighten-2">{{ total }}</v-chip></v-card-title> -->
                     <v-card-text class="mt-5">
                         <template v-if="!searchedCats">
                             <template v-if="categories.length > 0">
@@ -124,7 +123,7 @@
                     </v-card-text>
                     <v-card-actions class="pb-8 justify-center">
                         <v-btn text color="red darken--2" @click="updateDial = false" width="40%">Cancel</v-btn>
-                        <v-btn dark color="admin" :loading="isUpdating" @click="updateCat" width="40%">Yes, Delete</v-btn>
+                        <v-btn dark color="admin" :loading="isUpdating" @click="updateCat" width="40%">Save Update</v-btn>
                     </v-card-actions>
                 </v-card>
             </transition>
@@ -365,7 +364,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-    .v-card.scroll{
+    .v-card.scroll .v-card__text{
         overflow-x: scroll !important;
     }
     table tr{

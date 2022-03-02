@@ -11,7 +11,7 @@
         <v-row class="mt-4">
             <v-col cols="12" md="11">
                 <v-progress-circular indeterminate color="primary" :width="7" :size="70" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
-                <v-card v-else light raised elevation="8" min-height="200" class="scroll mr-3">
+                <v-card v-else light raised elevation="8" min-height="200" class="scroll mr-3" :class="$vuetify.breakpoint.smAndDown ? 'mr-1': ''">
                     <v-card-title class="subtitle-1 admin white--text justify-center">Users</v-card-title>
                     <v-card-text>
                         <template v-if="users.length > 0">

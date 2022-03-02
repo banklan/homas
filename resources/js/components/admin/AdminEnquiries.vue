@@ -8,7 +8,8 @@
         <v-row justify="start" class="mt-5">
             <v-col cols="12" md="11">
                 <v-progress-circular indeterminate color="primary" :width="7" :size="70" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
-                <v-card v-else light raised outlined elevation="4" min-height="200" class="scroll">
+                <v-card v-else light raised outlined elevation="4" min-height="200" class="scroll" :class="$vuetify.breakpoint.smAndDown ? 'mr-1': ''">
+                    <v-card-title class="admin white--text justify-center subtitle-1">Enquiries</v-card-title>
                     <v-card-text class="mt-5">
                         <template v-if="!searchedEnqs">
                             <template v-if="enquiries.length > 0">

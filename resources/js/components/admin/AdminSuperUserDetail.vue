@@ -5,7 +5,7 @@
                 <v-btn rounded color="admin lighten--2" dark elevation="4" left :to="{name: 'AdminSuperUsersList'}"><v-icon left>arrow_left</v-icon> Admin List</v-btn>
             </v-col>
         </v-row>
-        <v-row justify="start" class="mt-5">
+        <v-row justify="start" class="mt-5" :class="$vuetify.breakpoint.smAndDown ? 'ml-n3 mr-n5': ''">
             <v-col cols="12" md="5">
                 <v-progress-circular indeterminate color="primary" :width="7" :size="70" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
                 <v-card v-else light raised outlined elevation="4" min-height="400" class="scroll">

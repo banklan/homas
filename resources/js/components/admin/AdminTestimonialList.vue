@@ -8,7 +8,7 @@
         <v-row justify="start" class="mt-5">
             <v-col cols="12" md="11">
                 <v-progress-circular indeterminate color="primary" :width="7" :size="70" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
-                <v-card v-else light raised outlined elevation="4" min-height="200" class="scroll">
+                <v-card v-else light raised outlined elevation="4" min-height="200" class="scroll" :class="$vuetify.breakpoint.smAndDown ? 'mr-1': ''">
                     <v-card-title class="justify-center subtitle-1 admin white--text">Testimonials <v-chip class="admin lighten-1 ml-1" dark>{{ total }}</v-chip></v-card-title>
                     <v-card-text class="mt-5">
                         <template v-if="!searchedTests">
@@ -209,7 +209,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-    .v-card.scroll{
+    .v-card.scroll .v-card__text{
         overflow-x: scroll !important;
     }
     table tr{

@@ -5,7 +5,7 @@
                 <v-btn rounded color="admin lighten--2" dark elevation="4" left @click.prevent="$router.go(-1)"><v-icon left>arrow_left</v-icon> Back</v-btn>
             </v-col>
         </v-row>
-        <v-row class="mt-4" justify="center">
+        <v-row class="mt-4" justify="center" :class="$vuetify.breakpoint.smAndDown ? 'ml-n4 mr-n5': ''">
             <v-col cols="12" md="8">
                 <v-card light raised elevation="8" min-height="200">
                     <v-card-title class="subtitle-1 admin white--text justify-center">Create New SuperUser (Admin)</v-card-title>

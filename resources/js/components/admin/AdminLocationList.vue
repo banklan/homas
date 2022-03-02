@@ -5,10 +5,10 @@
                <v-text-field placeholder="Search for Locations..." v-model="q" outlined dense append-icon="search" @keyup="searchForLocs"></v-text-field>
            </v-col>
            <v-col cols="11" md="5" offset-md="1">
-               <div :class="$vuetify.breakpoint.smAndDown ? 'mt-n6 mb-4 float-right mr-10' : ''">
+               <div :class="$vuetify.breakpoint.smAndDown ? 'mt-n6 mb-4 float-right mr-5' : ''">
                     <v-btn v-if="showBtn" dark color="admin" @click="addNewLocDial = true"><v-icon left>add</v-icon>New</v-btn>
                     <v-btn v-if="showBtn" dark color="secondary darken-2" :to="{name: 'AdminLocationBulkAdd'}"><v-icon left>add</v-icon>Bulk</v-btn>
-                    <span v-if="showFilePicker">
+                    <span v-if="showFilePicker" :class="$vuetify.breakpoint.smAndDown ? 'mt-2' : ''">
                         <v-btn dark color="admin" class="" @click="openUpload"><v-icon left>mdi-upload</v-icon>Upload CSV</v-btn>
                         <input type="file" ref="file" style="display:none" @change.prevent="pickFile" accept=".csv">
                     </span>
@@ -51,6 +51,11 @@
                                         </tr>
                                     </tbody>
                                 </table>
+                            </template>
+                            <template v-else>
+                                <v-alert class="mt-5" type="info" border="left">
+                                    There are no locations in the database at the moment.
+                                </v-alert>
                             </template>
                         </template>
                         <template v-else>
@@ -248,6 +253,10 @@ export default {
             return this.$store.getters.bulkLocationsCreated
         }
     },
+    beforeRouteLeave(){
+        this.$store.commit('resetUpdatedFlashMsg');
+        next();
+    },
     methods: {
         getLocations(pag){
             this.isLoading = true
@@ -389,7 +398,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-    .v-card.scroll{
+    .v-card.scroll .v-card__text{
         overflow-x: scroll !important;
     }
     table tr{

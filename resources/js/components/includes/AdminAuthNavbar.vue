@@ -266,6 +266,9 @@ export default {
 </script>
 
 <style lang="css" scoped>
+    nav{
+        width: 100vw !important
+    }
     a{
         text-decoration: none;
         text-transform:capitalize;
@@ -278,6 +281,7 @@ export default {
     .navdrawer{
         max-width: 25%;
         transition: all .4s;
+        /* height: 100vh !important; */
     }
     .main{
         width: 100%;

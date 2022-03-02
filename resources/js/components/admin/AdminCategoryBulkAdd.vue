@@ -31,7 +31,7 @@
                                 </thead>
                                 <tbody>
                                     <tr v-for="(cat, index) in categories" :key="cat.name">
-                                        <td width="50%">{{ cat.name | capFirstLetter }}</td>
+                                        <td width="75%">{{ cat.name | capFirstLetter }}</td>
                                         <td><v-btn small icon dark color="blue darken-1" @click="openEditDial(cat, index)"><v-icon>edit</v-icon></v-btn>
                                             <v-btn small icon dark color="red darken-1" class="ml-2" @click="removeCat(index)"><v-icon>delete_forever</v-icon></v-btn>
                                         </td>

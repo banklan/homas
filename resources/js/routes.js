@@ -192,6 +192,12 @@ export default [
         }
     },
     {
+        path: '/admin/users/create', name: 'AdminCreateUser', component: AdminCreateUser,
+        meta: {
+            requireAdminsAuth: true
+        }
+    },
+    {
         path: '/admin/users/:id', name: 'AdminUserDetail', component: AdminUserDetail,
         meta: {
             requireAdminsAuth: true
@@ -203,12 +209,7 @@ export default [
             requireAdminsAuth: true
         }
     },
-    {
-        path: '/admin/users/create', name: 'AdminCreateUser', component: AdminCreateUser,
-        meta: {
-            requireAdminsAuth: true
-        }
-    },
+
     {
         path: '/admin/services/:id/:slug', name: 'AdminServiceDetail', component: AdminServiceDetail,
         meta: {
