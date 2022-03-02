@@ -99,7 +99,7 @@ export default {
         },
     },
     beforeRouteLeave (to, from, next) {
-        this.$store.commit('resetAdminUpdatedFlashMsgs')
+        this.$store.commit('resetUpdatedFlashMsg')
         next()
     },
     methods: {

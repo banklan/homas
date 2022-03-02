@@ -290,6 +290,12 @@ export default [
         }
     },
     {
+        path: '/admin/locations/new-bulk', name: 'AdminLocationBulkAdd', component: AdminLocationBulkAdd,
+        meta: {
+            requireAdminsAuth: true
+        }
+    },
+    {
         path: '/admin/locations', name: 'AdminLocationList', component: AdminLocationList,
         meta: {
             requireAdminsAuth: true
@@ -391,12 +397,7 @@ export default [
     {
         path: '/services', name: 'AllServices', component: AllServices,
     },
-    {
-        path: '/admin/locations/new-bulk', name: 'AdminLocationBulkAdd', component: AdminLocationBulkAdd,
-        meta: {
-            requireAdminsAuth: true
-        }
-    },
+
     {
         path: '/admin/categories/new-bulk', name: 'AdminCategoryBulkAdd', component: AdminCategoryBulkAdd,
         meta: {

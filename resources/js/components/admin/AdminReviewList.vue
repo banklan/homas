@@ -5,9 +5,9 @@
                <admin-search model="Review" searchFor="reviews"/>
            </v-col>
         </v-row>
-        <v-row justify="start" class="mr-3 mt-n6">
+        <v-row justify="start" class="mr-3 mt-n6" :class="$vuetify.breakpoint.smAndDown ? 'mb-4 mr-n4' : ''">
             <v-col cols="12">
-                <v-progress-circular indeterminate color="primary" :width="7" :size="70" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
+                <v-progress-circular indeterminate color="primary" :width="4" :size="40" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
                 <v-card v-else light raised elevation="6" min-height="200" class="scroll mr-3" :class="$vuetify.breakpoint.smAndDown ? 'mr-1': ''">
                     <v-card-title class="subtitle-1 admin white--text justify-center">Reviews <v-chip class="ml-1" dark color="admin lighten-2">{{ total }}</v-chip></v-card-title>
                     <v-card-text class="mt-5">

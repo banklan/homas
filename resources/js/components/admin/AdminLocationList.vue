@@ -8,8 +8,8 @@
                <div :class="$vuetify.breakpoint.smAndDown ? 'mt-n6 mb-4 mr-5' : ''">
                     <v-btn v-if="showBtn" dark color="admin" @click="addNewLocDial = true"><v-icon left>add</v-icon>New</v-btn>
                     <v-btn v-if="showBtn" dark color="secondary darken-2" :to="{name: 'AdminLocationBulkAdd'}"><v-icon left>add</v-icon>Bulk</v-btn>
-                    <span v-if="showFilePicker" :class="$vuetify.breakpoint.smAndDown ? 'mt-2 pt-2' : ''">
-                        <v-btn dark color="admin" class="" @click="openUpload"><v-icon left>mdi-upload</v-icon>Upload CSV</v-btn>
+                    <span v-if="showFilePicker" :class="$vuetify.breakpoint.smAndDown ? 'mt-4 pt-2' : ''">
+                        <v-btn dark color="admin" class="mt-2" @click="openUpload"><v-icon left>mdi-upload</v-icon>Upload CSV</v-btn>
                         <input type="file" ref="file" style="display:none" @change.prevent="pickFile" accept=".csv">
                     </span>
                     <span v-else>
@@ -253,10 +253,6 @@ export default {
             return this.$store.getters.bulkLocationsCreated
         }
     },
-    beforeRouteLeave(){
-        this.$store.commit('resetUpdatedFlashMsg');
-        next();
-    },
     methods: {
         getLocations(pag){
             this.isLoading = true
@@ -419,7 +415,8 @@ export default {
     @media screen and (max-width: 782px){
         .btm_row{
             flex-direction: column;
-
+            padding: 10px;
+            margin-bottom: 15px;
         }
         .pgnt{
             margin-bottom: 17px;

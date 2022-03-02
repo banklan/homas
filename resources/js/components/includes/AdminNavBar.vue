@@ -101,4 +101,7 @@ export default {
         text-decoration: none;
         text-transform:capitalize;
     }
+    nav{
+        width: 100vw !important;
+    }
 </style>
