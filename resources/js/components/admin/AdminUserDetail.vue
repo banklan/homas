@@ -7,7 +7,7 @@
         </v-row>
         <v-row justify="start" class="mt-5" :class="$vuetify.breakpoint.smAndDown ? 'ml-n3 mr-n5': ''">
             <v-col cols="12" md="5">
-                <v-progress-circular indeterminate color="primary" :width="7" :size="70" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
+                <v-progress-circular indeterminate color="primary" :width="4" :size="40" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
                 <v-card v-else light raised outlined elevation="6" min-height="400" class="">
                     <template v-if="user">
                         <v-img v-if="user.picture" :src="`/images/profiles/users/${user.picture}`" aspect-ratio="1" height="300" transition="scale-transition"></v-img>

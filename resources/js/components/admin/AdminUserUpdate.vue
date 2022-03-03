@@ -2,7 +2,7 @@
     <v-container>
         <v-row justify="start" class="mt-5">
             <v-col cols="12" md="8">
-                <v-progress-circular indeterminate color="primary" :width="7" :size="70" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
+                <v-progress-circular indeterminate color="primary" :width="4" :size="40" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
                 <v-card v-else light raised outlined elevation="4" min-height="400">
                     <v-card-title class="justify-center subtitle-1 admin white--text">Update User Details</v-card-title>
                     <v-card-text class="mt-5">

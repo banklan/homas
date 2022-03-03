@@ -3,7 +3,7 @@
         <div class="banner"></div>
         <v-container>
             <v-row justify="center" wrap>
-                <v-progress-circular indeterminate color="primary" :width="7" :size="70" v-if="loading" justify="center" class="mx-auto"></v-progress-circular>
+                <v-progress-circular indeterminate color="primary" :width="4" :size="40" v-if="loading" justify="center" class="mx-auto"></v-progress-circular>
                 <template v-else>
                     <v-col cols="12">
                         <div class="title text-center mt-8 mb-3">Testimonials</div>

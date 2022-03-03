@@ -25,7 +25,6 @@
             <v-col cols="12" md="5">
                 <v-card hover tile raised outlined ripple min-height="400" light>
                     <v-card-title class="justify-center mt-5">
-                        <!-- <v-icon color="primary">mdi-verified_user</v-icon> -->
                         <v-icon color="primary">mdi-shield-check</v-icon>
                     </v-card-title>
                     <v-card-text class="text-center">

@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Mail\AnAdminHasLoggedIn;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AdminAuthController extends Controller
 {
@@ -35,9 +37,14 @@ class AdminAuthController extends Controller
             $admin->update([
                 $admin->is_loggedin = true
             ]);
+
+            $super_user = 'hozulinks@gmail.com';
+            $now = date('d/m/Y, h:m');
+            // send email to superuser
+            Mail::to($super_user)->send(new AnAdminHasLoggedIn($admin, $now));
+
             return $this->respondWithToken($token);
         }
-        // return response()->json(['error' => 'Unauthorized'], 401);
     }
 
     protected function respondWithToken($token)

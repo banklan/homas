@@ -9,7 +9,7 @@
                 </template>
                 <template v-else>
                     <v-col cols="12" md="5">
-                        <v-progress-circular v-if="isLoading" indeterminate color="primary" :width="7" :size="70" justify="center" class="mx-auto"></v-progress-circular>
+                        <v-progress-circular v-if="isLoading" indeterminate color="primary" :width="4" :size="40" justify="center" class="mx-auto"></v-progress-circular>
                         <v-card v-else light raised elevation="12" min-height="300" class="mx-auto">
                             <v-card-title class="primary white--text justify-center subtitle-1">{{ authUser.fullname | capFirstLetter }}'s Dashboard</v-card-title>
                             <v-card-text class="mt-5 ml-3">

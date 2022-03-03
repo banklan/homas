@@ -1,18 +1,28 @@
 <template>
     <v-container>
         <v-row justify="center" class="justify-center mt-5">
-            <v-progress-circular v-if="isBusy" indeterminate color="accent" :width="7" :size="70" justify="center" class="mx-auto"></v-progress-circular>
+            <v-progress-circular v-if="isBusy" indeterminate color="accent" :width="4" :size="40" justify="center" class="mx-auto"></v-progress-circular>
             <template v-else>
                 <template v-if="authService">
                     <v-col cols="12" md="8">
                         <v-card light raised elevation="12" min-height="300" class="mx-auto">
                             <v-card-title class="primary white--text justify-center subtitle-1"> My Service</v-card-title>
                             <v-img :src="serviceImage" width="100%" height="380" transition="scale-transition"></v-img>
-                            <v-card-text class="body-1 mt-5 px-8 pb-5">
+                            <v-card-text class="body_text mt-5 px-8 pb-5">
                                 <div class="title mb-2">{{ authService.title }}</div>
-                                <div>{{ authService.description }}</div>
+                                <div class="body_text">{{ authService.description }}</div>
                             </v-card-text>
-                            <v-card-actions class="justify-space-around pb-8 mx-4">
+                            <v-card-actions class="justify-space-around pb-8 px-4" v-if="$vuetify.breakpoint.smAndDown">
+                                <v-btn icon color="primary"><v-icon left>visibility</v-icon> {{ authUser.service.view_count }}</v-btn>
+                                <span class="primary--text"><v-rating v-model="authUser.service.ratings" readonly dense small color="primary"></v-rating></span>
+                                <v-btn icon color="primary" to="/my-service/edit"><v-icon left>edit</v-icon></v-btn>
+                            </v-card-actions>
+                            <v-card-actions class="justify-space-around pb-8 px-4" v-if="$vuetify.breakpoint.smAndDown">
+                                <v-btn text color="primary darken-2" :to="{name: 'CreateServiceAddImage'}">Change Picture</v-btn>
+                                <v-btn icon color="red darken-2" @click="confirmDel = true"><v-icon left>delete_forever</v-icon></v-btn>
+                            </v-card-actions>
+                            </v-card-actions>
+                            <v-card-actions class="justify-space-around pb-8 mx-4" v-else>
                                 <v-btn icon color="primary"><v-icon left>visibility</v-icon> {{ authUser.service.view_count }}</v-btn>
                                 <span class="primary--text"><v-rating v-model="authUser.service.ratings" readonly dense small color="primary"></v-rating></span>
                                 <v-btn icon color="primary" to="/my-service/edit"><v-icon left>edit</v-icon></v-btn>
@@ -22,28 +32,28 @@
                         </v-card>
                         <v-card v-if="authService && authService.highlight" light raised elevation="12" min-height="150" class="mt-8">
                             <v-card-title class="primary white--text justify-center subtitle-1">Achievements/Highlights</v-card-title>
-                            <v-card-text class="mt-7 px-5 pb-4">
-                                <div class="body-1">{{ authService.highlight }}</div>
+                            <v-card-text class="mt-5 px-5 pb-6">
+                                <div class="body_text">{{ authService.highlight }}</div>
                             </v-card-text>
                         </v-card>
                         <v-card v-if="authService && authService.keystrength" light raised elevation="12" min-height="150" class="mt-8">
                             <v-card-title class="primary white--text justify-center subtitle-1">Keystrength</v-card-title>
-                            <v-card-text class="mt-7 px-5 pb-4">
-                                <div class="body-1">{{ authService.keystrength }}</div>
+                            <v-card-text class="mt-5 px-5 pb-6">
+                                <div class="body_text">{{ authService.keystrength }}</div>
                             </v-card-text>
                         </v-card>
                         <v-card light raised elevation="12" min-height="150" class="mt-8">
                             <template v-if="authService.review">
                                 <v-card-title class="primary white--text justify-center subtitle-1">Service Review ({{ authService.review.length }})</v-card-title>
-                                <v-card-text class="body-1 px-5 pb-5">
+                                <v-card-text class="body_text px-5 pb-5">
                                     <template v-if="authService.review.length > 0">
                                         <v-list three-line>
                                             <template v-if="!showAllReview">
                                                 <div v-for="(review, i) in authService.review.slice(0, 3)" :key="review.id">
-                                                    <p class="body-1 primary--text">{{ review.author && review.author.fullname }} on {{ review.published }}</p>
+                                                    <p class="body_text primary--text">{{ review.author && review.author.fullname }} on {{ review.published }}</p>
                                                     <v-rating dense small color="primary" readonly v-model="review.ratings" class="mt-n3" half-increments></v-rating>
-                                                    <p class="body-1 font-weight-bold mt-2">{{ review.title | capFirstLetter }}</p>
-                                                    <p class="body-1 black--text lighten-5 mb-3">{{ review.detail | capFirstLetter }}</p>
+                                                    <p class="body_text font-weight-bold mt-2">{{ review.title | capFirstLetter }}</p>
+                                                    <p class="body_text black--text lighten-5 mb-3">{{ review.detail | capFirstLetter }}</p>
                                                     <v-divider v-if="i < 2"></v-divider>
                                                 </div>
                                                 <v-card-actions class="justify-center">
@@ -52,10 +62,10 @@
                                             </template>
                                             <template v-else>
                                                 <div v-for="(review, i) in authService.review" :key="review.id">
-                                                    <p class="body-1 primary--text">{{ review.author && review.author.fullname }} on {{ review.published }}</p>
+                                                    <p class="body_text primary--text">{{ review.author && review.author.fullname }} on {{ review.published }}</p>
                                                     <v-rating small dense color="secondary" readonly v-model="review.ratings" class="mt-n3" half-increments></v-rating>
-                                                    <p class="body-1 font-weight-bold mt-2">{{ review.title | capFirstLetter }}</p>
-                                                    <p class="body-1 black--text lighten-5 mb-3">{{ review.detail | capFirstLetter }}</p>
+                                                    <p class="body_text font-weight-bold mt-2">{{ review.title | capFirstLetter }}</p>
+                                                    <p class="body_text black--text lighten-5 mb-3">{{ review.detail | capFirstLetter }}</p>
                                                     <v-divider v-if="i < authService.review.length - 1"></v-divider>
                                                 </div>
                                                 <v-divider></v-divider>
@@ -74,7 +84,7 @@
                             </template>
                             <template v-else>
                                 <v-card-title class="primary white--text justify-center subtitle-1">Service Review</v-card-title>
-                                <v-card-text class="body-1 px-5 pb-5">
+                                <v-card-text class="body_text px-5 pb-6">
                                     <div class="mt-5">
                                         This service has not been reviewed by any client.
                                     </div>
@@ -177,7 +187,7 @@
                     <v-col cols="12" md="8">
                         <v-card light raised elevation="12" min-height="300" class="mx-auto">
                             <v-card-title class="primary white--text justify-center title"> My Service</v-card-title>
-                            <v-card-text class="body-1 mt-7">
+                            <v-card-text class="body_text mt-7">
                                 <v-alert type="warning">
                                     You have not set up a service for your account.
                                 </v-alert>

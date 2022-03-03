@@ -1,7 +1,7 @@
 @component('mail::message')
-# Enquiry on homas!
+# Enquiry on hozulinks!
 
-An enquiry has been received on homas.com, sent by {{ $enquiry->fullname }}.<br/>
+An enquiry has been received on hozulinks.com, sent by {{ $enquiry->fullname }}.<br/>
 <p style="font-size: 16px;"><strong>Sender: </strong> {{ $enquiry->fullname }}</p>
 <p style="font-size: 16px;"><strong>Organization: </strong> {{ $enquiry->organization }}</p>
 <p style="font-size: 16px;"><strong>Position: </strong> {{ $enquiry->position }}</p>

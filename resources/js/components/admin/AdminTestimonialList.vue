@@ -7,7 +7,7 @@
         </v-row>
         <v-row justify="start" class="mt-5">
             <v-col cols="12" md="11">
-                <v-progress-circular indeterminate color="primary" :width="7" :size="70" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
+                <v-progress-circular indeterminate color="primary" :width="4" :size="40" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
                 <v-card v-else light raised outlined elevation="4" min-height="200" class="scroll" :class="$vuetify.breakpoint.smAndDown ? 'mr-1': ''">
                     <v-card-title class="justify-center subtitle-1 admin white--text">Testimonials <v-chip class="admin lighten-1 ml-1" dark>{{ total }}</v-chip></v-card-title>
                     <v-card-text class="mt-5">
@@ -44,7 +44,7 @@
                         </template>
                         <template v-else>
                             <div class="my-3 px-2 subtitle-1" v-if="searchResult.length > 0">Search returned <strong>{{ total | pluralize('testimonial') }}</strong>.</div>
-                            <v-progress-circular indeterminate color="primary" :width="7" :size="70" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
+                            <v-progress-circular indeterminate color="primary" :width="4" :size="40" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
                             <template v-else>
                                 <template v-if="searchResult.length > 0">
                                     <table class="table table-hover table-bordered table-striped">

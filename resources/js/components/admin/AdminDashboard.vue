@@ -1,6 +1,6 @@
 <template>
     <v-container fluid>
-        <v-progress-circular indeterminate color="primary" :width="7" :size="70" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
+        <v-progress-circular indeterminate color="primary" :width="4" :size="40" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
         <v-row v-else justify="center" class="mt-5">
             <v-col cols="12" md="4">
                 <v-card dark elevation="6" raised outlined width="100%" min-height="200" class="mx-auto scroll" color="#e9309f">

@@ -19,10 +19,10 @@
                         <v-text-field label="City" v-model="service.city" placeholder="city" required v-validate="'required|max:30'" :error-messages="errors.collect('city')" name="city"></v-text-field>
                         <v-select :items="locations" item-text="state" item-value="id" label="Select State" v-model="service.location_id" persistent-hint required v-validate="'required'" :error-messages="errors.collect('location_id')" name="location_id" data-vv-as="state"></v-select>
                         <v-row>
-                            <v-col cols="6">
+                            <v-col cols="12" md="6">
                                 <v-text-field label="Phone Number" v-model="service.phone_number" required v-validate="'required|numeric'" :error-messages="errors.collect('phone_number')" name="phone_number" data-vv-as="phone number"></v-text-field>
                             </v-col>
-                            <v-col cols="6">
+                            <v-col cols="12" md="6">
                                 <v-text-field label="Email Address" v-model="service.email" required v-validate="'required|email'" :error-messages="errors.collect('email')" name="email"></v-text-field>
                             </v-col>
                         </v-row>

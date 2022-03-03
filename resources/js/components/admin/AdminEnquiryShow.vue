@@ -2,14 +2,14 @@
     <v-container>
         <v-row>
             <v-col cols="12" md="1">
-                <v-btn rounded color="primary lighten--2" dark elevation="4" left @click.prevent="$router.go(-1)"><v-icon left>arrow_left</v-icon> Back</v-btn>
+                <v-btn rounded color="admin lighten--2" dark elevation="4" left @click.prevent="$router.go(-1)"><v-icon left>arrow_left</v-icon> Back</v-btn>
             </v-col>
         </v-row>
         <v-row justify="start" class="mt-3">
-            <v-progress-circular v-if="isLoading" indeterminate color="accent" :width="7" :size="70" justify="center" class="mx-auto"></v-progress-circular>
+            <v-progress-circular v-if="isLoading" indeterminate color="primary" :width="4" :size="40" justify="center" class="mx-auto"></v-progress-circular>
             <template v-else>
                 <v-col cols="12" md="9">
-                    <v-card light raised elevation="12" min-height="300" class="mx-auto">
+                    <v-card light raised elevation="12" min-height="300" class="scroll mx-auto">
                         <v-card-text class="body-1 mt-5 px-7 py-10">
                             <template v-if="enquiry">
                                 <table class="table table-condensed table-striped">
@@ -137,5 +137,11 @@ export default {
 <style lang="css" scoped>
     .v-btn, a{
         text-decoration: none !important;
+    }
+    .v-card.scroll v-card__text{
+        overflow-x: scroll !important;
+    }
+    table tbody tr td{
+        white-space: nowrap !important;
     }
 </style>

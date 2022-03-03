@@ -33,6 +33,6 @@ class PasswordHasBeenReset extends Mailable
     public function build()
     {
         return $this->markdown('emails.password_was_reset')
-                    ->from('steve@homas.com');
+                    ->from('steve@hozulinks.com');
     }
 }

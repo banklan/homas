@@ -4,7 +4,7 @@
             <v-app-bar-nav-icon @click="sidebarmenu = !sidebarmenu" class="primary--text"></v-app-bar-nav-icon>
             <v-toolbar-title class="primary--text">
                 <router-link to="/" style="cursor:pointer" exact>
-                    <span class="font-weight-bold headline primary--text">Homas</span>
+                    <span class="font-weight-bold headline primary--text">Hozulinks</span>
                 </router-link>
             </v-toolbar-title>
             <v-spacer></v-spacer>

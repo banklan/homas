@@ -2,7 +2,7 @@
     <v-container>
         <v-row justify="center" class="mt-5">
             <v-col cols="12" md="8">
-                <v-progress-circular v-if="loading" indeterminate color="primary" :width="7" :size="70" justify="center" class="mx-auto"></v-progress-circular>
+                <v-progress-circular v-if="loading" indeterminate color="primary" :width="4" :size="40" justify="center" class="mx-auto"></v-progress-circular>
                 <template v-else>
                     <v-card elevation="4" light min-height="200" clsass="mx-auto">
                         <v-card-title class="primary white--text subtitle-1 justify-center">Update My Testimonial</v-card-title>

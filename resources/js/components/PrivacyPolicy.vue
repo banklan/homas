@@ -7,11 +7,11 @@
                     <v-card-text>
                         <div class="policy">
                             <div class="title mb-3">1. About this Notice</div>
-                            <p>This Privacy and Cookie Notice provides information on how Homas collects and processes your personal data when you visit our website or mobile applications.</p>
+                            <p>This Privacy and Cookie Notice provides information on how Hozulinks collects and processes your personal data when you visit our website or mobile applications.</p>
                         </div>
                         <div class="policy">
                             <div class="title mb-3">2. The Data We Collect About You?</div>
-                            <p>We collect your personal data in order to provide and continually improve our services. We may collect, use, store and transfer the following different kinds of personal data about you for marketing and personal data optimization purposes. Homas also uses Google Digital Marketing to propose targeted offers.
+                            <p>We collect your personal data in order to provide and continually improve our services. We may collect, use, store and transfer the following different kinds of personal data about you for marketing and personal data optimization purposes. Hozulinks also uses Google Digital Marketing to propose targeted offers.
                                To find out more:
                                <ol>
                                    <li>Information you provide to us: We receive and store the information you provide to us including your identity data, contact data, delivery address and financial data.</li>

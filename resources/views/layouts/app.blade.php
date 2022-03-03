@@ -40,7 +40,12 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <!-- <script src="https://checkout.flutterwave.com/v3.js"></script> -->
 
-
+    <!-- set a global variable here -->
+    <script>
+        window.Laravel = {!! json_encode([
+            'app_name' => 'hozulinks.com'
+        ]) !!};
+    </script>
 
 </head>
 <body class="body_wrap">

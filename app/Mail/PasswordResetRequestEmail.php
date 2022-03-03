@@ -36,6 +36,6 @@ class PasswordResetRequestEmail extends Mailable
     public function build()
     {
         return $this->markdown('emails.password_reset_request')
-                    ->from('steve@homas.com');
+                    ->from('steve@hozulinks.com');
     }
 }

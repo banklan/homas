@@ -32,7 +32,7 @@
                     </v-btn>
                 </div>
                 <div class="copy">
-                    <span class="primary--text">&copy; {{ new Date().getFullYear() }} homas.com </span>&nbsp;&nbsp; All Rights Reserved
+                    <span class="primary--text">&copy; {{ new Date().getFullYear() }} hozulinks.com </span>&nbsp;&nbsp; All Rights Reserved
                 </div>
             </div>
         </div>

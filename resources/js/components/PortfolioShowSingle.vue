@@ -8,7 +8,7 @@
                 <div class="title flex-start">{{ portfolio && portfolio.title }}</div>
             </v-col>
         </v-row>
-        <v-progress-circular v-if="isLoading" indeterminate color="primary" :width="7" :size="70" justify="center" class="mx-auto"></v-progress-circular>
+        <v-progress-circular v-if="isLoading" indeterminate color="primary" :width="4" :size="70" justify="center" class="mx-auto"></v-progress-circular>
         <template v-else>
             <template v-if="portfolio">
                 <v-row justify="start" class="mt-4">

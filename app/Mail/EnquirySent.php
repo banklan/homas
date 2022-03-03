@@ -32,6 +32,6 @@ class EnquirySent extends Mailable
     public function build()
     {
         return $this->markdown('emails.enquiry_sent')
-                    ->from('steve@homas.com');
+                    ->from('steve@hozulinks.com');
     }
 }

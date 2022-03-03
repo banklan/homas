@@ -7,7 +7,7 @@
         </v-row>
         <v-row justify="start" class="mt-5" :class="$vuetify.breakpoint.smAndDown ? 'ml-n3 mr-n5': ''">
             <v-col cols="12" md="5">
-                <v-progress-circular indeterminate color="primary" :width="7" :size="70" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
+                <v-progress-circular indeterminate color="primary" :width="4" :size="40" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
                 <v-card v-else light raised outlined elevation="4" min-height="400" class="scroll">
                     <v-img v-if="user.picture" :src="`/images/profiles/admins/${user.picture}`" aspect-ratio="1" height="300" transition="scale-transition"></v-img>
                     <v-img v-else src="/images/shared/user7.jpg" aspect-ratio="1" height="300" transition="scale-transition"></v-img>
@@ -61,7 +61,7 @@
                 </v-card>
             </v-col>
             <v-col cols="12" md="5">
-                <v-progress-circular indeterminate color="primary" :width="7" :size="70" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
+                <v-progress-circular indeterminate color="primary" :width="4" :size="40" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
                 <v-card v-else light raised outlined elevation="4" min-height="150">
                     <v-card-title class="admin white--text justify-center">Reset Password</v-card-title>
                     <v-card-text class="mt-4">

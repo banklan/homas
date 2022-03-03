@@ -10,7 +10,7 @@
         </v-row>
         <v-row class="mt-5 mr-5">
             <v-col cols="12">
-                <v-progress-circular indeterminate color="primary" :width="7" :size="70" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
+                <v-progress-circular indeterminate color="primary" :width="4" :size="40" v-if="isLoading" justify="center" class="mx-auto"></v-progress-circular>
                 <v-card v-else light raised elevation="8" min-height="100" class="scroll">
                     <template v-if="services.length > 0">
                         <v-card-title class="subtitle-1 admin white--text justify-center"> Result for {{ $route.query.q }} <v-chip color="primary lighten-2" class="ml-1" v-if="services.length > 0">{{ services.length }}</v-chip></v-card-title>

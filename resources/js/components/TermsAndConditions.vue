@@ -6,7 +6,7 @@
                     <v-card shaped light min-height="600" class="mt-6 mx-auto py-5 px-2">
                         <v-card-title class="headline mb-3 justify-center font-weight-bold">Terms and Conditions Of Use Of This Website</v-card-title>
                         <v-card-text class="body-1">
-                            <p>Welcome to homas.com.ng. This website is owned by Vidspectra Resources, a company incorporated with the Corporate Affairs Commission, Abuja, according to the Companies and Allied Matters Act.<p/>
+                            <p>Welcome to hozulinks.com. This website is owned by Vidspectra Resources, a company incorporated with the Corporate Affairs Commission, Abuja, according to the Companies and Allied Matters Act.<p/>
                             <p>These general terms and conditions shall apply to service providers who enlist their services on our site and clients who engage their services and shall govern your use of the website and related services.
                             By using our website, you accept these general terms and conditions in full. If you disagree with these general terms and conditions or any part of these general terms and conditions, kindly navigate away from the website or <router-link to="/contact-us">contact us</router-link>.</p>
                             <br/>
@@ -23,7 +23,7 @@
                                     2.	Our Website Content
                                 </div>
                                 <div class="content pl-5">
-                                    All information contained in our website including the business names, texts, reviews, images,  opinions, adverts, etc. are the intellectual property of homas.com and should in no way be copied, modified, broadcasted, re-written, distributed, re-distributed, published or altered in any form without prior written and signed agreement with VidSpectra.
+                                    All information contained in our website including the business names, texts, reviews, images,  opinions, adverts, etc. are the intellectual property of hozulinks.com and should in no way be copied, modified, broadcasted, re-written, distributed, re-distributed, published or altered in any form without prior written and signed agreement with VidSpectra.
                                 </div>
                             </div>
                             <div class="term">
@@ -77,7 +77,7 @@
                                     <p>8. You acknowledge that all users of the website are solely responsible for interactions with other users and you shall exercise caution and good judgment in your communication with users. You shall not send them personal information including credit card details or other personal account details.</p>
                                     <p>9. We may periodically review your content and we reserve the right to remove any content in our discretion for any reason whatsoever.</p>
                                     <p>10. If you learn of any unlawful material or activity on our website, or any material or activity that breaches these general terms and conditions, you may inform us by contacting us as provided at section 12.</p>
-                                    <p>11. VidSpectra and homas.com would like to state here that users who publish their services and portfolios do so at their own risk and should therefore be mindful of the information and personal details that they disclose on our site. Whatever information you publish, is at your own risk. You will not be protected by homas.com or VidSpectra. By publishing such contents, you are under specific and general warranty that such content is original or that where it is not, you have the permission of the creator to post such contents.</p>
+                                    <p>11. VidSpectra and hozulinks.com would like to state here that users who publish their services and portfolios do so at their own risk and should therefore be mindful of the information and personal details that they disclose on our site. Whatever information you publish, is at your own risk. You will not be protected by hozulinks.com or VidSpectra. By publishing such contents, you are under specific and general warranty that such content is original or that where it is not, you have the permission of the creator to post such contents.</p>
                                 </div>
                             </div>
                             <div class="term">
@@ -86,7 +86,7 @@
                                 </div>
                                 <div class="content pl-5">
                                     <p>
-                                        homas.com.ng is an interactive site. Our users will be posting links pointing to their websites, resources, advertisements, sponsorships and affiliates. By voluntarily  choosing to access any of these links, you will be leaving the confines of homas.com and thus we will not be responsible for the content, advertising, products or services available from them, or for any dealings or disputes that you may have in relation to those sites. homas.ng is not liable for any loss or damage which may be suffered as a result of the use of such links and third party sites. It will be in your best interest to carefully read and understand the Terms & Conditions and Privacy Policy of any site you choose to access.
+                                        hozulinks.com is an interactive site. Our users will be posting links pointing to their websites, resources, advertisements, sponsorships and affiliates. By voluntarily  choosing to access any of these links, you will be leaving the confines of hozulinks.com and thus we will not be responsible for the content, advertising, products or services available from them, or for any dealings or disputes that you may have in relation to those sites. hozulinks.com is not liable for any loss or damage which may be suffered as a result of the use of such links and third party sites. It will be in your best interest to carefully read and understand the Terms & Conditions and Privacy Policy of any site you choose to access.
                                         We, however, reserve the right to remove a link at any time without any notification.
                                     </p>
                                 </div>
@@ -96,19 +96,19 @@
                                     6.	User Code Of Conduct
                                 </div>
                                 <div class="content pl-5">
-                                    <p>homas.com and VidSpectra are committed to responsible and positive interactions amongst our users and seek to ensure that users are not subjected to bullying or other negative conduct or behavior by other users. In order to guarantee these, we have included our user code of conduct. By using our site you will be agreeing to our code of conduct section.</p>
-                                    <p>homas.com and VidSpectra reserves the right to remove any content shared by a user with or without prior notice to user if we believe that it is likely to cause an offense to other users or the homas brand.</p>
+                                    <p>hozulinks.com and VidSpectra are committed to responsible and positive interactions amongst our users and seek to ensure that users are not subjected to bullying or other negative conduct or behavior by other users. In order to guarantee these, we have included our user code of conduct. By using our site you will be agreeing to our code of conduct section.</p>
+                                    <p>hozulinks.com and VidSpectra reserves the right to remove any content shared by a user with or without prior notice to user if we believe that it is likely to cause an offense to other users or the hozulinks brand.</p>
                                     <p>Maintaining the integrity and reputation of our site is important to us. Thus, we will keep an eye on our users interaction but we are not obligated to restrict or police it. We ask that you show respect to other's intellectual property and personal property as you use our site.</p>
                                     <p>You pledge:
                                         <ol>
                                             <li>To treat other users with respect and conduct yourself appropriately.</li>
                                             <li>Never to post contents which in our view are likely to impair users enjoyment of the site.</li>
-                                            <li>Never to do or permit anything to be done that may violate, destroy or interfere with any of the copyright, moral rights, trade mark rights or other proprietary or intellectual property rights of homas.ng.</li>
+                                            <li>Never to do or permit anything to be done that may violate, destroy or interfere with any of the copyright, moral rights, trade mark rights or other proprietary or intellectual property rights of hozulinks.ng.</li>
                                             <li>That you will only upload original work created by you.</li>
                                             <li>Never to share part or any information that is private and confidential to others.</li>
-                                            <li>Never to perpetrate any action that will or might affect, damage, or disrupt the functionality of homas.com’s website(s), software and hardware, refraining from accessing any part of the site, or taking any confidential information from the site without authorization from homas.com and VidSpectra Resources.</li>
+                                            <li>Never to perpetrate any action that will or might affect, damage, or disrupt the functionality of hozulinkz.com’s website(s), software and hardware, refraining from accessing any part of the site, or taking any confidential information from the site without authorization from hozulinkz.com and VidSpectra Resources.</li>
                                             <li>Never to steal or obtain personal information, confidential information or password from any other individual. And never to post any information capable of identifying an individual personally, whether financial or otherwise.</li>
-                                            <li>Never to impersonate any person in any form or lie (forge) about your personal information while using homas.com.</li>
+                                            <li>Never to impersonate any person in any form or lie (forge) about your personal information while using hozulinkz.com.</li>
                                             <li>To accord utmost respect to any information obtained from our site and use it only in line with our written terms and conditions and in accordance with this User Code of Conduct.</li>
                                             <li>Not to advertise, promote or endorse any goods or services and not use our site to send any chain letters, junk mail, ‘spamming’ material or any other form of bulk communication.</li>
                                         </ol>
@@ -181,7 +181,7 @@
                                     <p>6. We may suspend or cancel your account, and/or edit your account details, at any time in our sole discretion and without notice or explanation, providing that if we cancel any products or services you have paid for but not received, and you have not breached these general terms and conditions, we will refund you in respect of the same.</p>
                                     <p>7. You may cancel your account on our website by contacting us as provided in section 13.</p>
                                     <p>8. If we permit the registration of an account on our website, it will remain open indefinitely, subject to these general terms and conditions.</p>
-                                    <p>9. If you breach these general terms and conditions, or if we reasonably suspect that you have breached these general terms and conditions or any homas codes, policies or guidelines in any way we may:
+                                    <p>9. If you breach these general terms and conditions, or if we reasonably suspect that you have breached these general terms and conditions or any hozulinkz codes, policies or guidelines in any way we may:
                                         <ol>
                                             <li>temporarily suspend your access to our website;</li>
                                             <li>permanently prohibit you from accessing our website;</li>
@@ -205,7 +205,7 @@
                                             <li>all the copyright and other intellectual property rights in our website and the material on our website are reserved.</li>
                                         </ol>
                                     </p>
-                                    <p>2. homas’s logos and our other registered and unregistered trademarks are trademarks belonging to us; we give no permission for the use of these trademarks, and such use may constitute an infringement of our rights.</p>
+                                    <p>2. hozulinkz’s logos and our other registered and unregistered trademarks are trademarks belonging to us; we give no permission for the use of these trademarks, and such use may constitute an infringement of our rights.</p>
                                     <p>3. The third party registered and unregistered trademarks or service marks on our website are the property of their respective owners and we do not endorse and are not affiliated with any of the holders of any such rights and as such we cannot grant any license to exercise such rights</p>
                                 </div>
                             </div>
@@ -223,7 +223,7 @@
                                     12.	. Entire Agreement
                                 </div>
                                 <div class="content pl-5">
-                                    <p>These general terms and conditions and the homas codes, policies and guidelines (and in respect of the service providers’s terms and conditions) shall constitute the entire agreement between you and us in relation to your use of our website and shall supersede all previous agreements between you and us in relation to your use of our website.</p>
+                                    <p>These general terms and conditions and the hozulinkz codes, policies and guidelines (and in respect of the service providers’s terms and conditions) shall constitute the entire agreement between you and us in relation to your use of our website and shall supersede all previous agreements between you and us in relation to your use of our website.</p>
                                 </div>
                             </div>
                             <div class="term">
@@ -244,10 +244,10 @@
                             </div>
                             <div class="disclaimer">
                                 <div class="headline font-weight-bold">Disclaimer</div>
-                                <p>All the services rendered on homas.ng and its third party links are available without any warranty of any kind. By using this site, you agree and acknowledge that Vidspectra Resources and homas.com are not responsible or liable for any third party or external service.</p>
-                                <p>You also agree that homas.com is not responsible for the quality, content, services and advertising from third parties. </p>
-                                <p>You also agree that homas.com is not liable directly or indirectly for whatsoever loss and damage that may be alleged or claimed in connection with the use of any content from this site. We will always improve the website and its services and there may be inaccuracies and errors and we are not liable for them. </p>
-                                <p>Our site contains search bars where you can find information. However, we are not liable for the result of your search. You use this site at your own risk. Our site is user friendly and users can publish their services, portfolios and reviews on our site. While we keep an eye on contents and make sure that you are protected while using our site, homas.com is not responsible for any offense or inconveniences user contents may cause. homas and Vidspectra are not liable for any damage your devices, gadgets and equipments may develop while using this site. The user assumes the responsibility of the repair, maintenance and correction of their devices, gadgets and equipments. The use of this site is at your own risk.</p>
+                                <p>All the services rendered on hozulinkz.ng and its third party links are available without any warranty of any kind. By using this site, you agree and acknowledge that Vidspectra Resources and hozulinkz.com are not responsible or liable for any third party or external service.</p>
+                                <p>You also agree that hozulinkz.com is not responsible for the quality, content, services and advertising from third parties. </p>
+                                <p>You also agree that hozulinkz.com is not liable directly or indirectly for whatsoever loss and damage that may be alleged or claimed in connection with the use of any content from this site. We will always improve the website and its services and there may be inaccuracies and errors and we are not liable for them. </p>
+                                <p>Our site contains search bars where you can find information. However, we are not liable for the result of your search. You use this site at your own risk. Our site is user friendly and users can publish their services, portfolios and reviews on our site. While we keep an eye on contents and make sure that you are protected while using our site, hozulinkz.com is not responsible for any offense or inconveniences user contents may cause. hozulinkz and Vidspectra are not liable for any damage your devices, gadgets and equipments may develop while using this site. The user assumes the responsibility of the repair, maintenance and correction of their devices, gadgets and equipments. The use of this site is at your own risk.</p>
                             </div>
                         </v-card-text>
                     </v-card>

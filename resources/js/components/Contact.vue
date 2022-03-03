@@ -52,7 +52,7 @@
                     </v-card>
                     <template v-else>
                         <v-alert type="success" border="left" class="mt-10 mb-10">
-                            Thank you for sending enquiry to homas.com. We shall reply you via your email address within the next 24 hours.
+                            Thank you for sending enquiry to hozulinks.com. We shall reply you via your email address within the next 24 hours.
                         </v-alert>
                     </template>
                 </v-col>
@@ -70,15 +70,15 @@ export default {
     data(){
         return{
             contacts: [
-                {icon: 'mdi-email', text: 'info@homas.com'},
+                {icon: 'mdi-email', text: 'hozulinks@gmail.com'},
                 {icon: 'mdi-phone', text: '08023456789'},
                 // {icon: 'navigation', text: 'Some Address Here'},
                 // {icon: 'mdi-pin', text: 'Some Address Here'},
             ],
             socials: [
-                {icon: 'mdi-facebook', color: '#1877f2', link: 'https://www.facebook.com/homas'},
-                {icon: 'mdi-twitter', color: '#1da1f2', link: 'https://www.twitter.com/homas'},
-                {icon: 'mdi-instagram', color: '#c32aa3', link: 'https://www.instagram.com/homas'},
+                {icon: 'mdi-facebook', color: '#1877f2', link: 'https://www.facebook.com/hozulinks'},
+                {icon: 'mdi-twitter', color: '#1da1f2', link: 'https://www.twitter.com/hozulinkz'},
+                {icon: 'mdi-instagram', color: '#c32aa3', link: 'https://www.instagram.com/hozulinks'},
             ],
             loading: false,
             enquiry: {

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <v-progress-circular v-if="isLoading" indeterminate color="primary" :width="7" :size="70" justify="center" class="mx-auto"></v-progress-circular>
+        <v-progress-circular v-if="isLoading" indeterminate color="primary" :width="4" :size="40" justify="center" class="mx-auto"></v-progress-circular>
         <template v-else>
             <template v-if="files.length > 0">
                 <v-carousel height="400">

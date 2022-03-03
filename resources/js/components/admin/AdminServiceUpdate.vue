@@ -6,7 +6,7 @@
             </v-col>
         </v-row>
         <v-row justify="start" class="mt-5">
-            <v-progress-circular v-if="isLoading" indeterminate color="accent" :width="7" :size="70" justify="center" class="mx-auto"></v-progress-circular>
+            <v-progress-circular v-if="isLoading" indeterminate color="accent" :width="4" :size="40" justify="center" class="mx-auto"></v-progress-circular>
             <template v-else>
                 <v-col cols="12" md="10">
                     <template v-if="edit">

@@ -1,7 +1,7 @@
 <template>
     <div class="welcome_banner">
         <div class="banner_caption text-center">
-            <h1 class="white--text mb-3 animate__animated animate__bounceInDown animate__slower">Welcome to Homas...</h1>
+            <h1 class="white--text mb-3 animate__animated animate__bounceInDown animate__slower">Welcome to Hozulinks...</h1>
             <h3 class="white--text mt-3 pb-4 animate__animated animate__bounceInUp animate__slower">Connecting you to your neighbourhood artisans and service providers.</h3>
         </div>
         <div class="loc d-flex mt-8" :style="$vuetify.breakpoint.smAndDown ? 'width:80%' : 'width: 60%'">

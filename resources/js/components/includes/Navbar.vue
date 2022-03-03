@@ -7,7 +7,7 @@
                 </span>
                 <v-toolbar-title class="ml-5 my-2 white--text">
                     <router-link to="/" style="cursor:pointer" exact>
-                        <span class="font-weight-bold headline primary--text app_name">Homas</span>
+                        <span class="font-weight-bold headline primary--text app_name">Hozulinks</span>
                     </router-link>
                 </v-toolbar-title>
                 <v-spacer></v-spacer>
@@ -33,7 +33,7 @@
             <v-navigation-drawer absolute v-model="navdrawer" color="primary white--text" class="hidden-md-and-up" height="100%">
                 <v-toolbar-title class="headline ml-4 mt-3 pb-4">
                     <router-link to="/" style="cursor: pointer" exact>
-                        <span class="white--text">Homas</span>
+                        <span class="white--text">Hozulinks</span>
                     </router-link>
                 </v-toolbar-title>
                 <v-divider></v-divider>

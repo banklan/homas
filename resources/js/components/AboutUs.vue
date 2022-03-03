@@ -9,11 +9,11 @@
                         <v-card-text>
                             <div class="subtitle-1 mb-3 primary--text">Our Mission</div>
                             <div class="mission mb-6">To help provide the online platform that gives start-ups and mid-size service providers the needed visibility and exposures to thrive their services.</div>
-                            <p>Welcome to homas.com, an online resource dedicated to empowering small scale artisans, professionals, start-ups and medium-sized service providers to achieve success.</p>
+                            <p>Welcome to <strong>{{ app_name }}</strong>, an online resource dedicated to empowering small scale artisans, professionals, start-ups and medium-sized service providers to achieve success.</p>
                             <p>We are a brand borne out of a pressing desire to bridge the gap between the tools and resources the big organizations use as an advantage over the small-scale start-ups and medium-sized companies. Global online presence. </p>
                             <p>In an era where financial, economic and social factors (among others) work against start-ups, providing a platform where they can showcase their services and publish their portfolios for free will go a long way in addressing some of the gaps and providing a leverage.
                             </p>
-                            <p>At Homas, we help you re-discover your services and provide a platform to launch them to the consciousness of your local market and give you global attention.</p>
+                            <p>At <strong>{{ app_name }}</strong>, we help you re-discover your services and provide a platform to launch them to the consciousness of your local market and give you global attention.</p>
                             <p>Our website, an online directory boasts of thousands of unique visitors every month who search for artisans, SME's and service providers within their locations and beyond, based on categories and locations.
                                 Service providers can take advantage of this, to customize their service pages and express themselves, just the way it suits their businesses and services. Our feedback tools like reviews and ratings can also help them
                                 gain key knowledge vital to help grow their businesses and improve their services.</p>
@@ -30,6 +30,16 @@
         </v-container>
     </div>
 </template>
+
+<script>
+export default {
+    data() {
+        return {
+            app_name: window.Laravel.app_name
+        }
+    },
+}
+</script>
 
 <style lang="scss" scoped>
     .about{
@@ -50,13 +60,13 @@
             color: rgba(0,0,0,.88) !important;
 
             .mission{
-                font-size: 1.2rem !important;
+                font-size: 1.1rem !important;
                 line-height: 1.7 !important;
                 font-weight: 600 !important;
             }
             p{
-                font-size: 18px !important;
-                line-height: 1.80;
+                font-size: 17px !important;
+                line-height: 1.7;
                 font-family: 'Source Sans Pro', sans-serif;
             }
         }

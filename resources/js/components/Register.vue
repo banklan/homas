@@ -14,11 +14,10 @@
                     <v-card light raised elevation="12" min-height="350" class="mx-auto my-10">
                         <v-card-title class="primary white--text justify-center headline font-weight-regular">Register User</v-card-title>
                         <v-card-text class="body-1 mt-4 px-7">
-                            <v-text-field label="First Name" v-model="user.first_name" required placeholder="First Name/Given name" v-validate="'required|min:2|max:30'" :error-messages="errors.collect('first_name')" name="first_name"></v-text-field>
-                            <v-text-field label="Last Name" v-model="user.last_name" required placeholder="Surname/Family Name" v-validate="'required|min:2|max:30'" :error-messages="errors.collect('last_name')" name="last_name"></v-text-field>
+                            <v-text-field label="First Name" v-model="user.first_name" required placeholder="First Name/Given name" v-validate="'required|min:2|max:30'" :error-messages="errors.collect('first_name')" name="first_name" data-vv-as="first name"></v-text-field>
+                            <v-text-field label="Last Name" v-model="user.last_name" required placeholder="Surname/Family Name" v-validate="'required|min:2|max:30'" :error-messages="errors.collect('last_name')" name="last_name" data-vv-as="last name"></v-text-field>
                             <v-text-field label="Email" type="text" v-model="user.email" required v-validate="'required|email'" :error-messages="errors.collect('email')" name="email"></v-text-field>
                             <v-text-field label="Phone No" type="text" v-model="user.phone" required v-validate="'required|numeric|max:16'" :error-messages="errors.collect('phone')" name="phone"></v-text-field>
-                            <!-- <v-divider></v-divider> -->
                             <div class="my-3 subtitle-2 justify-center info lighten-3 pa-3 font-weight-bold">Create a password of between 5 & 20 alphanumeric characters.</div>
                             <v-text-field type="password" label="Password" v-model="user.password" required ref="pswd" v-validate="'required|min:5|max:20'" :error-messages="errors.collect('password')" name="password"></v-text-field>
                             <v-text-field type="password" label="Confirm Password" v-model="user.password_confirmation" required v-validate="'required|confirmed:pswd'" :error-messages="errors.collect('password_confirmation')" name="password_confirmation" data-vv-as="password confirmation"></v-text-field>
@@ -44,12 +43,12 @@
             <template v-else>
                 <v-col cols="12" md="8">
                     <v-alert type="success" border="left" class="mt-10 pa-4">
-                        Thank you for registering on homas.com. We have sent a mail to your email address <strong>{{ user.email }}</strong> for email verification.
+                        Thank you for registering on hozulinks.com. We have sent a mail to your email address <strong>{{ user.email }}</strong> for email verification.
                     </v-alert>
                 </v-col>
             </template>
         </v-row>
-        <v-snackbar v-model="agreeToTerms" :timeout="6000" top color="green darken-1 white--text">
+        <v-snackbar v-model="agreeToTerms" :timeout="6000" top color="info darken-1 white--text">
             Kindly read our <router-link to="/terms-conditions">terms & conditions</router-link> and agree before registering.
             <v-btn text color="white--text" @click="agreeToTerms = false">Close</v-btn>
         </v-snackbar>

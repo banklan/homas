@@ -30,6 +30,6 @@ class WelcomeToHomas extends Mailable
     public function build()
     {
         return $this->markdown('emails.welcome_mail')
-                    ->from('steve@homas.com');
+                    ->from('steve@hozulinks.com');
     }
 }

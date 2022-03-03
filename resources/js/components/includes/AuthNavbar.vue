@@ -6,12 +6,9 @@
             </span>
             <v-toolbar-title class="ml-5 my-2 white--text">
                 <router-link to="/" style="cursor:pointer" exact>
-                    <span class="font-weight-bold headline primary--text">Homas</span>
+                    <span class="font-weight-bold headline primary--text">Hozulinks</span>
                 </router-link>
             </v-toolbar-title>
-            <v-toolbar-items>
-                hello alex
-            </v-toolbar-items>
             <v-spacer></v-spacer>
             <span class="primary--text mt-1 mr-5"> {{ authUser.fullname }}</span>
             <v-toolbar-items class="hidden-sm-and-down align-center">
@@ -26,7 +23,7 @@
         <v-navigation-drawer absolute v-model="navdrawer" color="primary white--text" class="hidden-md-and-up" disable-resize-watcher>
             <v-toolbar-title class="white--text headline font-weight-bold ml-4 my-5">
                 <router-link to="/" style="cursor: pointer" exact>
-                    <span class="white--text">Homas</span>
+                    <span class="white--text">Hozulinks</span>
                 </router-link>
             </v-toolbar-title>
             <v-divider></v-divider>
