@@ -258,9 +258,6 @@
 </template>
 
 <style lang="scss" scoped>
-.terms{
-    // background: rgba(243, 243, 243, 0.5) !important;
-}
     .v-card__text{
         line-height: 1.75 !important;
         color: rgba(0, 0, 0, .88) !important;

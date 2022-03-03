@@ -21,7 +21,6 @@
                                 <v-btn text color="primary darken-2" :to="{name: 'CreateServiceAddImage'}">Change Picture</v-btn>
                                 <v-btn icon color="red darken-2" @click="confirmDel = true"><v-icon left>delete_forever</v-icon></v-btn>
                             </v-card-actions>
-                            </v-card-actions>
                             <v-card-actions class="justify-space-around pb-8 mx-4" v-else>
                                 <v-btn icon color="primary"><v-icon left>visibility</v-icon> {{ authUser.service.view_count }}</v-btn>
                                 <span class="primary--text"><v-rating v-model="authUser.service.ratings" readonly dense small color="primary"></v-rating></span>
