@@ -54,7 +54,7 @@
                                     <v-btn text dark color="primary" to="/profile">My Profile</v-btn>
                                 </div>
                                 <hr class="mt-3">
-                                <div class="mt-2">
+                                <div class="mt-2 ml-n2">
                                     <v-btn text dark color="primary" to="/my-testimonial">My Testimonial</v-btn>
                                 </div>
                             </v-card-text>

@@ -9,12 +9,13 @@
                             <v-card-title class="primary white--text justify-center subtitle-1"> My Service</v-card-title>
                             <!-- <v-img :src="serviceImage" width="100%" height="380" transition="scale-transition"></v-img> -->
                             <v-img :src="serviceImg" width="100%" height="380" transition="scale-transition"></v-img>
+                            <v-img src="`https://hozulinks.s3.amazonaws.com/services/${authService.image}`" width="100%" height="380" transition="scale-transition"></v-img>
                             <v-card-text class="body_text mt-5 px-8 pb-5">
                                 <div class="title mb-2">{{ authService.title }}</div>
                                 <div class="body_text">{{ authService.description }}</div>
                             </v-card-text>
                             <v-card-actions class="justify-space-around pb-8 px-4" v-if="$vuetify.breakpoint.smAndDown">
-                                <v-btn icon color="primary"><v-icon left>visibility</v-icon> {{ authUser.service.view_count }}</v-btn>
+                                <v-btn icon color="primary"><v-icon left>visibility</v-icon> {{ authUser.service.views }}</v-btn>
                                 <span class="primary--text"><v-rating v-model="authUser.service.ratings" readonly dense small color="primary"></v-rating></span>
                                 <v-btn icon color="primary" to="/my-service/edit"><v-icon left>edit</v-icon></v-btn>
                             </v-card-actions>

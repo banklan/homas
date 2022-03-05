@@ -4,11 +4,12 @@
         <v-row v-else class="mt-4" justify="center">
             <v-col cols="12" md="5">
                 <v-card light raised outlined elevation="4" min-height="400" class="scroll" width="100%">
-                    <v-card-title class="primary white--text subtitle-1 justify-center"><span v-if="authUser">{{ authUser.first_name }}'s</span> Profile</v-card-title>
+                    <v-card-title class="primary white--text subtitle-1 justify-center"><span v-if="authUser">{{ authUser.first_name }}'s</span>&nbsp; Profile</v-card-title>
                     <template v-if="!changePic">
                         <!-- <v-img v-if="authUser.picture" :src="`/images/profiles/users/${ authUser.picture }`" width="100%" height="350" transition="scale-transition"></v-img>
                         <v-img v-else src="/images/shared/user6.jpg" width="100%" height="350" transition="scale-transition"></v-img> -->
-                        <v-img v-if="profileImg" :src="profileImg" width="100%" height="350" transition="scale-transition"></v-img>
+                        <!-- <v-img v-if="profileImg" :src="profileImg" width="100%" height="350" transition="scale-transition"></v-img> -->
+                        <v-img v-if="authUser.picture" src="`https://hozulinks.s3.amazonaws.com/profiles/${authUser.picture}`" width="100%" height="350" transition="scale-transition"></v-img>
                         <v-img v-else src="/images/shared/user6.jpg" width="100%" height="350" transition="scale-transition"></v-img>
                         <v-card-actions class="justify-center">
                             <v-btn text color="blue darken-3" class="mt-2 mb-n4" @click="changePic = true">Change Picture</v-btn>

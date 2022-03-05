@@ -123,7 +123,7 @@ class UserProfileController extends Controller
     public function getMyServiceImgFromS3(){
         $auth_service = auth('api')->user()->service;
         $serv_img = $auth_service->image;
-        $path = '/services/' .$serv_img;
+        $path = '/services/'.$serv_img;
         $imgUrl = Storage::disk('s3')->url($path);
 
         return response()->json($imgUrl, 200);
