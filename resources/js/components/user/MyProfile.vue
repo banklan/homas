@@ -6,7 +6,9 @@
                 <v-card light raised outlined elevation="4" min-height="400" class="scroll" width="100%">
                     <v-card-title class="primary white--text subtitle-1 justify-center">Profile</v-card-title>
                     <template v-if="!changePic">
-                        <v-img v-if="authUser.picture" :src="`/images/profiles/users/${ authUser.picture }`" width="100%" height="350" transition="scale-transition"></v-img>
+                        <!-- <v-img v-if="authUser.picture" :src="`/images/profiles/users/${ authUser.picture }`" width="100%" height="350" transition="scale-transition"></v-img>
+                        <v-img v-else src="/images/shared/user6.jpg" width="100%" height="350" transition="scale-transition"></v-img> -->
+                        <v-img v-if="profileImg" :src="profileImg" width="100%" height="350" transition="scale-transition"></v-img>
                         <v-img v-else src="/images/shared/user6.jpg" width="100%" height="350" transition="scale-transition"></v-img>
                         <v-card-actions class="justify-center">
                             <v-btn text color="blue darken-3" class="mt-2 mb-n4" @click="changePic = true">Change Picture</v-btn>
@@ -146,7 +148,8 @@ export default {
             passwordChanged: false,
             passwordChangeFailed: false,
             isUpdatingPswd: false,
-            currentPswdError: false
+            currentPswdError: false,
+            profileImg: ''
         }
     },
     computed: {
@@ -224,12 +227,6 @@ export default {
                                 this.isUpdatingPswd = false
                                 this.passwordChanged = true
                                 this.openChangePswd = false
-                                // this.changePassword.current_pswd = ''
-                                // this.changePassword.new_pswd = ''
-                                // this.changePassword.confirm = ''
-                                // this.$validator.pause()
-                                // this.$validator.fields.items.forEach(field => field.reset())
-                                // this.$validator.errors.clear()
                                 this.clearPswdFields()
                                 this.newPswdChngErr = false
                                 this.newPswdErr = ''
@@ -275,6 +272,7 @@ export default {
                 .then((res) => {
                     this.isUpdating = false
                     this.changePic = false
+                    this.getS3Picture()
                     this.$store.commit('updatedAuthProfile', res.data)
                     this.removeImg()
                 }).catch(() => {
@@ -287,8 +285,17 @@ export default {
             this.image = null
             this.prvImg = false
             this.prvImgUrl = ''
+        },
+        getS3Picture(){
+            axios.get(this.api + `/auth/get_s3_profile_pic/${this.authUser.picture}`)
+            .then((res) => {
+                this.profileImg = res.data
+            })
         }
     },
+    created(){
+        this.getS3Picture()
+    }
 }
 </script>
 

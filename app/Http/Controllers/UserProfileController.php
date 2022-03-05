@@ -110,6 +110,16 @@ class UserProfileController extends Controller
         return response()->json($user, 201);
     }
 
+    public function getUserProfileFromS3($id){
+        $user = auth('api')->user();
+        $user_pic = $user->picture;
+
+        $filePath = '/profiles/' . $user_pic;
+        $imgUrl = Storage::disk('s3')->url($filePath);
+
+        return response()->json($imgUrl, 200);
+    }
+
     public function getMyServiceReviews(){
         $user = auth('api')->user()->id;
         $my_service = Service::where('user_id', $user)->first();
