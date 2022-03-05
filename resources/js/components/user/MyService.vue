@@ -8,8 +8,8 @@
                         <v-card light raised elevation="12" min-height="300" class="mx-auto">
                             <v-card-title class="primary white--text justify-center subtitle-1"> My Service</v-card-title>
                             <!-- <v-img :src="serviceImage" width="100%" height="380" transition="scale-transition"></v-img> -->
-                            <v-img :src="serviceImg" width="100%" height="380" transition="scale-transition" alt="short"></v-img>
-                            <v-img src="`https://hozulinks.s3.amazonaws.com/services/${authService.image}`" width="100%" height="380" transition="scale-transition" alt="full https"></v-img>
+                            <v-img v-if="serviceImg" :src="serviceImg" width="100%" height="380" transition="scale-transition" alt="service image"></v-img>
+                            <v-img v-else src="images/shared/no-image.png" width="100%" height="380" transition="scale-transition" alt="service image"></v-img>
                             <v-card-text class="body_text mt-5 px-8 pb-5">
                                 <div class="title mb-2">{{ authService.title }}</div>
                                 <div class="body_text">{{ authService.description }}</div>

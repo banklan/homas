@@ -55,6 +55,8 @@ Route::group(['middleware' => 'api'], function($router){
     Route::get('filter_services_by_cat/{id}', 'ServiceController@filterServicesByCat');
     Route::get('filter_services_by_loc/{id}', 'ServiceController@filterServicesByLoc');
     Route::get('filter_services/{cat}/{loc}', 'ServiceController@filterServices');
+    Route::get('get_service_img_from_s3/{id}', 'ServiceController@getServiceImgFromS3');
+    Route::get('get_service_author_img_from_s3/{id}', 'ServiceController@getServiceAuthorImgFromS3');
 });
 
 // auth user routes(protected)

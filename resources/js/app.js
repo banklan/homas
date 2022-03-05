@@ -131,6 +131,7 @@ Vue.component('sp-testimonials', require('./components/children/SpTestimonials.v
 // Vue.component('slider-test', require('./components/children/SliderTest.vue').default);
 Vue.component('similar-services', require('./components/children/SimilarServices.vue').default);
 Vue.component('loc-top-services', require('./components/children/LocTopServices.vue').default);
+Vue.component('service-card-front', require('./components/includes/ServiceCardFront.vue').default);
 
 // Vue.component('swipe', Swipe)
 // Vue.component('swipe-item', SwipeItem)

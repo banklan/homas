@@ -8,7 +8,8 @@
         <v-row wrap justify="space-around" class="my-3">
             <template v-if="services.length > 0">
                 <v-col cols="12" md="4" v-for="service in services" :key="service.id">
-                    <v-card light elevation="4" min-height="400" class="mt-5 mb-3" :to="{name: 'ServiceShow', params:{id: service.id, slug: service.slug}}">
+                    <service-card-front :service="service" />
+                    <!-- <v-card light elevation="4" min-height="400" class="mt-5 mb-3" :to="{name: 'ServiceShow', params:{id: service.id, slug: service.slug}}">
                         <v-img v-if="service.image" :src="`/images/services/${service.image}`" alt="Featured Images" aspect-ratio="1" height="250" transition="scale-transition"></v-img>
                         <v-img v-else src="/images/shared/no-image.png" alt="Featured Images" aspect-ratio="1" height="250" transition="scale-transition"></v-img>
                         <v-card-title class="subtitle-1 justify-center mt-2">{{ service.title | capFirstLetter}}</v-card-title>
@@ -20,7 +21,7 @@
                             </v-chip>
                             <v-rating v-model="service.ratings" readonly dense color="primary"></v-rating>
                         </v-card-actions>
-                    </v-card>
+                    </v-card> -->
                 </v-col>
             </template>
             <template v-else>

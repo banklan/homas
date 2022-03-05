@@ -14,7 +14,7 @@
                 <v-row justify="space-around" class="mt-3">
                     <v-col cols="12" md="7">
                         <v-card light raised elevation="12" min-height="350" class="mx-auto pb-5">
-                            <v-img v-if="service.image" :src="`/images/services/${service.image}`" width="100%" height="350" transition="scale-transition"></v-img>
+                            <v-img v-if="serviceImg" :src="serviceImg" width="100%" height="350" transition="scale-transition" alt="service image"></v-img>
                             <v-img v-else src="/images/no-image.png" width="100%" height="350" transition="scale-transition"></v-img>
                             <v-card-text class="mt-3 text-center">
                                 <v-row class="text-center" v-if="$vuetify.breakpoint.smAndDown">
@@ -256,7 +256,8 @@ export default {
                 {color: '#1da1f2', icon: 'mdi-twitter', text: 'Twitter'},
                 {color: '#c32aa3', icon: 'mdi-instagram', text: 'Instagram'},
             ],
-            locTopServices: []
+            locTopServices: [],
+            serviceImg: ''
         }
     },
     watch:{
@@ -298,8 +299,14 @@ export default {
             axios.get(this.api + `/get_service/${this.id}`).then((res) => {
                 this.isLoading = false
                 this.service = res.data
+                this.getServiceImgFromS3(this.id)
                 this.service.views = res.data.views ++
                 this.getLocTopServices(res.data.category_id, res.data.location_id)
+            })
+        },
+        getServiceImgFromS3(id){
+            axios.get(this.api + `/get_service_img_from_s3/${id}`).then((res) => {
+                this.serviceImg = res.data
             })
         },
         incrementCount(){

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
 use App\Service;
 use App\AdminNotification;
 use Illuminate\Http\Request;
@@ -163,6 +164,25 @@ class ServiceController extends Controller
 
         $service->delete();
         return response()->json(['message' => 'Service deleted'], 201);
+    }
+
+    public function getServiceImgFromS3($id){
+        $service = Service::findOrFail($id);
+        $img = $service->image;
+        $filePath = 'services/' . $img;
+        $imgUrl = Storage::disk('s3')->url($filePath);
+
+        return response()->json($imgUrl, 200);
+    }
+
+    public function getServiceAuthorImgFromS3($id){
+        $service = Service::findOrFail($id);
+        $user_id = $service->user_id;
+        $author = User::findOrFail($user_id);
+        $author_pic = $author->picture;
+        $filepath = 'profiles/' . $author_pic;
+        $picUrl = Storage::disk('s3')->url($filepath);
+        return response()->json($picUrl, 200);
     }
 
     public function getServicesByLocs($id){
