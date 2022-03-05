@@ -92,7 +92,7 @@ class UserProfileController extends Controller
 
             //save new file in folder
             //$file_loc = public_path('/images/profiles/users/'.$filename);
-            $file_loc = '/products/' . $filename;
+            $file_loc = '/profiles/' . $filename;
             if(in_array($ext, ['jpeg', 'jpg', 'png', 'gif', 'pdf'])){
                 $img = Image::make($file)->resize(420, 420, function($constraint){
                         $constraint->aspectRatio(); })->sharpen(2);
