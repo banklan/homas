@@ -31,13 +31,13 @@
                         </v-card>
                         <v-card v-if="authService && authService.highlight" light raised elevation="12" min-height="150" class="mt-8">
                             <v-card-title class="primary white--text justify-center subtitle-1">Achievements/Highlights</v-card-title>
-                            <v-card-text class="mt-5 px-5 pb-6">
+                            <v-card-text class="mt-5 px-5 pb-5">
                                 <div class="body_text">{{ authService.highlight }}</div>
                             </v-card-text>
                         </v-card>
                         <v-card v-if="authService && authService.keystrength" light raised elevation="12" min-height="150" class="mt-8">
                             <v-card-title class="primary white--text justify-center subtitle-1">Keystrength</v-card-title>
-                            <v-card-text class="mt-5 px-5 pb-6">
+                            <v-card-text class="mt-5 px-5 pb-5">
                                 <div class="body_text">{{ authService.keystrength }}</div>
                             </v-card-text>
                         </v-card>
@@ -76,7 +76,7 @@
                                     </template>
                                     <template v-else>
                                         <div class="mt-5">
-                                            This service has not been reviewed by any client.
+                                            Your service has not been reviewed by any client.
                                         </div>
                                     </template>
                                 </v-card-text>
@@ -85,7 +85,7 @@
                                 <v-card-title class="primary white--text justify-center subtitle-1">Service Review</v-card-title>
                                 <v-card-text class="body_text px-5 pb-6">
                                     <div class="mt-5">
-                                        This service has not been reviewed by any client.
+                                        Your service has not been reviewed by any client.
                                     </div>
                                 </v-card-text>
                             </template>
@@ -203,7 +203,7 @@
             <v-card min-height="150">
                 <v-card-title class="subtitle-1 justify-center primary white--text">Delete this service?</v-card-title>
                 <v-card-text class="justify-center mt-5 subtitle-2">
-                    If you proceed to delete, all the portfolio, reviews and other items linked to your service will also be deleted and irrecoverable.
+                    If you proceed to delete, your service, pictures, all the portfolio and reviews linked will also be deleted irrecoverably.
                 </v-card-text>
                 <v-card-actions class="pb-8 justify-center">
                     <v-btn text color="red darken--2" @click="confirmDel = false" width="40%">Cancel</v-btn>

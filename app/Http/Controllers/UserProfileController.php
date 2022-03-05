@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 
 class UserProfileController extends Controller
@@ -74,9 +75,11 @@ class UserProfileController extends Controller
         // check if picture exists for profile, then unlink
         $old_pic = $user->picture;
         if($old_pic){
-            $filePath = public_path('/images/profiles/users/'.$old_pic);
-            if(file_exists($filePath)){
-                unlink($filePath);
+            // $filePath = public_path('/images/profiles/users/'.$old_pic);
+            $oldpath = '/profiles/' . $old_pic;
+            if(file_exists($oldpath)){
+                // unlink($filePath);
+                Storage::disk('s3')->delete($oldpath);
             }
         }
 
@@ -88,12 +91,14 @@ class UserProfileController extends Controller
             $filename = substr(str_shuffle($pool), 0, 6).".".$ext;
 
             //save new file in folder
-            $file_loc = public_path('/images/profiles/users/'.$filename);
+            //$file_loc = public_path('/images/profiles/users/'.$filename);
+            $file_loc = '/products/' . $filename;
             if(in_array($ext, ['jpeg', 'jpg', 'png', 'gif', 'pdf'])){
-                $upload = Image::make($file)->resize(420, 420, function($constraint){
-                    $constraint->aspectRatio();
-                });
-                $upload->sharpen(2)->save($file_loc);
+                $img = Image::make($file)->resize(420, 420, function($constraint){
+                        $constraint->aspectRatio(); })->sharpen(2);
+                // $upload->sharpen(2)->save($file_loc);
+                $fixedImg = $img->stream();
+                Storage::disk('s3')->put($file_loc, $fixedImg->__toString());
             }
         }
 

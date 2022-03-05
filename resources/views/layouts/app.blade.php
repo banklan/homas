@@ -43,7 +43,7 @@
     <!-- set a global variable here -->
     <script>
         window.Laravel = {!! json_encode([
-            'app_name' => 'hozulinks.com'
+            'app_name' => 'hozulinks.com',
         ]) !!};
     </script>
 
