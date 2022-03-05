@@ -37,6 +37,9 @@
                                             </v-list-item-group>
                                         </v-list>
                                     </template>
+                                    <template v-else>
+                                        <div class="py-2 info--text">You have not set up any portfolio for your service </div>
+                                    </template>
                                 </template>
                                 <template v-else>
                                     <div class="info--text subtitle-2">
@@ -47,8 +50,8 @@
                                     </div>
                                 </template>
                                 <hr class="mt-3">
-                                <div class="mt-2">
-                                    <v-btn text dark color="primary" to="/my-profile">My Profile</v-btn>
+                                <div class="mt-2 ml-n2">
+                                    <v-btn text dark color="primary" to="/profile">My Profile</v-btn>
                                 </div>
                                 <hr class="mt-3">
                                 <div class="mt-2">

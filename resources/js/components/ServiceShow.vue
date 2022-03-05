@@ -17,13 +17,23 @@
                             <v-img v-if="service.image" :src="`/images/services/${service.image}`" width="100%" height="350" transition="scale-transition"></v-img>
                             <v-img v-else src="/images/no-image.png" width="100%" height="350" transition="scale-transition"></v-img>
                             <v-card-text class="mt-3 text-center">
+                                <v-row class="text-center" v-if="$vuetify.breakpoint.smAndDown">
+                                    <v-col cols="12">
+                                        <v-chip v-if="service.is_approved" color="green darken-3" text-color="white">
+                                            <v-avatar left><v-icon>mdi-checkbox-marked-circle</v-icon></v-avatar>
+                                            Verified
+                                        </v-chip>
+                                    </v-col>
+                                </v-row>
                                 <v-row class="text-center">
                                     <v-col cols="12">
-                                        <div class="d-flex text-center justify-space-around mb-5 px-5">
-                                            <v-chip v-if="service.is_approved" color="green darken-3" text-color="white">
-                                                <v-avatar left><v-icon>mdi-checkbox-marked-circle</v-icon></v-avatar>
-                                                Verified
-                                            </v-chip>
+                                        <div class="d-flex text-center justify-space-between mb-5 px-5">
+                                            <span v-if="$vuetify.breakpoint.mdAndUp">
+                                                <v-chip v-if="service.is_approved" color="green darken-3" text-color="white">
+                                                    <v-avatar left><v-icon>mdi-checkbox-marked-circle</v-icon></v-avatar>
+                                                    Verified
+                                                </v-chip>
+                                            </span>
                                             <span class="subtitle-2 primary--text"><v-rating v-model="service.ratings" readonly dense small color="primary"></v-rating></span>
                                             <span class="subtitle-2"><v-icon color="blue darken-1">visibility</v-icon>&nbsp;{{ service.views }}</span>
                                             <span>
@@ -52,7 +62,7 @@
                                     </v-col>
                                 </v-row>
                             </v-card-text>
-                            <v-card-text class="pb-8 px-5 ml-5">
+                            <v-card-text class="pb-8 px-5 ml-3">
                                 <div class="font-weight-black mb-3 subtitle-1">Description:</div>
                                 <span class="body_text text--darken-2">{{ service.description }}</span>
                                 <div v-if="service.highlight" class="font-weight-black mt-5 mb-2 subtitle-1">Highlights:</div>
@@ -105,7 +115,7 @@
                                             </div>
                                         </template>
                                         <template v-else>
-                                            <div class="ml-2 mt-3 body-1 black--text">This service has no reviews yet.</div>
+                                            <div class="ml-2 mt-2 body-1 body_text">This service has no reviews yet.</div>
                                         </template>
                                     </v-list-item-group>
                                 </v-list>
