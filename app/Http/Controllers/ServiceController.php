@@ -7,6 +7,7 @@ use App\AdminNotification;
 use Illuminate\Http\Request;
 use App\Events\NewServiceCreated;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
 {
@@ -116,20 +117,29 @@ class ServiceController extends Controller
 
             // check if image exists for the service and unlink
             $old_file = $service->image;
-            if($old_file){
-                $filePath = public_path('/images/services/'.$old_file);
-                if(file_exists($filePath)){
-                    unlink($filePath);
-                }
+            // if($old_file){
+            //     $filePath = public_path('/images/services/'.$old_file);
+            //     if(file_exists($filePath)){
+            //         unlink($filePath);
+            //     }
+            // }
+            $oldpath = '/services/' . $old_file;
+            if(file_exists($oldpath)){
+                Storage::disk('s3')->delete($oldpath);
             }
 
             //save new file in folder
-            $file_loc = public_path('/images/services/'.$filename);
+            // $file_loc = public_path('/images/services/'.$filename);
+            $file_loc = '/services/' .$filename;
             if(in_array($ext, ['jpeg', 'jpg', 'png', 'gif', 'pdf'])){
-                $upload = Image::make($file)->resize(420, 320, function($constraint){
-                    $constraint->aspectRatio();
-                });
-                $upload->sharpen(4)->save($file_loc);
+                // $upload = Image::make($file)->resize(420, 320, function($constraint){
+                //     $constraint->aspectRatio();
+                // });
+                // $upload->sharpen(4)->save($file_loc);
+                $img = Image::make($file)->resize(420, 320, function($constraint){
+                    $constraint->aspectRatio(); })->sharpen(3);
+                $fixedImg = $img->stream();
+                Storage::disk('s3')->put($file_loc, $fixedImg->__toString());
             }
         }
 
@@ -143,8 +153,15 @@ class ServiceController extends Controller
 
     public function deleteService($id){
         $service = Service::findOrFail($id);
-        $service->delete();
+        $pic = $service->picture;
 
+        //remove image from s3
+        $filepath = '/services/'.$pic;
+        if(file_exists($filepath)){
+            Storage::disk('s3')->delete($filepath);
+        }
+
+        $service->delete();
         return response()->json(['message' => 'Service deleted'], 201);
     }
 

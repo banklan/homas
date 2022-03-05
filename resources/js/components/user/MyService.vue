@@ -7,7 +7,8 @@
                     <v-col cols="12" md="8">
                         <v-card light raised elevation="12" min-height="300" class="mx-auto">
                             <v-card-title class="primary white--text justify-center subtitle-1"> My Service</v-card-title>
-                            <v-img :src="serviceImage" width="100%" height="380" transition="scale-transition"></v-img>
+                            <!-- <v-img :src="serviceImage" width="100%" height="380" transition="scale-transition"></v-img> -->
+                            <v-img :src="serviceImg" width="100%" height="380" transition="scale-transition"></v-img>
                             <v-card-text class="body_text mt-5 px-8 pb-5">
                                 <div class="title mb-2">{{ authService.title }}</div>
                                 <div class="body_text">{{ authService.description }}</div>
@@ -224,7 +225,8 @@ export default {
         return {
             showAllReview: false,
             confirmDel: false,
-            isLoading: false
+            isLoading: false,
+            serviceImg: ''
         }
     },
     computed:{
@@ -271,10 +273,17 @@ export default {
             this.$store.dispatch('fetchService').then(() =>{
                 this.isLoading = false
             })
+        },
+        getServiceImgFromS3(){
+            axios.get(this.api + '/auth/get_my_service_image_from_s3')
+            .then((res) => {
+                this.serviceImg = res.data
+            })
         }
     },
     mounted(){
         this.$store.dispatch('fetchService')
+        this.getServiceImgFromS3()
     },
 }
 </script>

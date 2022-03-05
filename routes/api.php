@@ -81,7 +81,8 @@ Route::group(['middleware' => 'jwt.auth',  'prefix' => 'auth'], function($router
     Route::post('update_testimonial', 'UserProfileController@updateTestimonial');
     Route::get('check_auth_testimonial', 'UserProfileController@checkAuthTestimonial');
     Route::post('create_testimonial', 'UserProfileController@createTestimonial');
-    Route::get('get_s3_profile_pic/{id}', 'UserProfileController@getUserProfileFromS3');
+    Route::get('get_s3_profile_pic', 'UserProfileController@getUserProfileFromS3');
+    Route::get('get_my_service_image_from_s3', 'UserProfileController@getMyServiceImgFromS3');
 });
 
 Route::group([['middleware' => 'jwt.auth', 'PortfolioCount'],  'prefix' => 'auth'], function($router){
