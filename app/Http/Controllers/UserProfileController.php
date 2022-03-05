@@ -98,7 +98,7 @@ class UserProfileController extends Controller
                         $constraint->aspectRatio(); })->sharpen(2);
                 // $upload->sharpen(2)->save($file_loc);
                 $fixedImg = $img->stream();
-                Storage::disk('s3')->put($file_loc, $fixedImg->__toString());
+                Storage::disk('s3')->put($file_loc, $fixedImg->__toString(), 'public');
             }
         }
 
@@ -114,7 +114,7 @@ class UserProfileController extends Controller
         $user = auth('api')->user();
         $user_pic = $user->picture;
 
-        $filePath = '/profiles/' . $user_pic;
+        $filePath = 'profiles/' . $user_pic;
         $imgUrl = Storage::disk('s3')->url($filePath);
 
         return response()->json($imgUrl, 200);
@@ -123,7 +123,7 @@ class UserProfileController extends Controller
     public function getMyServiceImgFromS3(){
         $auth_service = auth('api')->user()->service;
         $serv_img = $auth_service->image;
-        $path = '/services/'.$serv_img;
+        $path = 'services/' .$serv_img;
         $imgUrl = Storage::disk('s3')->url($path);
 
         return response()->json($imgUrl, 200);
