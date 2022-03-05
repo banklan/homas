@@ -287,7 +287,7 @@ export default {
             this.prvImgUrl = ''
         },
         getS3Picture(){
-            axios.get(this.api + '/auth/get_s3_profile_pic')
+            axios.get(this.api + '/auth/get_s3_profile_pic', this.headers)
             .then((res) => {
                 this.profileImg = res.data
             })

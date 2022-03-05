@@ -247,6 +247,14 @@ export default {
         },
         serviceImage(){
             return this.$store.getters.serviceImage
+        },
+        headers(){
+            let headers = {
+                headers: {
+                    "Authorization": `Bearer ${this.authUser.token}`
+                }
+            }
+            return headers
         }
     },
     beforeRouteLeave (to, from, next) {
@@ -256,11 +264,7 @@ export default {
     methods: {
         deleteService(){
             this.isLoading = true
-            axios.delete(this.api + `/auth/service/${this.authUser.service.id}/delete`, {
-                headers: {
-                    "Authorization": `Bearer ${this.authUser.token}`
-                }
-            }).then((res) => {
+            axios.delete(this.api + `/auth/service/${this.authUser.service.id}/delete`,this.headers).then((res) => {
                 this.isLoading = false
                 this.confirmDel = false
                 this.$store.commit('serviceDeleted')
@@ -275,8 +279,7 @@ export default {
             })
         },
         getServiceImgFromS3(){
-            axios.get(this.api + '/auth/get_my_service_image_from_s3')
-            .then((res) => {
+            axios.get(this.api + '/auth/get_my_service_image_from_s3', this.headers).then((res) => {
                 this.serviceImg = res.data
             })
         }
