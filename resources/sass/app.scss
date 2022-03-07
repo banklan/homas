@@ -55,7 +55,8 @@ body{
         text-align: center;
         display: flex;
         flex-direction: column;
-        // justify-content: center;
+        -webkit-font-smoothing: antialiased !important;
+        -moz-osx-font-smoothing: grayscale;
 
         h1{
             font-size: 4rem;
@@ -93,6 +94,10 @@ body{
         .banner_caption{
             padding-top: 5rem;
             margin: 5rem 2rem 2rem 2rem !important;
+
+            h1{
+                font-size: 4.1rem;
+               }
         }
         .loc{
             margin-top: -1rem;

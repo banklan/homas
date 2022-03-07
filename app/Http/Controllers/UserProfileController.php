@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Review;
 use App\Service;
+use App\Portfolio;
+use App\PortfolioFile;
 use App\Testimonial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Storage;
-
 
 class UserProfileController extends Controller
 {
@@ -118,6 +119,18 @@ class UserProfileController extends Controller
         $imgUrl = Storage::disk('s3')->url($filePath);
 
         return response()->json($imgUrl, 200);
+    }
+
+    public function getMyportfolioImgFromS3($id){
+        $pf_files = PortfolioFile::where('portfolio_id', $id)->get();
+        $files = [];
+        foreach ($pf_files as $file) {
+            $pffile = $file->file;
+            $path = 'portfolios/' .$pffile;
+            $fileUrl = Storage::disk('s3')->url($path);
+            $files[] = $fileUrl;
+        }
+        return response()->json($files, 200);
     }
 
     public function getMyServiceImgFromS3(){

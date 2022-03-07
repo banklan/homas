@@ -14,14 +14,32 @@
                                 <div class="title mb-2">{{ authService.title }}</div>
                                 <div class="body_text">{{ authService.description }}</div>
                             </v-card-text>
-                            <v-card-actions class="justify-space-around pb-8 px-4" v-if="$vuetify.breakpoint.smAndDown">
+                            <v-card-actions class="justify-space-around pb-8 px-2" v-if="$vuetify.breakpoint.smAndDown">
                                 <v-btn icon color="primary"><v-icon left>visibility</v-icon> {{ authUser.service.views }}</v-btn>
                                 <span class="primary--text"><v-rating v-model="authUser.service.ratings" readonly dense small color="primary"></v-rating></span>
-                                <v-btn icon color="primary" to="/my-service/edit"><v-icon left>edit</v-icon></v-btn>
-                            </v-card-actions>
-                            <v-card-actions class="justify-space-around pb-8 px-4" v-if="$vuetify.breakpoint.smAndDown">
-                                <v-btn text color="primary darken-2" :to="{name: 'CreateServiceAddImage'}">Change Picture</v-btn>
-                                <v-btn icon color="red darken-2" @click="confirmDel = true"><v-icon left>delete_forever</v-icon></v-btn>
+
+                                <span>
+                                    <v-menu offset-y top nudge-bottom="10" left>
+                                        <template v-slot:activator="{ on, attrs }">
+                                            <v-btn @click="openMenu ? openMenu = !openMenu : ''" v-bind="attrs" v-on="on" icon small class="mt-n1">
+                                                <v-icon color="blue darken-1">share</v-icon>Share
+                                            </v-btn>
+                                        </template>
+                                        <v-list>
+                                            <v-list-item-group>
+                                                <v-list-item>
+                                                    <v-btn icon color="blue darken-1" to="/my-service/edit"><v-icon left>edit</v-icon></v-btn>
+                                                </v-list-item>
+                                                <v-list-item>
+                                                    <v-btn text color="primary darken-2" :to="{name: 'CreateServiceAddImage'}">Change Picture</v-btn>
+                                                </v-list-item>
+                                                <v-list-item>
+                                                    <v-btn icon color="red darken-2" @click="confirmDel = true"><v-icon left>delete_forever</v-icon></v-btn>
+                                                </v-list-item>
+                                            </v-list-item-group>
+                                        </v-list>
+                                    </v-menu>
+                                </span>
                             </v-card-actions>
                             <v-card-actions class="justify-space-around pb-8 mx-4" v-else>
                                 <v-btn icon color="primary"><v-icon left>visibility</v-icon> {{ authUser.service.view_count }}</v-btn>
@@ -227,7 +245,8 @@ export default {
             showAllReview: false,
             confirmDel: false,
             isLoading: false,
-            serviceImg: ''
+            serviceImg: '',
+            openMenu: true
         }
     },
     computed:{

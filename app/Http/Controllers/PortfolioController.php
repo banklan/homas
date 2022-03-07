@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Portfolio;
 use App\PortfolioFile;
 use Intervention\Image\Facades\Image;
+use Illuminate\Support\Facades\Storage;
 
 class PortfolioController extends Controller
 {
@@ -42,12 +43,13 @@ class PortfolioController extends Controller
                 $ext = $file->getClientOriginalExtension();
                 $filename = substr(str_shuffle($pool), 0, 8).".".$ext;
                     // save new file in folder
-                $file_loc = public_path('/images/portfolios/'.$filename);
+                // $file_loc = public_path('/images/portfolios/'.$filename);
+                $file_loc = '/portfolios/' .$filename;
                 if(in_array($ext, ['jpeg', 'jpg', 'png', 'gif', 'pdf'])){
                     $upload = Image::make($file)->resize(380, 320, function($constraint){
-                        $constraint->aspectRatio();
-                    });
-                    $upload->sharpen(8)->save($file_loc);
+                        $constraint->aspectRatio(); })->sharpen(5);
+                    $fixedImg = $upload->stream();
+                    Storage::disk('s3')->put($file_loc, $fixedImg->__toString());
                 }
 
                 $pf_img = new PortfolioFile;
@@ -95,14 +97,30 @@ class PortfolioController extends Controller
         return response()->json($pf, 200);
     }
 
-    public function delFile($id){
-        $file = PortfolioFile::findOrFail($id);
-        $filepath = public_path('/images/portfolios/'.$file);
-        if(file_exists($filepath)){
-            unlink($filepath);
+    public function delPfFile($id){
+        $pf_file = PortfolioFile::findOrFail($id);
+        $file = $pf_file->file;
+        // delete from s3
+        $path = 'portfolios/' .$file;
+        if(file_exists($path)){
+            Storage::disk('s3')->delete($path);
         }
-        $file->delete();
+        $pf_file->delete();
 
-        return response()->json(['message' => 'Deleted'], 201);
+        return response()->json(['message' => 'portfolio file Deleted'], 201);
+    }
+
+    public function deletePortfolio($id){
+        $pf = Portfolio::findOrFail($id);
+        // get files in s3 and delete
+        $files = PortfolioFile::where('portfolio_id', $id)->get();
+        foreach($files as $file){
+            $pffile = $file->file;
+            $path = 'portfolios/' .$pffile;
+            Storage::disk('s3')->delete($path);
+        }
+        // delete from db
+        $pf->delete();
+        return response()->json(['message' => 'Portfolio deleted!'], 200);
     }
 }

@@ -15,9 +15,9 @@
                                 <div class="mt-3 body-1 px-3 pt-2"> {{ portfolio && portfolio.detail | capFirstLetter }}</div>
                             </v-card-text>
                             <v-card-actions class="justify-center mt-3 pb-5 px-2">
-                                <v-btn text color="blue darken-1" @click="editPortfolio"><v-icon left>edit</v-icon>Edit</v-btn>
-                                <v-btn text color="red darken-2" @click="confirmFileDel = true"><v-icon left>cancel</v-icon>Remove File</v-btn>
-                                <v-btn text color="red darken--2" @click="confirmDel = true"><v-icon left>delete_forever</v-icon>Delete Portfolio</v-btn>
+                                <v-btn text color="blue darken-1" @click="editPortfolio"><v-icon left>edit</v-icon><span v-if="$vuetify.breakpoint.mdAndUp">Edit</span></v-btn>
+                                <v-btn text color="red darken-2" @click="confirmFileDel = true"><v-icon left>cancel</v-icon><span v-if="$vuetify.breakpoint.mdAndUp">Remove File</span><span v-else>Rmv File</span></v-btn>
+                                <v-btn text color="red darken--2" @click="confirmDel = true"><v-icon left>delete_forever</v-icon><span v-if="$vuetify.breakpoint.mdAndUp">Delete Portfolio</span></v-btn>
                             </v-card-actions>
                             <template v-if="files.length < 5">
                                 <v-card-actions class="justify-center" v-if="!previewUploads">
@@ -144,6 +144,7 @@ export default {
             confirmFileDel: false,
             fileRemoved: false,
             fileRemovedErr: false,
+            // pfImgs: []
         }
     },
     computed:{
@@ -207,7 +208,7 @@ export default {
         },
         deletePf(){
             this.isLoading = true
-            axios.delete(this.api + `/portfolio/${this.portfolio.id}/delete`, this.header)
+            axios.post(this.api + `/auth/del_portfolio/${this.portfolio.id}`, this.header)
             .then((res) => {
                 this.isLoading = false
                 this.$store.commit('portfolioDeleted')
@@ -218,6 +219,19 @@ export default {
                 this.delFailed = true
             })
         },
+        // deletePf(){
+        //     this.isLoading = true
+        //     axios.delete(this.api + `/portfolio/${this.portfolio.id}/delete`, this.header)
+        //     .then((res) => {
+        //         this.isLoading = false
+        //         this.$store.commit('portfolioDeleted')
+        //         this.confirmDel = false
+        //         this.$router.push('/my-portfolio')
+        //     }).catch((err) => {
+        //         this.isLoading = false
+        //         this.delFailed = true
+        //     })
+        // },
         getPortfolioFiles(){
             this.isLoading = true
             axios.get(this.api + `/auth/get_my_portfolio_files/${this.portfolio.id}`, this.header)
@@ -267,7 +281,7 @@ export default {
                 this.uploadBtns = false
                 this.filesUploaded = true
                 this.previewUploads = false
-                this.getPortfolioFiles()
+                this.getPfImages()
                 this.resetUpload()
             }).catch((err) => {
                 this.isLoading = false
@@ -279,17 +293,22 @@ export default {
         },
         delPfFile(file, index){
             axios.post(this.api + `/auth/del_pf_file/${file.id}`, {}, this.header).then((rs) => {
-                // let files = this.files.filter(item => item.id == file.id)
                 this.files.splice(index, 1)
-                // this.files = files
                 this.fileRemoved = true
             }).catch(() => {
                 this.fileRemovedErr = true
             })
+        },
+        getPfImages(){
+            axios.get(this.api + `/auth/get_my_pf_images_from_s3/${this.portfolio.id}`, this.header)
+            .then((res) => {
+                this.files = res.data
+            })
         }
     },
     created(){
-        this.getPortfolioFiles()
+        // this.getPortfolioFiles()
+        this.getPfImages()
     }
 }
 </script>

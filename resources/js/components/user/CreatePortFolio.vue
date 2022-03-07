@@ -56,6 +56,14 @@ export default {
         api(){
             return this.$store.getters.api
         },
+        header(){
+            let conf = {
+                headers: {
+                    Authorization: `Bearer ${this.authUser.token}`,
+                },
+            }
+            return conf
+        }
     },
     methods: {
         create(){
@@ -65,11 +73,7 @@ export default {
                     this.portfolio.cost = this.portfolio.cost
                     axios.post(this.api + `/auth/portfolio/${this.authUser.service.id}`, {
                         portfolio: this.portfolio
-                    }, {
-                        headers: {
-                            "Authorization": `Bearer ${this.authUser.token}`
-                        }
-                    }).then((res) => {
+                    }, this.header).then((res) => {
                         this.isLoading = false
                         this.createSuccess = true
                         this.$store.dispatch('fetchService')
@@ -92,8 +96,6 @@ export default {
         }else{
             next()
         }
-    },
-    mounted() {
     },
 }
 </script>

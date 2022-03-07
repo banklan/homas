@@ -78,13 +78,15 @@ Route::group(['middleware' => 'jwt.auth',  'prefix' => 'auth'], function($router
     Route::post('update_auth_profile_password', 'UserProfileController@updateAuthUserPswd');
     Route::get('get_my_service_reviews', 'UserProfileController@getMyServiceReviews');
     Route::post('update_portfolio/{id}', 'PortfolioController@updatePf');
-    Route::post('del_pf_file/{id}', 'PortfolioController@delFile');
+    Route::post('del_portfolio/{id}', 'PortfolioController@deletePortfolio');
+    Route::post('del_pf_file/{id}', 'PortfolioController@delPfFile');
     Route::get('get_auth_testimonial', 'UserProfileController@getAuthTestimonial');
     Route::post('update_testimonial', 'UserProfileController@updateTestimonial');
     Route::get('check_auth_testimonial', 'UserProfileController@checkAuthTestimonial');
     Route::post('create_testimonial', 'UserProfileController@createTestimonial');
     Route::get('get_s3_profile_pic', 'UserProfileController@getUserProfileFromS3');
     Route::get('get_my_service_image_from_s3', 'UserProfileController@getMyServiceImgFromS3');
+    Route::get('get_my_pf_image_from_s3/{id}', 'UserProfileController@getMyportfolioImgFromS3');
 });
 
 Route::group([['middleware' => 'jwt.auth', 'PortfolioCount'],  'prefix' => 'auth'], function($router){

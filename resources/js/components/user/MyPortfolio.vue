@@ -14,18 +14,9 @@
                             </v-alert>
                             <v-list three-line nav class="pb-10">
                                 <template v-for="(item, i) in portfolio">
-                                    <v-list-item :to="{name: 'MyPortFolioShow', params: {id: item.id, slug:item.slug}}" :key="item.title" class="mt-n3 mb-n3 py-n3" light link>
-                                        <v-list-item-avatar v-if="item.file.length > 0" left size="70">
-                                            <v-img :src="`/images/portfolios/${item.file[0].file}`" alt="Portfolio Image"></v-img>
-                                        </v-list-item-avatar>
-                                        <v-list-item-content>
-                                            <!-- <v-list-item-title class="subtitle-1 primary--text font-weight-bold">{{ item.file[0].file }}</v-list-item-title> -->
-                                            <v-list-item-title class="subtitle-1 primary--text font-weight-bold">{{ item.title | capFirstLetter }}</v-list-item-title>
-                                            <v-list-item-subtitle class="mt-2 subtitle-1 black--text lighten-3">{{ item.detail | capFirstLetter | truncate(160) }}</v-list-item-subtitle>
-                                        </v-list-item-content>
-                                    </v-list-item>
-                                    <v-divider v-if="i != portfolio.length - 1" :key="i"></v-divider>
+                                    <my-portfolio-card :portfolio="item" :index='i' :key="i"/>
                                 </template>
+                                <v-divider v-if="i != portfolio.length - 1" :key="i"></v-divider>
                             </v-list>
                         </v-card-text>
                         <template v-if="authService">
