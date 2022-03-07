@@ -11025,7 +11025,7 @@ body {
 
 @media screen and (max-width: 1030px) {
   .welcome_banner .banner_caption h1 {
-    font-size: 2.5rem;
+    font-size: 2.6rem;
   }
 
   .welcome_banner .banner_caption h3 {
@@ -11041,10 +11041,6 @@ body {
   .welcome_banner .banner_caption {
     padding-top: 5rem;
     margin: 5rem 2rem 2rem 2rem !important;
-  }
-
-  .welcome_banner .banner_caption h1 {
-    font-size: 4.1rem;
   }
 
   .welcome_banner .loc {

@@ -1,14 +1,14 @@
 <template>
     <v-container>
-        <v-row justify="center" class="justify-center mt-5">
-            <v-col cols="3">
+        <v-row justify="center" class="justify-center mt-4">
+            <v-col cols="12" md="3">
                 <v-btn rounded color="primary lighten--2" dark elevation="4" left @click.prevent="$router.go(-1)"><v-icon left>arrow_left</v-icon> Back</v-btn>
             </v-col>
-            <v-col cols="9" v-if="portfolio && portfolio.title">
+            <v-col cols="12" md="9" v-if="portfolio && portfolio.title">
                 <div class="title flex-start">{{ portfolio && portfolio.title }}</div>
             </v-col>
         </v-row>
-        <v-progress-circular v-if="isLoading" indeterminate color="primary" :width="4" :size="70" justify="center" class="mx-auto"></v-progress-circular>
+        <v-progress-circular v-if="isLoading" indeterminate color="primary" :width="4" :size="40" justify="center" class="mx-auto"></v-progress-circular>
         <template v-else>
             <template v-if="portfolio">
                 <v-row justify="start" class="mt-4">
@@ -17,14 +17,14 @@
                             <v-card-title class="primary white--text justify-center subtitle-1"> Portfolio</v-card-title>
                             <gen-portfolio-carousel :files="portfolio.file"></gen-portfolio-carousel>
                             <v-card-text class="mt-3">
-                                <div class="px-3 pt-2 pb-4 body_text"> {{ portfolio.detail | capFirstLetter }}</div>
+                                <div class="px-3 pb-4 body_text"> {{ portfolio.detail | capFirstLetter }}</div>
                             </v-card-text>
                         </v-card>
                     </v-col>
                     <v-col cols="12" md="4">
                         <v-card light raised elevation="12" min-height="120" class="mx-auto">
                             <v-card-title class="primary white--text justify-center subtitle-1"> Service</v-card-title>
-                            <v-card-text class="mt-5">
+                            <v-card-text class="mt-4">
                                 <router-link :to="{name: 'ServiceShow', params:{id: portfolio.service_id, slug: portfolio.service.slug}}">{{ portfolio.service.title }}</router-link>
                             </v-card-text>
                         </v-card>

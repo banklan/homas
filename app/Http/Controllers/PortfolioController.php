@@ -117,10 +117,25 @@ class PortfolioController extends Controller
         foreach($files as $file){
             $pffile = $file->file;
             $path = 'portfolios/' .$pffile;
-            Storage::disk('s3')->delete($path);
+            if($path){
+                Storage::disk('s3')->delete($path);
+            }
+            $file->delete();
         }
-        // delete from db
+        // delete pf from db
         $pf->delete();
         return response()->json(['message' => 'Portfolio deleted!'], 200);
+    }
+
+    public function getPfFilesFromS3($id){
+        $files = PortfolioFile::where('portfolio_id', $id)->get();
+        $pf_files = [];
+        foreach ($files as $file){
+            $pf_file = $file->file;
+            $path = 'portfolios/' .$pf_file;
+            $fileUrl = Storage::disk('s3')->url($path);
+            $pf_files[] = $fileUrl;
+        }
+        return response()->json($pf_files, 200);
     }
 }

@@ -57,6 +57,7 @@ Route::group(['middleware' => 'api'], function($router){
     Route::get('filter_services/{cat}/{loc}', 'ServiceController@filterServices');
     Route::get('get_service_img_from_s3/{id}', 'ServiceController@getServiceImgFromS3');
     Route::get('get_service_author_img_from_s3/{id}', 'ServiceController@getServiceAuthorImgFromS3');
+    Route::get('get_pf_images_from_s3/{id}', 'PortfolioController@getPfFilesFromS3');
 });
 
 // auth user routes(protected)
@@ -87,6 +88,7 @@ Route::group(['middleware' => 'jwt.auth',  'prefix' => 'auth'], function($router
     Route::get('get_s3_profile_pic', 'UserProfileController@getUserProfileFromS3');
     Route::get('get_my_service_image_from_s3', 'UserProfileController@getMyServiceImgFromS3');
     Route::get('get_my_pf_images_from_s3/{id}', 'UserProfileController@getMyPortfolioImgSsFromS3');
+    Route::post('update_my_service', 'ServiceController@updateMyService');
 });
 
 Route::group([['middleware' => 'jwt.auth', 'PortfolioCount'],  'prefix' => 'auth'], function($router){

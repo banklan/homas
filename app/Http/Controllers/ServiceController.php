@@ -237,13 +237,6 @@ class ServiceController extends Controller
         return response()->json($servs, 200);
     }
 
-    // public function getTopServicesForLocation($service, $id){
-    //     $services = Service::where('id', '!=', $service)->where('location_id', $id)->get();
-    //     $services = $services->sortByDesc('ratings')->values()->take(4);
-
-    //     return response()->json($services, 200);
-    // }
-
     public function getTopServicesForLocation($cat, $loc, $id){
         $services = Service::where('id', '!=', $id)->where('category_id', $cat)->where('location_id', $loc)->get();
         $services = $services->sortByDesc('ratings')->values()->take(4);
@@ -280,5 +273,43 @@ class ServiceController extends Controller
             $servs = Service::where('location_id', $cat)->get();
         }
         return response()->json($servs, 200);
+    }
+
+    public function updateMyService(Request $request){
+        $this->validate($request, [
+            'service.title' => 'required|min:10|max:250',
+            'service.position' => 'max:100',
+            'service.description' => 'required|min:20|max:600',
+            'service.experience_years' => 'required|integer',
+            'service.highlight' => 'max:255',
+            'service.keystrength' => 'max:150',
+            'service.phone' => 'required|max:16',
+            'service.website' => 'max:100',
+            'service.address' => 'required|min:5|max:255',
+            'service.city' => 'required|min:2|max:50',
+            'service.facebook' => 'max:100',
+            'service.instagram' => 'max:100',
+            'service.twitter' => 'max:100',
+        ]);
+        $user = auth('api')->user()->id;
+        $service = Service::where('user_id', $user)->first();
+        $service->update([
+            $service->title = $request->service['title'],
+            $service->position = $request->service['position'],
+            $service->description = $request->service['description'],
+            $service->experience_years = $request->service['experience_years'],
+            $service->highlight = $request->service['highlight'],
+            $service->keystrength = $request->service['keystrength'],
+            $service->phone = $request->service['phone'],
+            $service->website = $request->service['website'],
+            $service->address = $request->service['address'],
+            $service->city = $request->service['city'],
+            $service->facebook = $request->service['facebook'],
+            $service->instagram = $request->service['instagram'],
+            $service->twitter = $request->service['twitter'],
+            $service->location_id = $request->service['location_id'],
+        ]);
+
+        return response()->json($service, 200);
     }
 }

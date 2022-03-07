@@ -15,7 +15,7 @@
                                 <div class="body_text">{{ authService.description }}</div>
                             </v-card-text>
                             <v-card-actions class="justify-space-around pb-8 px-2" v-if="$vuetify.breakpoint.smAndDown">
-                                <v-btn icon color="primary"><v-icon left>visibility</v-icon> {{ authUser.service.views }}</v-btn>
+                                <v-btn icon color="blue darken-2"><v-icon left>visibility</v-icon> {{ authUser.service.views }}</v-btn>
                                 <span class="primary--text"><v-rating v-model="authUser.service.ratings" readonly dense small color="primary"></v-rating></span>
                                 <span>
                                     <v-menu offset-y top nudge-top="10" right>
@@ -30,7 +30,7 @@
                                                     <v-btn icon color="blue darken-1" to="/my-service/edit"><v-icon left>edit</v-icon></v-btn>
                                                 </v-list-item>
                                                 <v-list-item>
-                                                    <v-btn icon color="primary darken-2" :to="{name: 'CreateServiceAddImage'}"><v-icon left>image</v-icon></v-btn>
+                                                    <v-btn icon color="blue darken-1" :to="{name: 'CreateServiceAddImage'}"><v-icon left>image</v-icon></v-btn>
                                                 </v-list-item>
                                                 <v-list-item>
                                                     <v-btn icon color="red darken-2" @click="confirmDel = true"><v-icon left>delete_forever</v-icon></v-btn>
@@ -41,10 +41,10 @@
                                 </span>
                             </v-card-actions>
                             <v-card-actions class="justify-space-around pb-8 mx-4" v-else>
-                                <v-btn icon color="primary"><v-icon left>visibility</v-icon> {{ authUser.service.view_count }}</v-btn>
+                                <v-btn icon color="blue darken-1"><v-icon left>visibility</v-icon> {{ authUser.service.views }}</v-btn>
                                 <span class="primary--text"><v-rating v-model="authUser.service.ratings" readonly dense small color="primary"></v-rating></span>
-                                <v-btn icon color="primary" to="/my-service/edit"><v-icon left>edit</v-icon></v-btn>
-                                <v-btn text color="primary darken-2" :to="{name: 'CreateServiceAddImage'}">Change Picture</v-btn>
+                                <v-btn icon color="blue darken-1" to="/my-service/edit"><v-icon left>edit</v-icon></v-btn>
+                                <v-btn text color="blue darken-1" :to="{name: 'CreateServiceAddImage'}">Change Picture</v-btn>
                                 <v-btn icon color="red darken-2" @click="confirmDel = true"><v-icon left>delete_forever</v-icon></v-btn>
                             </v-card-actions>
                         </v-card>
@@ -230,9 +230,9 @@
                 </v-card-actions>
             </v-card>
         </v-dialog>
-        <v-snackbar :value="serviceUpdated" :timeout="6000" top color="green darken-1 white--text">
+        <v-snackbar :value="ServiceWasUpdated" :timeout="4000" top color="green darken-1 white--text">
           Your service was updated successfully.
-          <v-btn text color="white--text" @click="serviceUpdated = false">Close</v-btn>
+          <v-btn text color="white--text" @click="ServiceWasUpdated = false">Close</v-btn>
       </v-snackbar>
     </v-container>
 </template>
@@ -258,8 +258,8 @@ export default {
         authService(){
             return this.$store.getters.authService
         },
-        serviceUpdated(){
-            return this.$store.getters.serviceUpdated
+        ServiceWasUpdated(){
+            return this.$store.getters.ServiceWasUpdated
         },
         isBusy(){
             return this.$store.getters.isBusy
@@ -274,7 +274,7 @@ export default {
                 }
             }
             return headers
-        }
+        },
     },
     beforeRouteLeave (to, from, next) {
         this.$store.commit('resetUpdatedFlashMsg')

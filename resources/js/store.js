@@ -96,6 +96,7 @@ export const store = new Vuex.Store({
         adminUpdatedTestimonial: false,
         bulkLocationsCreated: false,
         bulkCategoriesCreated: false,
+        ServiceWasUpdated: false,
     },
     getters: {
         api(state)
@@ -269,6 +270,10 @@ export const store = new Vuex.Store({
         bulkCategoriesCreated(state)
         {
             return state.bulkCategoriesCreated
+        },
+        ServiceWasUpdated(state)
+        {
+            return state.ServiceWasUpdated
         }
     },
     actions: {
@@ -596,6 +601,10 @@ export const store = new Vuex.Store({
         bulkCategoriesCreated(state, payload)
         {
             state.bulkCategoriesCreated = true
+        },
+        ServiceWasUpdated(state)
+        {
+            state.ServiceWasUpdated = true
         }
     },
 })

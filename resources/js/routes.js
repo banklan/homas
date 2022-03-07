@@ -67,6 +67,7 @@ import AdminTestimonialShow from './components/admin/AdminTestimonialShow';
 import AllServices from './components/AllServices';
 import AdminLocationBulkAdd from './components/admin/AdminLocationBulkAdd';
 import AdminCategoryBulkAdd from './components/admin/AdminCategoryBulkAdd';
+import UpdateMyService from './components/user/UpdateMyService';
 
 export default [
     {path: '*', name: 'NotFound', component: NotFound},
@@ -96,6 +97,12 @@ export default [
     },
     {
         path: '/my-service', name: 'MyService', component: MyService,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/my-service/edit', name: 'UpdateMyService', component: UpdateMyService,
         meta: {
             requiresAuth: true
         }

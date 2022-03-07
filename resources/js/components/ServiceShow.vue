@@ -37,7 +37,7 @@
                                             <span class="subtitle-2 primary--text"><v-rating v-model="service.ratings" readonly dense small color="primary"></v-rating></span>
                                             <span class="subtitle-2"><v-icon color="blue darken-1">visibility</v-icon>&nbsp;{{ service.views }}</span>
                                             <span>
-                                                <v-menu offset-y bottom nudge-bottom="10" left>
+                                                <v-menu offset-y top nudge-bottom="10" right>
                                                     <template v-slot:activator="{ on, attrs }">
                                                         <v-btn @click="openShare ? openShare = !openShare : ''" v-bind="attrs" v-on="on" icon small class="mt-n1">
                                                             <v-icon color="grey">share</v-icon>Share
@@ -87,7 +87,7 @@
                                             </div>
                                         </template>
                                         <template v-else>
-                                            <div class="ml-2 mt-3 body_text">This service has no portfolio yet.</div>
+                                            <div class="mt-3 body_text">This service has no portfolio yet.</div>
                                         </template>
                                     </v-list-item-group>
                                 </v-list>
@@ -115,7 +115,7 @@
                                             </div>
                                         </template>
                                         <template v-else>
-                                            <div class="ml-2 mt-2 body-1 body_text">This service has no reviews yet.</div>
+                                            <div class="mt-2 body_text">This service has no reviews yet.</div>
                                         </template>
                                     </v-list-item-group>
                                 </v-list>
@@ -129,7 +129,7 @@
                         <v-card light raised elevation="12" min-height="400" class="mx-auto scroll">
                             <v-card-title class="subtitle-1 primary white--text justify-center">Service Details</v-card-title>
                             <v-card-text class="px-3 py-3">
-                                <table class="table table-condensed table-hover">
+                                <table class="table table-hover">
                                     <thead></thead>
                                     <tbody>
                                         <tr class='no_border'>
