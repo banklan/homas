@@ -121,7 +121,7 @@ class UserProfileController extends Controller
         return response()->json($imgUrl, 200);
     }
 
-    public function getMyportfolioImgsFromS3($id){
+    public function getMyPortfolioImgSsFromS3($id){
         $pf_files = PortfolioFile::where('portfolio_id', $id)->get();
         $files = [];
         foreach ($pf_files as $file) {
