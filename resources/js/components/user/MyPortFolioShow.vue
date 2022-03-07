@@ -8,7 +8,7 @@
                 <v-col cols="12" md="8">
                     <v-card light raised elevation="12" min-height="300" class="mx-auto">
                         <v-card-title class="primary white--text justify-center title"> My Portfolio</v-card-title>
-                        <portfolio-carousel v-if="portfolio && portfolio.files.length > 0" :files="portfolio"></portfolio-carousel>
+                        <portfolio-carousel v-if="portfolio.files && portfolio.files.length > 0" :files="files"></portfolio-carousel>
                         <template v-if="!editForm">
                             <v-card-text class="mt-5 py-3">
                                 <div class="title font-weight-bold text-center">{{ portfolio && portfolio.title | capFirstLetter }}</div>
