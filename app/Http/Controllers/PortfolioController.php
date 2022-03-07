@@ -46,7 +46,7 @@ class PortfolioController extends Controller
                 // $file_loc = public_path('/images/portfolios/'.$filename);
                 $file_loc = '/portfolios/' .$filename;
                 if(in_array($ext, ['jpeg', 'jpg', 'png', 'gif', 'pdf'])){
-                    $upload = Image::make($file)->resize(380, 320, function($constraint){
+                    $upload = Image::make($file)->resize(420, 350, function($constraint){
                         $constraint->aspectRatio(); })->sharpen(5);
                     $fixedImg = $upload->stream();
                     Storage::disk('s3')->put($file_loc, $fixedImg->__toString());

@@ -10,12 +10,13 @@
                 <v-list-item-subtitle class="mt-2 subtitle-1 black--text lighten-3">{{ portfolio.detail | capFirstLetter | truncate(160) }}</v-list-item-subtitle>
             </v-list-item-content>
         </v-list-item>
+        <v-divider v-if="index != portfolio.length - 1"></v-divider>
     </span>
 </template>
 
 <script>
 export default {
-    props: ['portfolio'],
+    props: ['portfolio', 'index'],
     data() {
         return {
             pfImg: ''
@@ -50,3 +51,10 @@ export default {
     },
 }
 </script>
+
+
+<style lang="css" scoped>
+    a{
+        text-decoration: none !important;
+    }
+</style>

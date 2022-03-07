@@ -16,7 +16,7 @@
                             </v-card-text>
                             <v-card-actions class="justify-space-around mt-3 pb-5 px-2">
                                 <v-btn text color="blue darken-1" @click="editPortfolio"><v-icon left>edit</v-icon><span v-if="$vuetify.breakpoint.mdAndUp">Edit</span></v-btn>
-                                <v-btn text color="red darken-2" @click="confirmFileDel = true"><v-icon left>cancel</v-icon><span v-if="$vuetify.breakpoint.mdAndUp">Remove File</span><span v-else>Rmv File</span></v-btn>
+                                <v-btn v-if="portfolio.file.length > 0" text color="red darken-2" @click="confirmFileDel = true"><v-icon left>cancel</v-icon><span v-if="$vuetify.breakpoint.mdAndUp">Remove File</span><span v-else>Rmv File</span></v-btn>
                                 <v-btn text color="red darken--2" @click="confirmDel = true"><v-icon left>delete_forever</v-icon><span v-if="$vuetify.breakpoint.mdAndUp">Delete Portfolio</span></v-btn>
                             </v-card-actions>
                             <template v-if="files.length < 5">
@@ -48,7 +48,7 @@
                             </v-card-text>
                             <v-card-actions class="justify-center mb-8">
                                 <v-btn text large color="red darken--2" @click="editForm = false">Cancel</v-btn>
-                                <v-btn large color="primary darken--2" @click="updatePf" :disabled="isLoading"><v-icon large left>save</v-icon>Update</v-btn>
+                                <v-btn large color="primary darken--2" @click="updatePf" :disabled="isLoading">Update</v-btn>
                             </v-card-actions>
                         </template>
                     </v-card>
@@ -208,7 +208,7 @@ export default {
         },
         deletePf(){
             this.isLoading = true
-            axios.post(this.api + `/auth/del_portfolio/${this.portfolio.id}`, this.header)
+            axios.post(this.api + `/auth/auth/del_portfolio/${this.portfolio.id}`, this.header)
             .then((res) => {
                 this.isLoading = false
                 this.$store.commit('portfolioDeleted')
