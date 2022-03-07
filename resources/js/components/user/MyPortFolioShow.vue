@@ -8,7 +8,7 @@
                 <v-col cols="12" md="8">
                     <v-card light raised elevation="12" min-height="300" class="mx-auto">
                         <v-card-title class="primary white--text justify-center title"> My Portfolio</v-card-title>
-                        <portfolio-carousel v-if="files.length > 0" :files="files"></portfolio-carousel>
+                        <portfolio-carousel v-if="portfolio && portfolio.files.length > 0" :files="portfolio"></portfolio-carousel>
                         <template v-if="!editForm">
                             <v-card-text class="mt-5 py-3">
                                 <div class="title font-weight-bold text-center">{{ portfolio && portfolio.title | capFirstLetter }}</div>
@@ -71,7 +71,7 @@
                   <div class="mb-3 font-weight-bold">No Of Files: {{ files.length }}</div>
                   <div v-for="(file, index) in files" :key="file.id">
                       <div class="del_imags">
-                          <div class="img"><v-img :src="`/images/portfolios/${file.file}`" alt="portfolio image"></v-img></div>
+                          <div class="img"><v-img :src="file" alt="portfolio image"></v-img></div>
                           <div class="butn"><v-btn icon small color="red darken-2" @click="delPfFile(file, index)"><v-icon>delete_forever</v-icon></v-btn></div>
                       </div>
                   </div>

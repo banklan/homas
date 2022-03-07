@@ -18,22 +18,22 @@
                                 <v-btn icon color="primary"><v-icon left>visibility</v-icon> {{ authUser.service.views }}</v-btn>
                                 <span class="primary--text"><v-rating v-model="authUser.service.ratings" readonly dense small color="primary"></v-rating></span>
                                 <span>
-                                    <v-menu offset-y top nudge-bottom="10" left>
+                                    <v-menu offset-y top nudge-top="10" right>
                                         <template v-slot:activator="{ on, attrs }">
                                             <v-btn @click="openMenu ? openMenu = !openMenu : ''" v-bind="attrs" v-on="on" icon small class="mt-n1">
-                                                <v-icon color="blue darken-1">mdi-menu</v-icon>More
+                                                <v-icon color="blue darken-1">mdi-menu</v-icon>
                                             </v-btn>
                                         </template>
                                         <v-list>
                                             <v-list-item-group>
                                                 <v-list-item>
-                                                    <v-btn icon color="blue darken-1" to="/my-service/edit"><v-icon left>edit</v-icon>Edit</v-btn>
+                                                    <v-btn icon color="blue darken-1" to="/my-service/edit"><v-icon left>edit</v-icon></v-btn>
                                                 </v-list-item>
                                                 <v-list-item>
-                                                    <v-btn icon color="primary darken-2" :to="{name: 'CreateServiceAddImage'}"><v-icon left>image</v-icon>Change Picture</v-btn>
+                                                    <v-btn icon color="primary darken-2" :to="{name: 'CreateServiceAddImage'}"><v-icon left>image</v-icon></v-btn>
                                                 </v-list-item>
                                                 <v-list-item>
-                                                    <v-btn icon color="red darken-2" @click="confirmDel = true"><v-icon left>delete_forever</v-icon>Del Portfolio</v-btn>
+                                                    <v-btn icon color="red darken-2" @click="confirmDel = true"><v-icon left>delete_forever</v-icon></v-btn>
                                                 </v-list-item>
                                             </v-list-item-group>
                                         </v-list>

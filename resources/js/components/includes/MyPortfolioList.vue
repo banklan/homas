@@ -3,7 +3,7 @@
         <v-list-item :to="{name: 'MyPortFolioShow', params: {id: portfolio.id, slug:portfolio.slug}}" :key="portfolio.title" class="mt-n3 mb-n3 py-n3" light link>
             <v-list-item-avatar v-if="portfolio.file.length > 0" left size="70">
                 <!-- <v-img :src="`/images/portfolios/${item.file[0].file}`" alt="Portfolio Image" aspect-ratio="1" contain></v-img> -->
-                <v-img :src="pfImgs[0]" alt="Portfolio Image" aspect-ratio="1" contain></v-img>
+                <v-img :src="pfImg" alt="Portfolio Image" aspect-ratio="1" contain></v-img>
             </v-list-item-avatar>
             <v-list-item-content>
                 <v-list-item-title class="subtitle-1 primary--text font-weight-bold">{{ portfolio.title | capFirstLetter }}</v-list-item-title>
@@ -18,7 +18,7 @@ export default {
     props: ['portfolio'],
     data() {
         return {
-            pfImgs: []
+            pfImg: ''
         }
     },
     computed: {
@@ -41,7 +41,7 @@ export default {
         getPfImage(){
             axios.get(this.api + `/auth/get_my_pf_image_from_s3/${this.portfolio.id}`, this.header)
             .then((res) => {
-                this.pfImgs = res.data
+                this.pfImg = res.data[0]
             })
         }
     },
