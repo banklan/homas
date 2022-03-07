@@ -14,9 +14,10 @@
                             </v-alert>
                             <v-list three-line nav class="pb-10">
                                 <template v-for="(item, i) in portfolio">
-                                    <my-portfolio-card :portfolio="item" :index='i' :key="i"/>
+                                    <!-- <my-portfolio-card :portfolio="item" :key="i"/> -->
+                                    <my-portfolio-list :portfolio="item" :key="i"/>
+                                    <v-divider v-if="i != portfolio.length - 1" :key="i"></v-divider>
                                 </template>
-                                <v-divider v-if="i != portfolio.length - 1" :key="i"></v-divider>
                             </v-list>
                         </v-card-text>
                         <template v-if="authService">

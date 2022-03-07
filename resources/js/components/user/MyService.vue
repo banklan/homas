@@ -1,6 +1,6 @@
 <template>
     <v-container>
-        <v-row justify="center" class="justify-center mt-5">
+        <v-row justify="center" class="mt-5">
             <v-progress-circular v-if="isBusy" indeterminate color="accent" :width="4" :size="40" justify="center" class="mx-auto"></v-progress-circular>
             <template v-else>
                 <template v-if="authService">
@@ -17,24 +17,23 @@
                             <v-card-actions class="justify-space-around pb-8 px-2" v-if="$vuetify.breakpoint.smAndDown">
                                 <v-btn icon color="primary"><v-icon left>visibility</v-icon> {{ authUser.service.views }}</v-btn>
                                 <span class="primary--text"><v-rating v-model="authUser.service.ratings" readonly dense small color="primary"></v-rating></span>
-
                                 <span>
                                     <v-menu offset-y top nudge-bottom="10" left>
                                         <template v-slot:activator="{ on, attrs }">
                                             <v-btn @click="openMenu ? openMenu = !openMenu : ''" v-bind="attrs" v-on="on" icon small class="mt-n1">
-                                                <v-icon color="blue darken-1">share</v-icon>Share
+                                                <v-icon color="blue darken-1">mdi-menu</v-icon>More
                                             </v-btn>
                                         </template>
                                         <v-list>
                                             <v-list-item-group>
                                                 <v-list-item>
-                                                    <v-btn icon color="blue darken-1" to="/my-service/edit"><v-icon left>edit</v-icon></v-btn>
+                                                    <v-btn icon color="blue darken-1" to="/my-service/edit"><v-icon left>edit</v-icon>Edit</v-btn>
                                                 </v-list-item>
                                                 <v-list-item>
-                                                    <v-btn text color="primary darken-2" :to="{name: 'CreateServiceAddImage'}">Change Picture</v-btn>
+                                                    <v-btn icon color="primary darken-2" :to="{name: 'CreateServiceAddImage'}"><v-icon left>image</v-icon>Change Picture</v-btn>
                                                 </v-list-item>
                                                 <v-list-item>
-                                                    <v-btn icon color="red darken-2" @click="confirmDel = true"><v-icon left>delete_forever</v-icon></v-btn>
+                                                    <v-btn icon color="red darken-2" @click="confirmDel = true"><v-icon left>delete_forever</v-icon>Del Portfolio</v-btn>
                                                 </v-list-item>
                                             </v-list-item-group>
                                         </v-list>
@@ -178,13 +177,13 @@
                                 </table>
                             </v-card-text>
                         </v-card>
-                        <v-card light raised elevation="12" min-height="200" class="mt-8 mb-8">
+                        <v-card light raised elevation="12" min-height="150" class="mt-8 mb-8">
                             <v-card-title class="primary white--text justify-center subtitle-1"> Portfolio</v-card-title>
                             <v-card-text class="justify-center mt-5">
                                 <template v-if="authService.portfolio && authService.portfolio.length > 0">
                                     <table class="table table-condensed table-hover table-striped">
                                         <tr v-for="item in authService.portfolio" :key="item.id">
-                                            <th width="70%" style="border-top: none"><router-link :to="{name: 'MyPortFolioShow', params:{id: item.id, slug: item.slug }}">{{ item.title | capFirstLetter | truncate(60) }}</router-link></th>
+                                            <th width="60%" style="border-top: none"><router-link :to="{name: 'MyPortFolioShow', params:{id: item.id, slug: item.slug }}">{{ item.title | capFirstLetter | truncate(60) }}</router-link></th>
                                             <td style="border-top: none"> {{ item.published }} </td>
                                         </tr>
                                     </table>

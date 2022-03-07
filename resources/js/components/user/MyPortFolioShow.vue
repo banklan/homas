@@ -14,7 +14,7 @@
                                 <div class="title font-weight-bold text-center">{{ portfolio && portfolio.title | capFirstLetter }}</div>
                                 <div class="mt-3 body-1 px-3 pt-2"> {{ portfolio && portfolio.detail | capFirstLetter }}</div>
                             </v-card-text>
-                            <v-card-actions class="justify-center mt-3 pb-5 px-2">
+                            <v-card-actions class="justify-space-around mt-3 pb-5 px-2">
                                 <v-btn text color="blue darken-1" @click="editPortfolio"><v-icon left>edit</v-icon><span v-if="$vuetify.breakpoint.mdAndUp">Edit</span></v-btn>
                                 <v-btn text color="red darken-2" @click="confirmFileDel = true"><v-icon left>cancel</v-icon><span v-if="$vuetify.breakpoint.mdAndUp">Remove File</span><span v-else>Rmv File</span></v-btn>
                                 <v-btn text color="red darken--2" @click="confirmDel = true"><v-icon left>delete_forever</v-icon><span v-if="$vuetify.breakpoint.mdAndUp">Delete Portfolio</span></v-btn>
@@ -300,7 +300,7 @@ export default {
             })
         },
         getPfImages(){
-            axios.get(this.api + `/auth/get_my_pf_images_from_s3/${this.portfolio.id}`, this.header)
+            axios.get(this.api + `/auth/get_my_pf_images_from_s3/${this.$route.params.id}`, this.header)
             .then((res) => {
                 this.files = res.data
             })
