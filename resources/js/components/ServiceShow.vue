@@ -34,10 +34,10 @@
                                                     Verified
                                                 </v-chip>
                                             </span>
-                                            <span class="subtitle-2 primary--text"><v-rating v-model="service.ratings" readonly dense small color="primary"></v-rating></span>
                                             <span class="subtitle-2"><v-icon color="blue darken-1">visibility</v-icon>&nbsp;{{ service.views }}</span>
+                                            <span class="subtitle-2 primary--text"><v-rating v-model="service.ratings" readonly dense small color="primary"></v-rating></span>
                                             <span>
-                                                <v-menu offset-y top nudge-bottom="10" right>
+                                                <v-menu offset-y top nudge-top="10" right>
                                                     <template v-slot:activator="{ on, attrs }">
                                                         <v-btn @click="openShare ? openShare = !openShare : ''" v-bind="attrs" v-on="on" icon small class="mt-n1">
                                                             <v-icon color="grey">share</v-icon>Share

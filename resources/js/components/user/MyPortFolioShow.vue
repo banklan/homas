@@ -12,7 +12,7 @@
                         <template v-if="!editForm">
                             <v-card-text class="mt-5 py-3">
                                 <div class="title font-weight-bold text-center">{{ portfolio && portfolio.title | capFirstLetter }}</div>
-                                <div class="mt-3 body-1 px-3 pt-2"> {{ portfolio && portfolio.detail | capFirstLetter }}</div>
+                                <div class="mt-3 body_text px-3 pt-2"> {{ portfolio && portfolio.detail | capFirstLetter }}</div>
                             </v-card-text>
                             <v-card-actions class="justify-space-around mt-3 pb-5 px-2">
                                 <v-btn text color="blue darken-1" @click="editPortfolio"><v-icon left>edit</v-icon><span v-if="$vuetify.breakpoint.mdAndUp">Edit</span></v-btn>

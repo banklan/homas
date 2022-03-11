@@ -10,8 +10,8 @@
                             <!-- <v-img :src="serviceImage" width="100%" height="380" transition="scale-transition"></v-img> -->
                             <v-img v-if="serviceImg" :src="serviceImg" width="100%" height="380" transition="scale-transition" alt="service image"></v-img>
                             <v-img v-else src="images/shared/no-image.png" width="100%" height="380" transition="scale-transition" alt="service image"></v-img>
-                            <v-card-text class="body_text mt-5 px-8 pb-5">
-                                <div class="title mb-2">{{ authService.title }}</div>
+                            <v-card-text class="body_text mt-5 px-4 pb-5">
+                                <div class="title mb-2 text-center">{{ authService.title }}</div>
                                 <div class="body_text">{{ authService.description }}</div>
                             </v-card-text>
                             <v-card-actions class="justify-space-around pb-8 px-2" v-if="$vuetify.breakpoint.smAndDown">
@@ -112,7 +112,7 @@
                     </v-col>
                     <v-col cols="12" md="4">
                         <v-card light raised elevation="12" min-height="400" class="">
-                            <v-card-title class="primary white--text justify-center subtitle-1"> About & Contact</v-card-title>
+                            <v-card-title class="primary white--text justify-center subtitle-1">About & Contact</v-card-title>
                             <v-card-text class="justify-center mt-5">
                                 <table class="table table-condensed table-striped table-hover" v-if="authService">
                                     <thead></thead>
@@ -196,7 +196,7 @@
                                 </template>
                             </v-card-text>
                             <v-card-actions v-if="authService.portfolio && authService.portfolio.length > 0" class="justify-center pb-8">
-                                <v-btn text color="primary" :to="{name: 'MyPortFolio'}">Manage Portfolio</v-btn>
+                                <v-btn large text color="primary" :to="{name: 'MyPortFolio'}">Manage Portfolio</v-btn>
                             </v-card-actions>
                         </v-card>
                     </v-col>
@@ -222,7 +222,7 @@
             <v-card min-height="150">
                 <v-card-title class="subtitle-1 justify-center primary white--text">Delete this service?</v-card-title>
                 <v-card-text class="justify-center mt-5 subtitle-2">
-                    If you proceed to delete, your service, pictures, all the portfolio and reviews linked will also be deleted irrecoverably.
+                    If you proceed to delete, your service, pictures, portfolios and reviews linked will also be deleted irrecoverably.
                 </v-card-text>
                 <v-card-actions class="pb-8 justify-center">
                     <v-btn text color="red darken--2" @click="confirmDel = false" width="40%">Cancel</v-btn>

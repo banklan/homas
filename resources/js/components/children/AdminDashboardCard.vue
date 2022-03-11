@@ -28,3 +28,9 @@ export default {
     props: ['title']
 }
 </script>
+
+<style lang="css" scoped>
+    a{
+        text-decoration: none !important;
+    }
+</style>

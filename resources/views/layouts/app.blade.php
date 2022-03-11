@@ -23,7 +23,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link rel="shortcut icon" href="{{ asset('images/shared/logo.png') }}">
+    <link rel="shortcut icon" href="{{ asset('images/shared/sc.png') }}">
 
     <link href="https://fonts.googleapis.com/css2?family=Cabin&family=IBM+Plex+Sans:wght@300&family=Montserrat:wght@300;500&family=Nunito:wght@300&family=Quicksand:wght@300;600&family=Source+Sans+Pro:wght@300;600&display=swap" rel="stylesheet">
 

@@ -5,9 +5,10 @@
                 <span class="hidden-md-and-up">
                     <v-app-bar-nav-icon class="primary--text hidden-md-and-up" @click="navdrawer = true"></v-app-bar-nav-icon>
                 </span>
-                <v-toolbar-title class="ml-5 my-2 white--text">
+                <v-toolbar-title class="ml-5 my-5 pt-3 white--text">
                     <router-link to="/" style="cursor:pointer" exact>
-                        <span class="font-weight-bold headline primary--text app_name">Hozulinks</span>
+                        <!-- <span class="font-weight-bold headline primary--text app_name">Hozulinks</span> -->
+                        <img src="/images/shared/logo2-orange.png" height="65" />
                     </router-link>
                 </v-toolbar-title>
                 <v-spacer></v-spacer>
@@ -16,7 +17,7 @@
                         <span v-if="authUser" class="primary--text mr-5"> {{ authUser.fullname }}</span>
                     </v-toolbar-items>
                 </span>
-                <v-toolbar-items class="hidden-sm-and-down align-center">
+                <v-toolbar-items class="hidden-sm-and-down menu align-center">
                     <template v-if="!userIsLoggedIn && !adminIsLoggedIn">
                         <v-btn text v-for="menu in menus" :key="menu.title">
                             <router-link class="transparent" :class="$route.path == '/' ? 'white--text' : 'primary--text'" :to="menu.path">{{ menu.title }}</router-link>
@@ -33,7 +34,8 @@
             <v-navigation-drawer absolute v-model="navdrawer" color="primary white--text" class="hidden-md-and-up" height="100%">
                 <v-toolbar-title class="headline ml-4 mt-3 pb-4">
                     <router-link to="/" style="cursor: pointer" exact>
-                        <span class="white--text">Hozulinks</span>
+                        <!-- <span class="white--text">Hozulinks</span> -->
+                        <img src="/images/shared/logo2-white.png" height="65" />
                     </router-link>
                 </v-toolbar-title>
                 <v-divider></v-divider>
@@ -160,18 +162,18 @@ export default {
         }
     }
     .v-toolbar__items button{
-        transition: all 0.3s;
+        transition: all 0.4s;
         &:hover{
-            background: #ff5200 !important;
-            color: #fff !important;
+            background-color: #ff5200 !important;
+            padding: auto 12px !important;
             a{
                 color: #fff !important;
             }
         }
     }
-    .auth_menu a.router-link-exact-active{
+    .v-btn a.router-link-exact-active{
         background: #ff5200 !important;
-        padding: 23.5px 10px;
+        padding: 23.5px 12px;
         color: #fff !important;
     }
 </style>

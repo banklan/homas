@@ -10,7 +10,7 @@
                 <v-list-item-subtitle class="mt-2 subtitle-1 black--text lighten-3">{{ portfolio.detail | capFirstLetter | truncate(160) }}</v-list-item-subtitle>
             </v-list-item-content>
         </v-list-item>
-        <v-divider v-if="index != portfolio.length - 1"></v-divider>
+        <v-divider v-if="index < portfolio.length - 1"></v-divider>
     </span>
 </template>
 
@@ -40,9 +40,9 @@ export default {
     },
     methods: {
         getPfImage(){
-            axios.get(this.api + `/auth/get_my_pf_image_from_s3/${this.portfolio.id}`, this.header)
+            axios.get(this.api + `/auth/get_my_pf_avatar_from_s3/${this.portfolio.id}`, this.header)
             .then((res) => {
-                this.pfImg = res.data[0]
+                this.pfImg = res.data
             })
         }
     },

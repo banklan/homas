@@ -133,6 +133,14 @@ class UserProfileController extends Controller
         return response()->json($files, 200);
     }
 
+    public function getMyPortfolioAvatarFromS3($id){
+        $pf_file = PortfolioFile::where('portfolio_id', $id)->first();
+        $file = $pf_file->file;
+        $path = '/portfolios/' .$file;
+        $fileUrl = Storage::disk('s3')->url($path);
+        return response()->json($fileUrl, 200);
+    }
+
     public function getMyServiceImgFromS3(){
         $auth_service = auth('api')->user()->service;
         $serv_img = $auth_service->image;

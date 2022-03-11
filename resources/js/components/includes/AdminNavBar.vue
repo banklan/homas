@@ -4,9 +4,10 @@
             <span class="hidden-md-and-up">
                 <v-app-bar-nav-icon class="primary--text hidden-md-and-up" @click="navdrawer = true"></v-app-bar-nav-icon>
             </span>
-            <v-toolbar-title class="ml-5 my-2 white--text">
+            <v-toolbar-title class="ml-5 my-2 pt-3 white--text">
                 <router-link to="/" style="cursor:pointer" exact>
-                    <span class="font-weight-bold headline primary--text">Hozulinks</span>
+                    <!-- <span class="font-weight-bold headline primary--text">Hozulinks</span> -->
+                    <img src="/images/shared/logo2-orange.png" height="65" />
                 </router-link>
             </v-toolbar-title>
             <v-spacer></v-spacer>
@@ -18,7 +19,7 @@
             <v-toolbar-items class="hidden-sm-and-down align-center">
                 <template>
                     <v-btn text v-for="menu in menus" :key="menu.title">
-                        <router-link class="transparent" :class="$route.path == '/' ? 'white--text' : 'primary--text'" :to="menu.path">{{ menu.title }}</router-link>
+                        <router-link class="transparent" :class="`$route.path == '/' ? 'white--text' : 'primary--text'`" :to="menu.path">{{ menu.title }}</router-link>
                     </v-btn>
                     <v-btn :class="$route.path == '/' ? 'white--text' : 'primary--text'" text @click="logout">Logout</v-btn>
                 </template>
@@ -27,7 +28,8 @@
         <v-navigation-drawer absolute v-model="navdrawer" color="primary white--text" class="hidden-md-and-up" height="100%">
             <v-toolbar-title class="headline ml-4 mt-3 pb-4">
                 <router-link to="/" style="cursor: pointer" exact>
-                    <span class="white--text">Hozulinks</span>
+                    <!-- <span class="white--text">Hozulinks</span> -->
+                    <img src="/images/shared/logo2-white.png" height="60" />
                 </router-link>
             </v-toolbar-title>
             <v-divider></v-divider>

@@ -89,6 +89,7 @@ Route::group(['middleware' => 'jwt.auth',  'prefix' => 'auth'], function($router
     Route::get('get_my_service_image_from_s3', 'UserProfileController@getMyServiceImgFromS3');
     Route::get('get_my_pf_images_from_s3/{id}', 'UserProfileController@getMyPortfolioImgSsFromS3');
     Route::post('update_my_service', 'ServiceController@updateMyService');
+    Route::get('get_my_pf_avatar_from_s3/{id}', 'UserProfileController@getMyPortfolioAvatarFromS3');
 });
 
 Route::group([['middleware' => 'jwt.auth', 'PortfolioCount'],  'prefix' => 'auth'], function($router){

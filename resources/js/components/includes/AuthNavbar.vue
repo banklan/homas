@@ -4,9 +4,10 @@
             <span class="hidden-md-and-up">
                 <v-app-bar-nav-icon class="primary--text hidden-md-and-up" @click="navdrawer = true"></v-app-bar-nav-icon>
             </span>
-            <v-toolbar-title class="ml-5 my-2 white--text">
+            <v-toolbar-title class="ml-5 my-2 pt-3 white--text">
                 <router-link to="/" style="cursor:pointer" exact>
-                    <span class="font-weight-bold headline primary--text">Hozulinks</span>
+                    <!-- <span class="font-weight-bold headline primary--text">Hozulinks</span> -->
+                    <img src="/images/shared/logo2-orange.png" height="65" />
                 </router-link>
             </v-toolbar-title>
             <v-spacer></v-spacer>
@@ -23,7 +24,8 @@
         <v-navigation-drawer absolute v-model="navdrawer" color="primary white--text" class="hidden-md-and-up" disable-resize-watcher>
             <v-toolbar-title class="white--text headline font-weight-bold ml-4 my-5">
                 <router-link to="/" style="cursor: pointer" exact>
-                    <span class="white--text">Hozulinks</span>
+                    <!-- <span class="white--text">Hozulinks</span> -->
+                    <img src="/images/shared/logo2-white.png" height="65" />
                 </router-link>
             </v-toolbar-title>
             <v-divider></v-divider>
@@ -89,7 +91,7 @@ export default {
         text-decoration: none;
         text-transform:capitalize;
     }
-    /* a.router-link-exact-active{
-        color: #08F7EB !important;
-    } */
+    a.router-link-exact-active{
+        color: #ff5200 !important;
+    }
 </style>

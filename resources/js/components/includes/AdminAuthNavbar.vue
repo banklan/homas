@@ -2,9 +2,10 @@
     <nav>
         <v-app-bar :clipped-right="true" color="admin primary--text" light elevation="10">
             <v-app-bar-nav-icon @click="sidebarmenu = !sidebarmenu" class="primary--text"></v-app-bar-nav-icon>
-            <v-toolbar-title class="primary--text">
+            <v-toolbar-title class="primary--text pt-3">
                 <router-link to="/" style="cursor:pointer" exact>
-                    <span class="font-weight-bold headline primary--text">Hozulinks</span>
+                    <!-- <span class="font-weight-bold headline primary--text">Hozulinks</span> -->
+                    <img src="/images/shared/logo2-orange.png" height="65" />
                 </router-link>
             </v-toolbar-title>
             <v-spacer></v-spacer>
