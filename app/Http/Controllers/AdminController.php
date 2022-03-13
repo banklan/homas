@@ -886,10 +886,11 @@ class AdminController extends Controller
 
     public function getWeeksDataForServices(){
         $services = Service::selectRaw('Count(*) AS services_count')
-                    ->selectRaw("date_part('year', created_at::date) as year")
-                    ->selectRaw("date_part('week', created_at::date) AS weekly")
-                    ->groupBy('year', 'weekly')
-                    ->orderByDesc('year', 'weekly')
+                    // ->selectRaw('FROM_DAYS(TO_DAYS(created_at::date) -MOD(TO_DAYS(created_at::date) -1, 7)) AS week_starting')
+                    // ->selectRaw("date_part('week', created_at::date) AS weekly")
+                    ->date_trunc("'week', created_at::date) AS start_date")
+                    ->groupBy('start_date')
+                    ->orderByDesc('start_date')
                     ->take(10)->get();
         $services->each->setAppends([]);
 
@@ -898,7 +899,7 @@ class AdminController extends Controller
 
     public function getWeeksDataForUsers(){
         $users = User::selectRaw('COUNT(*) AS users_count')
-                ->selectRaw('FROM_DAYS(TO_DAYS(created_at::TEXT, \'YYYY-MM-DD\') -MOD(TO_DAYS(created_at::TEXT, \'YYYY-MM-DD\') -1, 7)) AS week_starting')
+                ->selectRaw('FROM_DAYS(TO_DAYS(created_at) -MOD(TO_DAYS(created_at) -1, 7)) AS week_starting')
                 ->groupBy('week_starting')
                 ->orderBy('week_starting')
                 ->take(10)->get();

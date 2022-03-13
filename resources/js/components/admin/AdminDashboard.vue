@@ -285,6 +285,7 @@ export default {
                 this.chartUsersCount = res.data.map(item => item.users_count)
                 this.chartUsersLabels = res.data.map(item => item.week_starting)
                 this.usersChartLoaded = true
+                console.log('users chart ', res.data)
             }).catch((e) =>{
                 this.UsersChartError = e
             })
