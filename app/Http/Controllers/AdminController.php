@@ -888,8 +888,8 @@ class AdminController extends Controller
         $services = Service::selectRaw('Count(*) AS services_count')
                     ->selectRaw("date_part('year', created_at::date) as year")
                     ->selectRaw("date_part('week', created_at::date) AS weekly")
-                    ->GROUPBY('year', 'week')
-                    ->ORDERBY('year', 'weekly')
+                    ->groupBy('year', 'week')
+                    ->orderBy('year', 'weekly', 'asc')
                     ->take(10)->get();
         $services->each->setAppends([]);
 
