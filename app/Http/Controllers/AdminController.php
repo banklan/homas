@@ -873,12 +873,24 @@ class AdminController extends Controller
         return response()->json($rev, 200);
     }
 
+    // public function getWeeksDataForServices(){
+    //     $services = Service::selectRaw('COUNT(*) AS services_count')
+    //             ->selectRaw('FROM_DAYS(TO_DAYS(created_at::date, \'YYYY-MM-DD\') -MOD(TO_DAYS(created_at::date, \'YYYY-MM-DD\') -1, 7)) AS week_starting')
+    //             ->groupBy('week_starting')
+    //             ->orderBy('week_starting')
+    //             ->take(10)->get();
+    //     $services->each->setAppends([]);
+
+    //     return response()->json($services, 200);
+    // }
+
     public function getWeeksDataForServices(){
-        $services = Service::selectRaw('COUNT(*) AS services_count')
-                ->selectRaw('FROM_DAYS(TO_DAYS(created_at::TEXT, \'YYYY-MM-DD\') -MOD(TO_DAYS(created_at::TEXT, \'YYYY-MM-DD\') -1, 7)) AS week_starting')
-                ->groupBy('week_starting')
-                ->orderBy('week_starting')
-                ->take(10)->get();
+        $services = Service::selectRaw('Count(*) AS services_count')
+                    ->selectRaw("date_part('year', created_at::date) as year")
+                    ->selectRaw("date_part('week', created_at::date) AS weekly")
+                    ->GROUPBY('year', 'week')
+                    ->ORDERBY('year', 'weekly')
+                    ->take(10)->get();
         $services->each->setAppends([]);
 
         return response()->json($services, 200);

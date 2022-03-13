@@ -274,6 +274,7 @@ export default {
                 this.chartServicesCount = res.data.map(item => item.services_count)
                 this.chartServicesLabels = res.data.map(item => item.week_starting)
                 this.servChartLoaded = true
+                console.log('services chart ', res.data)
             }).catch((e) =>{
                 this.ServiceChartError = e
             })
