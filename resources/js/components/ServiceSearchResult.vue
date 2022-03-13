@@ -4,7 +4,7 @@
             <v-col cols="3">
                 <v-btn rounded color="primary lighten--2" dark elevation="4" left @click.prevent="$router.go(-1)"><v-icon left>arrow_left</v-icon> Back</v-btn>
             </v-col>
-            <v-col cols="9" md="6" offset-md="2">
+            <v-col cols="12" md="6" offset-md="2">
                 <service-search-bar></service-search-bar>
             </v-col>
         </v-row>

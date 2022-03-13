@@ -13,10 +13,10 @@
         </v-card-actions>
         <v-card-actions class="mt-3 mb-0 px-3 primary white--text py-5 align-center">
             <v-avatar>
-                <v-img v-if="serviceAuthor.picture" :src="serviceAuthor.picture" height="50" alt="Author"></v-img>
+                <v-img v-if="serviceAuthor" :src="serviceAuthor" height="50" alt="Author"></v-img>
                 <v-img v-else src="/images/shared/user7.jpg" height="50"></v-img>
             </v-avatar>
-                <div class="ml-3">{{ serviceAuthor.fullname }}</div>
+            <div class="ml-3">{{ service && service.user.fullname }}</div>
         </v-card-actions>
     </v-card>
 </template>
@@ -45,6 +45,9 @@ export default {
             axios.get(this.api + `/get_service_author_img_from_s3/${this.service.id}`).then((res) =>{
                 this.serviceAuthor = res.data
             })
+        },
+        getAuthor(){
+            axios.get(this.api + `/get_service_author`)
         }
     },
     created(){
