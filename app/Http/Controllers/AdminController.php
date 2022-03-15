@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Hash;
 use Maatwebsite\Excel\Facades\Excel;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Storage;
 
 class AdminController extends Controller
 {
@@ -381,28 +382,26 @@ class AdminController extends Controller
 
         // check if picture exists for profile, then unlink
         $service = Service::findOrFail($id);
-        $old_pic = $service->image;
-        if($old_pic){
-            $filePath = public_path('/images/services/'.$old_pic);
-            if(file_exists($filePath)){
-                unlink($filePath);
-            }
-        }
-
-        // save file in folder...later in s3 when ready to deploy
         $file = $request->image;
         if($file){
             $pool = '0123456789abcdefghijklmnopqrstuvwxyz@&';
             $ext = $file->getClientOriginalExtension();
             $filename = substr(str_shuffle($pool), 0, 8).".".$ext;
 
+            // check if image exists for the service and unlink
+            $old_file = $service->image;
+            $oldpath = '/services/' . $old_file;
+            if(file_exists($oldpath)){
+                Storage::disk('s3')->delete($oldpath);
+            }
+
             //save new file in folder
-            $file_loc = public_path('/images/services/'.$filename);
+            $file_loc = '/services/' .$filename;
             if(in_array($ext, ['jpeg', 'jpg', 'png', 'gif', 'pdf'])){
-                $upload = Image::make($file)->resize(400, 340, function($constraint){
-                    $constraint->aspectRatio();
-                });
-                $upload->sharpen(2)->save($file_loc);
+                $img = Image::make($file)->resize(420, 320, function($constraint){
+                    $constraint->aspectRatio(); })->sharpen(3);
+                $fixedImg = $img->stream();
+                Storage::disk('s3')->put($file_loc, $fixedImg->__toString());
             }
         }
 
@@ -420,11 +419,9 @@ class AdminController extends Controller
     {
         $service = Service::findOrFail($id);
         $old_pic = $service->image;
-        if($old_pic){
-            $filePath = public_path('/images/services/'.$old_pic);
-            if(file_exists($filePath)){
-                unlink($filePath);
-            }
+        $oldpath = '/services/' . $old_pic;
+        if(file_exists($oldpath)){
+            Storage::disk('s3')->delete($oldpath);
         }
 
         $service->update([
@@ -432,6 +429,29 @@ class AdminController extends Controller
         ]);
 
         return response()->json($service, 200);
+    }
+
+    public function deleteService($id){
+        $service = Service::findOrFail($id);
+        // delete portfolio & files
+        $portfolio = Portfolio::where('service_id', $id)->first();
+        $pf_files = PortfolioFile::where('portfolio_id', $portfolio->id)->get();
+        foreach($pf_files as $file){
+            $pf_img = $file->file;
+            $file_path = '/services/' . $pf_img;
+            if(file_exists($file_path)){
+                Storage::disk('s3')->delete($file_path);
+            }
+            $file->delete();
+        }
+        // delete service & img
+        $img = $service->image;
+        $path = '/services/' . $img;
+        if(file_exists($path)){
+            Storage::disk('s3')->delete($path);
+        }
+        $service->delete();
+        return response()->json(['message' => 'Service & portfolios with their files deleted!'], 200);
     }
 
     public function adminSearchForService(Request $request)
@@ -513,7 +533,14 @@ class AdminController extends Controller
 
     public function getPortfolioFiles($id){
         $files = PortfolioFile::where('portfolio_id', $id)->get();
-        return response()->json($files, 200);
+        $pf_files = [];
+        foreach($files as $file){
+            $img = $file->file;
+            $filePath = 'portfolios/' . $img;
+            $imgUrl = Storage::disk('s3')->url($filePath);
+            $pf_files[] = $imgUrl;
+        }
+        return response()->json($pf_files, 200);
     }
 
     public function updatePortfolio(Request $request, $id)
@@ -551,11 +578,19 @@ class AdminController extends Controller
     }
 
     public function adminDeletePortfolio($id){
-        $pf = Portfolio::findOrFail($id);
+        $portf = Portfolio::findOrFail($id);
+        // get files and delete
+        $pfs = PortfolioFile::where('portfolio_id', $id)->get();
+        foreach($pfs as $pf){
+            $img = $pf->file;
+            $filePath = 'portfolios/' . $img;
+            Storage::disk('s3')->delete($filePath);
+            $pf->delete();
+        }
 
-        $pf->delete();
+        $portf->delete();
 
-        return response()->json(['message' => 'Portfolio deleted'], 200);
+        return response()->json(['message' => 'Portfolio & files deleted!'], 200);
     }
 
     public function adminDeletePortfolioFile($id)
@@ -565,14 +600,14 @@ class AdminController extends Controller
         // delete file in storage
         $file_name = $file->file;
         if($file_name){
-            $filePath = public_path('/images/portfolios/'.$file_name);
+            $filePath = 'portfolios/' . $file_name;
             if(file_exists($filePath)){
-                unlink($filePath);
+                Storage::disk('s3')->delete($filePath);
             }
         }
         $file->delete();
 
-        return response()->json(['message' => 'Deleted'], 201);
+        return response()->json(['message' => 'Portfolio file Deleted!'], 201);
     }
 
     public function adminGetPgntdReviews()
@@ -887,8 +922,10 @@ class AdminController extends Controller
     public function getWeeksDataForServices(){
         $services = Service::selectRaw('Count(*) AS services_count')
                     // ->selectRaw('FROM_DAYS(TO_DAYS(created_at::date) -MOD(TO_DAYS(created_at::date) -1, 7)) AS week_starting')
-                    ->selectRaw("date_part('week', created_at::date) AS weekly")
+                    // ->selectRaw("date_part('week', created_at::date) AS weekly")
+                    ->selectRaw("date_part('week', TIMESTAMP created_at) AS weekly")
                     // ->date_trunc("'week', created_at::date) AS start_date")
+                    // date_part('week',TIMESTAMP '2017-09-30');
                     ->groupBy('weekly')
                     ->orderByDesc('weekly')
                     ->take(10)->get();
@@ -1104,5 +1141,14 @@ class AdminController extends Controller
             }
             return response()->json(['message' => 'Categories created successfully'], 201);
         }
+    }
+
+    public function getServiceImgFromS3($id){
+        $service = Service::findOrFail($id);
+        $img = $service->image;
+        $filePath = 'services/' . $img;
+        $imgUrl = Storage::disk('s3')->url($filePath);
+
+        return response()->json($imgUrl, 200);
     }
 }

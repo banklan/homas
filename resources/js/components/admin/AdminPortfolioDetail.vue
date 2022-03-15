@@ -47,7 +47,7 @@
                         </v-card>
                         <v-card min-height="400" min-width="80%" class="mt-5">
                             <v-carousel height="400">
-                                <v-carousel-item v-for="(item, i) in files" :key="i" :src="`/images/portfolios/${item.file}`" reverse-transition="fade-transition" transition="fade-transition"></v-carousel-item>
+                                <v-carousel-item v-for="(file, i) in files" :key="i" :src="file" reverse-transition="fade-transition" transition="fade-transition"></v-carousel-item>
                             </v-carousel>
                             <v-card-actions class="justify-center px-5" v-if="files">
                                 <v-btn icon color="red darken-2 mx-5" @click="confirmDelFile">

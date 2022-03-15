@@ -12,7 +12,7 @@
                     <v-col cols="12" md="7">
                         <div class="title mt-4 mb-2 text-truncate">{{ service.title }}</div>
                         <v-card light raised elevation="12" min-height="350" class="mx-auto">
-                            <v-img v-if="service.image" :src="`/images/services/${service.image}`" width="100%" height="350" transition="scale-transition"></v-img>
+                            <v-img v-if="serviceImg" :src="serviceImg" width="100%" height="350" transition="scale-transition"></v-img>
                             <v-img v-else src="/images/shared/no-image.png" width="100%" height="350" transition="scale-transition"></v-img>
                             <v-card-text class="body-2 body_text lighten-2 mt-3 px-6 pb-5">
                                 <div class="font-weight-black mb-3">Description:</div>
@@ -27,7 +27,7 @@
                             <v-card-title class="subtitle-1 admin white--text justify-center">Portfolio</v-card-title>
                             <v-card-text class="body_text mt-3">
                                 <v-list two-line nav v-if="service">
-                                    <v-list-item-group dense color="primary" class="ml-n2">
+                                    <v-list-item-group dense class="ml-n1">
                                         <template v-if="service.portfolio.length > 0">
                                             <div v-for="(pf, index) in service.portfolio" :key="pf.id">
                                                 <v-list-item class="mb-n5 mt-n5" :to="{name: 'AdminPortfolioShow', params: {id: pf.id, slug: pf.slug}}">
@@ -298,7 +298,8 @@ export default {
             toggleIsPremiumDial: false,
             toggleIsFeaturedDial: false,
             serviceImgDelFail: false,
-            isDeleting: false
+            isDeleting: false,
+            serviceImg: null
         }
     },
     computed: {
@@ -333,6 +334,7 @@ export default {
             axios.get(this.api + `/auth-admin/get_service/${this.id}`, this.headers).then((res) => {
                 this.isLoading = false
                 this.service = res.data
+                this.getServiceImage()
             })
         },
         toggleApproved(){
@@ -361,7 +363,7 @@ export default {
         },
         deleteService(){
             this.isLoading = true
-            axios.post(this.api + `/auth-admin/delete_service/${this.id}`, {}, this.headers)
+            axios.post(this.api + `/auth-admin/admin_delete_service/${this.id}`, {}, this.headers)
                  .then((res) => {
                      this.$router.push('/admin/services')
                  })
@@ -408,6 +410,12 @@ export default {
             }).catch(() => {
                 this.isDeleting = false
                 this.serviceImgDelFail = true
+            })
+        },
+        getServiceImage(){
+            axios.get(this.api + `/auth-admin/admin_get_service_image/${this.$route.params.id}`, this.headers)
+            .then((res) => {
+                this.serviceImg = res.data
             })
         }
     },

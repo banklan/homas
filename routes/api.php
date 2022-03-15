@@ -192,6 +192,8 @@ Route::group(['prefix' => 'auth-admin', 'middleware' => ['assign.guard:admin-api
     Route::get('get_testimonial_count', 'AdminController@getTestimonialCount');
     Route::post('admin_create_bulk_locations', 'AdminController@createBulkLocations');
     Route::post('admin_create_bulk_categories', 'AdminController@createBulkCategories');
+    Route::get('admin_get_service_image/{id}', 'AdminController@getServiceImgFromS3');
+    Route::post('admin_delete_service/{id}', 'AdminController@deleteService');
 
     // Route::get('get_admin_notifications', 'AdminController@getNotifs');
     // Route::post('clear_new_users_notification', 'AdminController@resetNewUsersNotif');
