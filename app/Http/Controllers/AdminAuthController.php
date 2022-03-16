@@ -39,7 +39,7 @@ class AdminAuthController extends Controller
             ]);
 
             $super_user = 'hozulinks@gmail.com';
-            $now = date('d/m/Y, h:m');
+            $now = date('d/m/Y, h:ma');
             // send email to superuser
             Mail::to($super_user)->send(new AnAdminHasLoggedIn($admin, $now));
 

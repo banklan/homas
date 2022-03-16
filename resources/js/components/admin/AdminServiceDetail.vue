@@ -152,10 +152,10 @@
                                     </tr>
                                 </table>
                             </v-card-text>
-                            <v-card-actions class="justify-center pb-5 px-3">
+                            <v-card-actions class="justify-space-around pb-5 px-3">
                                 <v-btn icon color="admin lighten-3" :to="{name: 'AdminServiceUpdate', params: {id: service.id}}"><v-icon>edit</v-icon></v-btn>
                                 <v-btn icon color="red darken-2" @click="confirmDelDial = true"><v-icon>delete_forever</v-icon></v-btn>
-                                <v-btn icon color="admin" :href="`http://localhost:8000/api/service/${service.id}/export`"><v-icon left>mdi-download</v-icon></v-btn>
+                                <v-btn icon color="admin" :href="`${api}/service/${service.id}/export`"><v-icon left>mdi-download</v-icon></v-btn>
                             </v-card-actions>
                         </v-card>
                         <v-card light raised elevation="12" min-height="100" class="mx-auto mt-7">
