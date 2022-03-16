@@ -908,9 +908,10 @@ class AdminController extends Controller
         return response()->json($rev, 200);
     }
 
+        // working localhost sql
     // public function getWeeksDataForServices(){
     //     $services = Service::selectRaw('COUNT(*) AS services_count')
-    //             ->selectRaw('FROM_DAYS(TO_DAYS(created_at::date, \'YYYY-MM-DD\') -MOD(TO_DAYS(created_at::date, \'YYYY-MM-DD\') -1, 7)) AS week_starting')
+    //             ->selectRaw('FROM_DAYS(TO_DAYS(created_at) -MOD(TO_DAYS(created_at) -1, 7)) AS week_starting')
     //             ->groupBy('week_starting')
     //             ->orderBy('week_starting')
     //             ->take(10)->get();
@@ -919,13 +920,10 @@ class AdminController extends Controller
     //     return response()->json($services, 200);
     // }
 
+    // production postgresql
     public function getWeeksDataForServices(){
         $services = Service::selectRaw('Count(*) AS services_count')
-                    // ->selectRaw('FROM_DAYS(TO_DAYS(created_at::date) -MOD(TO_DAYS(created_at::date) -1, 7)) AS week_starting')
-                    // ->selectRaw("date_part('week', created_at::date) AS weekly")
-                    ->selectRaw("DATE_TRUNC('week' FROM created_at) AS weekly")
-                    // ->date_trunc("'week', created_at::date) AS start_date")
-                    // date_part('week',TIMESTAMP '2017-09-30');
+                    ->selectRaw("DATE_TRUNC('week', created_at)::date AS week_starting")
                     ->groupBy('weekly')
                     ->orderByDesc('weekly')
                     ->take(10)->get();
@@ -934,10 +932,10 @@ class AdminController extends Controller
         return response()->json($services, 200);
     }
 
+    // production postgresql
     public function getWeeksDataForUsers(){
         $users = User::selectRaw('COUNT(*) AS users_count')
-                // ->selectRaw('FROM_DAYS(TO_DAYS(created_at) -MOD(TO_DAYS(created_at) -1, 7)) AS week_starting')
-                ->selectRaw("DATE_TRUNC('week', created_at) AS week_starting")
+                ->selectRaw("DATE_TRUNC('week', created_at)::date AS week_starting")
                 ->groupBy('week_starting')
                 ->orderBy('week_starting')
                 ->take(10)->get();
@@ -945,6 +943,18 @@ class AdminController extends Controller
 
         return response()->json($users, 200);
     }
+
+    // working localhost sql
+    // public function getWeeksDataForUsers(){
+    //     $users = User::selectRaw('COUNT(*) AS users_count')
+    //             ->selectRaw('FROM_DAYS(TO_DAYS(created_at) -MOD(TO_DAYS(created_at) -1, 7)) AS week_starting')
+    //             ->groupBy('week_starting')
+    //             ->orderBy('week_starting')
+    //             ->take(10)->get();
+    //     $users->each->setAppends([]);
+
+    //     return response()->json($users, 200);
+    // }
 
     public function getPgntdPswdRequests(){
         $reqs = PasswordResetLog::latest()->paginate(10);
