@@ -21,19 +21,21 @@
                                     <v-menu offset-y top nudge-top="10" right>
                                         <template v-slot:activator="{ on, attrs }">
                                             <v-btn @click="openMenu ? openMenu = !openMenu : ''" v-bind="attrs" v-on="on" icon small class="mt-n1">
-                                                <v-icon color="blue darken-1">mdi-menu</v-icon>
+                                                <v-icon color="blue darken-1">more_horiz</v-icon>
                                             </v-btn>
                                         </template>
-                                        <v-list>
+                                        <v-list dense>
                                             <v-list-item-group>
                                                 <v-list-item>
-                                                    <v-btn icon color="blue darken-1" to="/my-service/edit"><v-icon left>edit</v-icon></v-btn>
+                                                    <v-btn small icon color="blue darken-1" to="/my-service/edit"><v-icon>edit</v-icon></v-btn>
                                                 </v-list-item>
+                                                <v-divider></v-divider>
                                                 <v-list-item>
-                                                    <v-btn icon color="blue darken-1" :to="{name: 'CreateServiceAddImage'}"><v-icon left>image</v-icon></v-btn>
+                                                    <v-btn small icon color="blue darken-1" :to="{name: 'CreateServiceAddImage'}"><v-icon>image</v-icon></v-btn>
                                                 </v-list-item>
+                                                <v-divider></v-divider>
                                                 <v-list-item>
-                                                    <v-btn icon color="red darken-2" @click="confirmDel = true"><v-icon left>delete_forever</v-icon></v-btn>
+                                                    <v-btn small icon color="red darken-2" @click="confirmDel = true"><v-icon>delete_forever</v-icon></v-btn>
                                                 </v-list-item>
                                             </v-list-item-group>
                                         </v-list>

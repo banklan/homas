@@ -36,24 +36,26 @@
                                             </span>
                                             <span class="subtitle-2"><v-icon color="blue darken-1">visibility</v-icon>&nbsp;{{ service.views }}</span>
                                             <span class="subtitle-2 primary--text"><v-rating v-model="service.ratings" readonly dense small color="primary"></v-rating></span>
-                                            <span>
+                                            <span v-if="authUser">
                                                 <v-menu offset-y top nudge-top="10" right>
                                                     <template v-slot:activator="{ on, attrs }">
                                                         <v-btn @click="openShare ? openShare = !openShare : ''" v-bind="attrs" v-on="on" icon small class="mt-n1">
                                                             <v-icon color="grey">share</v-icon>Share
                                                         </v-btn>
                                                     </template>
-                                                    <v-list>
+                                                    <v-list dense v-if="authUser">
                                                         <v-list-item-group>
-                                                            <v-list-item>
-                                                                <ShareNetwork network="facebook" url="https://www.google.com" title="service.title" descr="social.details" hashtags="cccrrrzz"><v-icon color="#1877f2" class="px-2">mdi-facebook</v-icon></ShareNetwork>
+                                                            <v-list-item v-if="authUser.service.facebook">
+                                                                <ShareNetwork network="facebook" url="`https://www.facebook.com/${authUser.service.facebook}`" title="service.title" descr="social.details" hashtags="cccrrrzz"><v-icon color="#1877f2" class="px-2">mdi-facebook</v-icon></ShareNetwork>
                                                             </v-list-item>
-                                                            <v-list-item>
-                                                                <ShareNetwork network="twitter" url="https://www.google.com" title="service.title" descr="social.details" hashtags="cccrrrzz"><v-icon color="#1da1f2" class="px-2">mdi-twitter</v-icon></ShareNetwork>
+                                                            <v-divider v-if="authUser.service.twitter"></v-divider>
+                                                            <v-list-item v-if="authUser.service.twitter">
+                                                                <ShareNetwork network="twitter" url="`https://www.twitter.com/${authUser.service.twitter}`" title="service.title" descr="social.details" hashtags="cccrrrzz"><v-icon color="#1877f2" class="px-2">mdi-twitter</v-icon></ShareNetwork>
                                                             </v-list-item>
+                                                            <!-- <v-divider v-if="authUser.service.instagram"></v-divider>
                                                             <v-list-item>
-                                                                <ShareNetwork network="telegram" url="https://www.google.com" title="service.title" descr="social.details" hashtags="cccrrrzz"><v-icon color="blue" class="px-2">mdi-telegram</v-icon></ShareNetwork>
-                                                            </v-list-item>
+                                                                <ShareNetwork network="instagram" url="`https://www.instagram.com/${authUser.service.instagram}`" title="service.title" descr="social.details" hashtags="cccrrrzz"><v-icon color="#1da1f2" class="px-2">mdi-instagram</v-icon></ShareNetwork>
+                                                            </v-list-item> -->
                                                         </v-list-item-group>
                                                     </v-list>
                                                 </v-menu>

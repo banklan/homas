@@ -26,11 +26,11 @@
                         <v-card light raised elevation="12" min-height="150" class="mx-auto mt-5">
                             <v-card-title class="subtitle-1 admin white--text justify-center">Portfolio</v-card-title>
                             <v-card-text class="body_text mt-3">
-                                <v-list two-line nav v-if="service">
+                                <v-list nav v-if="service">
                                     <v-list-item-group dense class="ml-n1">
                                         <template v-if="service.portfolio.length > 0">
                                             <div v-for="(pf, index) in service.portfolio" :key="pf.id">
-                                                <v-list-item class="mb-n5 mt-n5" :to="{name: 'AdminPortfolioShow', params: {id: pf.id, slug: pf.slug}}">
+                                                <v-list-item class="mb-n5 mt-n5" :to="{name: 'AdminPortfolioDetail', params: {id: pf.id, slug: pf.slug}}">
                                                     <v-list-item-content class="mt-1">
                                                         <v-list-item-subtitle class="subtitle-1 body_text text-truncate">{{ pf.title }}</v-list-item-subtitle>
                                                     </v-list-item-content>

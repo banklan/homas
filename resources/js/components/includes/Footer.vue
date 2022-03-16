@@ -58,6 +58,7 @@ export default {
         min-height: 350px;
         color: #fff;
         width: 100vw;
+        margin-top: 15px;
         .wrapper{
             height: 100%;
             width: 100%;

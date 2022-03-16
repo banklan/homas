@@ -923,7 +923,7 @@ class AdminController extends Controller
         $services = Service::selectRaw('Count(*) AS services_count')
                     // ->selectRaw('FROM_DAYS(TO_DAYS(created_at::date) -MOD(TO_DAYS(created_at::date) -1, 7)) AS week_starting')
                     // ->selectRaw("date_part('week', created_at::date) AS weekly")
-                    ->selectRaw("date_part('week', TIMESTAMP created_at) AS weekly")
+                    ->selectRaw("date_trunc('week' FROM created_at) AS weekly")
                     // ->date_trunc("'week', created_at::date) AS start_date")
                     // date_part('week',TIMESTAMP '2017-09-30');
                     ->groupBy('weekly')
