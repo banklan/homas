@@ -14,7 +14,6 @@
                             </v-alert>
                             <v-list three-line nav class="pb-10">
                                 <template v-for="(item, i) in portfolio">
-                                    <!-- <my-portfolio-card :portfolio="item" :key="i"/> -->
                                     <my-portfolio-list :portfolio="item" :key="i" index="i"/>
                                 </template>
                             </v-list>

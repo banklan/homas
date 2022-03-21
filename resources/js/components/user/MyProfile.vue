@@ -149,7 +149,7 @@ export default {
             passwordChangeFailed: false,
             isUpdatingPswd: false,
             currentPswdError: false,
-            profileImg: ''
+            profileImg: null
         }
     },
     computed: {

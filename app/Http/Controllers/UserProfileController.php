@@ -77,9 +77,8 @@ class UserProfileController extends Controller
         $old_pic = $user->picture;
         if($old_pic){
             // $filePath = public_path('/images/profiles/users/'.$old_pic);
-            $oldpath = '/profiles/' . $old_pic;
+            $oldpath = 'profiles/' . $old_pic;
             if(file_exists($oldpath)){
-                // unlink($filePath);
                 Storage::disk('s3')->delete($oldpath);
             }
         }
@@ -93,20 +92,19 @@ class UserProfileController extends Controller
 
             //save new file in folder
             //$file_loc = public_path('/images/profiles/users/'.$filename);
-            $file_loc = '/profiles/' . $filename;
+            $file_loc = 'profiles/' . $filename;
             if(in_array($ext, ['jpeg', 'jpg', 'png', 'gif', 'pdf'])){
-                $img = Image::make($file)->resize(420, 420, function($constraint){
+                $img = Image::make($file)->resize(420, 320, function($constraint){
                         $constraint->aspectRatio(); })->sharpen(2);
-                // $upload->sharpen(2)->save($file_loc);
                 $fixedImg = $img->stream();
-                Storage::disk('s3')->put($file_loc, $fixedImg->__toString(), 'public');
+                Storage::disk('s3')->put($file_loc, $fixedImg->__toString());
             }
-        }
 
-        // save path in db
-        $user->update([
-            $user->picture = $filename
-        ]);
+             // save path in db
+            $user->update([
+                $user->picture = $filename
+            ]);
+        }
 
         return response()->json($user, 201);
     }

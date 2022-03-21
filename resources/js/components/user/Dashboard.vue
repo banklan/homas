@@ -2,12 +2,7 @@
     <v-container>
         <v-row justify="center" class="mt-7">
             <template v-if="authUser">
-                <template v-if="getServiceFail">
-                    <v-alert type="error" border="left" class="mt-8">
-                        There was an error while trying to get your service from the server. Please logout, then login and try again.
-                    </v-alert>
-                </template>
-                <template v-else>
+                <template>
                     <v-col cols="12" md="5">
                         <v-progress-circular v-if="isLoading" indeterminate color="primary" :width="4" :size="40" justify="center" class="mx-auto"></v-progress-circular>
                         <v-card v-else light raised elevation="12" min-height="300" class="mx-auto">
@@ -18,7 +13,7 @@
                                     <div class="subtitle-1">
                                         <router-link to="/my-service">{{ authService.title }}</router-link>
                                     </div>
-                                    <div class="subtitle-2 mt-2">{{ authService.description | truncate(120)}}</div>
+                                    <div class="subtitle-1 mt-2">{{ authService.description | truncate(120)}}</div>
                                     <hr>
                                     <div class="title mb-2 font-weight-bold">My Portfolio</div>
                                     <template v-if="authService.portfolio.length > 0">
@@ -27,7 +22,7 @@
                                                 <template v-for="pf in authService.portfolio">
                                                     <v-list-item :key="pf.id" :to="{name: 'MyPortFolioShow', params:{id: pf.id, slug:pf.slug}}">
                                                         <v-list-item-avatar>
-                                                        <v-icon color="accent">people_alt</v-icon>
+                                                        <v-icon color="primary">people_alt</v-icon>
                                                         </v-list-item-avatar>
                                                         <v-list-item-content>
                                                         <v-list-item-title>{{ pf.title }}</v-list-item-title>

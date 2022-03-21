@@ -292,7 +292,8 @@ export default {
             this.$refs.files.value = ''
         },
         delPfFile(file, index){
-            axios.post(this.api + `/auth/del_pf_file/${file.id}`, {}, this.header).then((rs) => {
+            // axios.post(this.api + `/auth/del_pf_file/${file.id}`, {}, this.header).then((rs) => {
+            axios.post(this.api + `/auth/del_pf_file/${file}`, {}, this.header).then((res) => {
                 this.files.splice(index, 1)
                 this.fileRemoved = true
             }).catch(() => {
@@ -303,6 +304,7 @@ export default {
             axios.get(this.api + `/auth/get_my_pf_images_from_s3/${this.$route.params.id}`, this.header)
             .then((res) => {
                 this.files = res.data
+                console.log(res.data)
             })
         }
     },

@@ -97,9 +97,10 @@ class PortfolioController extends Controller
         return response()->json($pf, 200);
     }
 
-    public function delPfFile($id){
-        $pf_file = PortfolioFile::findOrFail($id);
-        $file = $pf_file->file;
+    public function delPfFile($file){
+        // $pf_file = PortfolioFile::findOrFail($id);
+        $pf_file = PortfolioFile::where('file', $file)->first();
+        // $file = $pf_file->file;
         // delete from s3
         $path = 'portfolios/' .$file;
         if(file_exists($path)){

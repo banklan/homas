@@ -37,8 +37,11 @@
                     </template>
                     <template v-else>
                         <v-alert type="info" border="left" class="mt-8 mb-8">
-                            You have not written a testimonial for homas.com. Would you like to <router-link to="/new-testimonial">write one now?</router-link>
+                            You have not written a testimonial for homas.com.
                         </v-alert>
+                        <div class="text-center justify-center mt-4 pb-5">
+                            <v-btn large dark color="primary" to="/new-testimonial">Write Testimonial</v-btn>
+                        </div>
                     </template>
                 </template>
             </v-col>

@@ -3,7 +3,7 @@
         <v-row justify="center" class="mt-7 mb-5">
             <v-col cols="12" md="8">
                 <div class="section_header text-center">
-                    Take your services to the next level!
+                    Take your services to the next level! List your services on hozulinks!
                 </div>
             </v-col>
         </v-row>
