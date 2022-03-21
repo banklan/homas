@@ -8,7 +8,7 @@
                     <template v-if="!changePic">
                         <!-- <v-img v-if="authUser.picture" :src="`/images/profiles/users/${ authUser.picture }`" width="100%" height="350" transition="scale-transition"></v-img>
                         <v-img v-else src="/images/shared/user6.jpg" width="100%" height="350" transition="scale-transition"></v-img> -->
-                        <v-img v-if="profileImg" :src="profileImg" width="100%" height="350" transition="scale-transition" alt="picture"></v-img>
+                        <v-img v-if="profileImg" :src="profileImg" width="100%" height="350" transition="scale-transition" alt="picture" contain></v-img>
                         <v-img v-else src="images/shared/user6.jpg" width="100%" height="350" transition="scale-transition"></v-img>
                         <v-card-actions class="justify-center">
                             <v-btn text color="blue darken-3" class="mt-2 mb-n4" @click="changePic = true">Change Picture</v-btn>

@@ -208,7 +208,7 @@ export default {
         },
         deletePf(){
             this.isLoading = true
-            axios.post(this.api + `/auth/del_portfolio/${this.$route.params.id}`, this.header)
+            axios.post(this.api + `/auth/del_portfolio/${this.$route.params.id}`, {}, this.header)
             .then((res) => {
                 this.isLoading = false
                 this.$store.commit('portfolioDeleted')

@@ -90,6 +90,7 @@ export default {
                             user: this.user
                         }).then((res) => {
                             this.isLoading = false
+                            this.createFail = false
                             this.userCreated = true
                         }).catch((err) =>{
                             this.isLoading = false

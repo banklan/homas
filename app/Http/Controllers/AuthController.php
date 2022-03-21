@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Service;
 use App\AdminNotification;
-use App\Mail\WelcomeToHomas;
+use App\Mail\WelcomeToHozulinks;
 use Illuminate\Http\Request;
 use App\UserEmailConfirmation;
 use App\Events\NewUserRegistered;
@@ -151,7 +151,8 @@ class AuthController extends Controller
 
             $conf->fresh();
             // send welcome email
-            Mail::to($user->email)->send(new WelcomeToHomas($user, $conf));
+            $url = 'https:hozulinks.herokuapp.com';
+            Mail::to($user->email)->send(new WelcomeToHozulinks($user, $conf, $url));
         }
 
         return response()->json($user, 200);
