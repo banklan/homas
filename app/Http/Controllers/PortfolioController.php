@@ -63,6 +63,12 @@ class PortfolioController extends Controller
 
     public function getPortfolioFiles($id){
         $files = PortfolioFile::where('portfolio_id', $id)->get();
+        foreach($files as $file){
+            $pf_file = $file->file;
+            $path = 'portfolios/' .$pf_file;
+            $fileUrl = Storage::disk('s3')->url($path);
+            $file->url = $fileUrl;
+        }
 
         return response()->json($files, 200);
     }

@@ -237,8 +237,8 @@ export default {
             axios.get(this.api + `/auth/get_my_portfolio_files/${this.portfolio.id}`, this.header)
             .then((res) => {
                 this.isLoading = false
-                this.files = res.data
-                console.log(res.data)
+                // this.files = res.data
+                console.log("merged s3 and db files ", res.data)
             }).catch(() =>{
                 this.isLoading = false
             })
@@ -305,12 +305,12 @@ export default {
             axios.get(this.api + `/auth/get_my_pf_images_from_s3/${this.$route.params.id}`, this.header)
             .then((res) => {
                 this.files = res.data
-                console.log(res.data)
+                // console.log(res.data)
             })
         }
     },
     created(){
-        // this.getPortfolioFiles()
+        this.getPortfolioFiles()
         this.getPfImages()
     }
 }

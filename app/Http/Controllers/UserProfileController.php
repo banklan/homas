@@ -105,7 +105,6 @@ class UserProfileController extends Controller
                 $user->picture = $filename
             ]);
         }
-
         return response()->json($user, 201);
     }
 
