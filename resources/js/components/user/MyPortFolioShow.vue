@@ -71,7 +71,7 @@
                   <div class="mb-3 font-weight-bold">No Of Files: {{ files.length }}</div>
                   <div v-for="(file, index) in files" :key="file.id">
                       <div class="del_imags">
-                          <div class="img"><v-img :src="file" alt="portfolio image"></v-img></div>
+                          <div class="img"><v-img :src="file.url" alt="portfolio image"></v-img></div>
                           <div class="butn"><v-btn icon small color="red darken-2" @click="delPfFile(file, index)"><v-icon>delete_forever</v-icon></v-btn></div>
                       </div>
                   </div>
@@ -237,7 +237,7 @@ export default {
             axios.get(this.api + `/auth/get_my_portfolio_files/${this.portfolio.id}`, this.header)
             .then((res) => {
                 this.isLoading = false
-                // this.files = res.data
+                this.files = res.data
                 console.log("merged s3 and db files ", res.data)
             }).catch(() =>{
                 this.isLoading = false
@@ -294,7 +294,7 @@ export default {
         },
         delPfFile(file, index){
             // axios.post(this.api + `/auth/del_pf_file/${file.id}`, {}, this.header).then((rs) => {
-            axios.post(this.api + `/auth/del_pf_file/${file}`, {}, this.header).then((res) => {
+            axios.post(this.api + `/auth/del_pf_file/${file.id}`, {}, this.header).then((res) => {
                 this.files.splice(index, 1)
                 this.fileRemoved = true
             }).catch(() => {
@@ -311,7 +311,7 @@ export default {
     },
     created(){
         this.getPortfolioFiles()
-        this.getPfImages()
+        // this.getPfImages()
     }
 }
 </script>

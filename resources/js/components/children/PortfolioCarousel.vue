@@ -5,7 +5,7 @@
             <template v-if="files.length > 0">
                 <v-carousel height="400">
                     <!-- <v-carousel-item v-for="(item, i) in files" :key="i" :src="`/images/portfolios/${item.file}`" reverse-transition="fade-transition" transition="fade-transition"></v-carousel-item> -->
-                    <v-carousel-item v-for="(item, i) in files" :key="i" :src="item" reverse-transition="fade-transition" transition="fade-transition"></v-carousel-item>
+                    <v-carousel-item v-for="(item, i) in files" :key="i" :src="item.url" reverse-transition="fade-transition" transition="fade-transition"></v-carousel-item>
                 </v-carousel>
             </template>
         </template>
