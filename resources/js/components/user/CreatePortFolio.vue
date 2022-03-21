@@ -11,7 +11,7 @@
                         <v-card-text class="mt-1 py-3">
                             <v-textarea label="Title" rows="1" v-model="portfolio.title" :counter="200" auto-grow required v-validate="'required|min:5|max:200'" :error-messages="errors.collect('title')" name="title"></v-textarea>
                             <v-textarea label="Details" rows="2" v-model="portfolio.detail" auto-grow required v-validate="'required|min:10|max:600'" :error-messages="errors.collect('detail')" name="detail"></v-textarea>
-                            <v-text-field label="Price" v-model="portfolio.cost" v-validate="'decimal'" :error-messages="errors.collect('cost')" name="cost"></v-text-field>
+                            <v-text-field label="Price" v-model="portfolio.cost" v-validate="'decimal'" :error-messages="errors.collect('cost')" name="cost" hint="Cost must not be blank and must be a digit more that 0"></v-text-field>
                         </v-card-text>
                         <v-card-actions class="justify-center pb-8">
                             <v-btn large color="primary darken--2" @click="create" :disabled="isLoading" width="50%">Submit</v-btn>

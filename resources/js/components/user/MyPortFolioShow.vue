@@ -238,6 +238,7 @@ export default {
             .then((res) => {
                 this.isLoading = false
                 this.files = res.data
+                console.log(res.data)
             }).catch(() =>{
                 this.isLoading = false
             })
