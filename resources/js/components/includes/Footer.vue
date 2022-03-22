@@ -44,9 +44,9 @@ export default {
     data(){
         return{
             icons: [
-                {name: 'mdi-facebook', color:'#1877f2', link:'https://www.facebook.com/homas'},
-                {name: 'mdi-twitter', color: '#1da1f2', link: 'https://www.twitter.com/homas'},
-                {name: 'mdi-instagram', color: '#c32aa3', link: 'https://www.instagram.com/homas'}
+                {name: 'mdi-facebook', color:'#1877f2', link:'https://www.facebook.com/hozulinks'},
+                {name: 'mdi-twitter', color: '#1da1f2', link: 'https://www.twitter.com/hozulinks'},
+                {name: 'mdi-instagram', color: '#c32aa3', link: 'https://www.instagram.com/hozulinks'}
             ],
         }
     }

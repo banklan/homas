@@ -53,8 +53,8 @@ const servNotif = serv_notf ? serv_notf : 0
 
 export const store = new Vuex.Store({
     state: {
-        // api: 'http://localhost:8000/api',
-        api: 'https://hozulinks.herokuapp.com/api',
+        api: 'http://localhost:8000/api',
+        // api: 'https://hozulinks.herokuapp.com/api',
         isBusy: false,
         redirectOnLogin: redirectOnLogin,
         userIsLoggedIn: userIsLoggedIn,

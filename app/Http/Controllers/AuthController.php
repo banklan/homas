@@ -151,7 +151,7 @@ class AuthController extends Controller
 
             $conf->fresh();
             // send welcome email
-            $url = 'https:hozulinks.herokuapp.com';
+            $url = 'https://hozulinks.herokuapp.com';
             Mail::to($user->email)->send(new WelcomeToHozulinks($user, $conf, $url));
         }
 
